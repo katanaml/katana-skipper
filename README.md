@@ -1,5 +1,5 @@
-# Simple Pipeline
-.
+# Simple ML Pipeline
+This is a simple and flexible ML pipeline. It helps to bring your ML model to production quickly. You get options to control model runtime and obtain metrics. Pipeline is designed to plugin your own model in easy way. Enjoy!
 
 ## Author
 
