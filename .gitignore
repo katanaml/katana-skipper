@@ -134,3 +134,7 @@ services/.idea/misc.xml
 services/.idea/modules.xml
 services/.idea/services.iml
 services/.idea/vcs.xml
+engine/.idea/engine.iml
+engine/.idea/modules.xml
+engine/.idea/inspectionProfiles/Project_Default.xml
+engine/.idea/inspectionProfiles/profiles_settings.xml
