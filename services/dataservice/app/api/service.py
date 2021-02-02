@@ -3,8 +3,8 @@ import dataservice.app.api.dataprocessor as processor
 
 dataservice = APIRouter()
 
-@dataservice.get('/')
-def test():
+@dataservice.get('/ping')
+def health_check():
     return 'API is running'
 
 @dataservice.post('/execute')
