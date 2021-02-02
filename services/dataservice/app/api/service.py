@@ -10,6 +10,6 @@ def test():
 @dataservice.post('/execute')
 def prepare_data():
 
-    processor.prepare_datasets()
+    norm_train_X, norm_test_X, norm_val_X, train_Y, test_Y, val_Y = processor.prepare_datasets()
 
-    return 'OK'
+    return True
