@@ -138,3 +138,17 @@ engine/.idea/engine.iml
 engine/.idea/modules.xml
 engine/.idea/inspectionProfiles/Project_Default.xml
 engine/.idea/inspectionProfiles/profiles_settings.xml
+services/dataservice/.idea/dataservice.iml
+services/dataservice/.idea/inspectionProfiles/profiles_settings.xml
+services/dataservice/.idea/inspectionProfiles/Project_Default.xml
+services/dataservice/.idea/modules.xml
+services/servingservice/.idea/inspectionProfiles/profiles_settings.xml
+services/servingservice/.idea/inspectionProfiles/Project_Default.xml
+services/servingservice/.idea/modules.xml
+services/servingservice/.idea/servingservice.iml
+services/trainingservice/.idea/inspectionProfiles/profiles_settings.xml
+services/trainingservice/.idea/inspectionProfiles/Project_Default.xml
+services/trainingservice/.idea/misc.xml
+services/trainingservice/.idea/modules.xml
+services/trainingservice/.idea/trainingservice.iml
+services/trainingservice/.idea/vcs.xml
