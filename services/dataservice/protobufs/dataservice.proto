@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package protobufs;
+
+message ParamsRequest {
+    float test_size = 1;
+}
+
+// normalized training data
+message BostonHousingResponse {
+    bytes norm_train_x = 1;
+    bytes norm_test_x = 2;
+    bytes norm_val_x = 3;
+    bytes train_y = 4;
+    bytes test_y = 5;
+    bytes val_y = 6;
+}
+
+// service method
+service BostonHousing {
+  rpc PrepareData(ParamsRequest) returns (BostonHousingResponse);
+}

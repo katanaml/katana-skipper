@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.datasets import load_boston
 from sklearn.model_selection import train_test_split
 
-def prepare_datasets():
+def prepare_datasets(test_size):
     # Loading the Boston Housing dataset
     boston = load_boston()
 
@@ -20,8 +20,8 @@ def prepare_datasets():
     data['PRICE'] = boston.target
 
     # Split the data into train and test with 80 train / 20 test
-    train, test = train_test_split(data, test_size=0.2, random_state=1)
-    train, val = train_test_split(train, test_size=0.2, random_state=1)
+    train, test = train_test_split(data, test_size=test_size, random_state=1)
+    train, val = train_test_split(train, test_size=test_size, random_state=1)
 
     # Normalize the training and test data
     norm_train_X = np.array(norm(train, train))
