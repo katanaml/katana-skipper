@@ -1,7 +1,7 @@
 from io import BytesIO
 import numpy as np
 
-from app.dataservice_pb2 import ParamsRequest
+from dataservice_pb2 import ParamsRequest
 
 class DataController():
     def __init__(self, client):
@@ -23,6 +23,18 @@ class DataController():
         test_Y = np.load(test_Y_bytes, allow_pickle=False)
         val_Y_bytes = BytesIO(response.val_y)
         val_Y = np.load(val_Y_bytes, allow_pickle=False)
+
+        train_Y_1 = train_Y[0]
+        train_Y_2 = train_Y[1]
+        train_Y = (train_Y_1, train_Y_2)
+
+        test_Y_1 = test_Y[0]
+        test_Y_2 = test_Y[1]
+        test_Y = (test_Y_1, test_Y_2)
+
+        val_Y_1 = val_Y[0]
+        val_Y_2 = val_Y[1]
+        val_Y = (val_Y_1, val_Y_2)
 
         return norm_train_X, norm_test_X, norm_val_X, train_Y, test_Y, val_Y
 

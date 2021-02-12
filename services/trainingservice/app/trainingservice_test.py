@@ -1,4 +1,4 @@
-import app.trainingservice as tr
+import trainingservice as tr
 
 def main():
     trs = tr.TrainingService()

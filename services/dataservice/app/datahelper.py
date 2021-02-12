@@ -23,14 +23,14 @@ def prepare_datasets(test_size):
     train, test = train_test_split(data, test_size=test_size, random_state=1)
     train, val = train_test_split(train, test_size=test_size, random_state=1)
 
+    train_Y = format_output(train)
+    test_Y = format_output(test)
+    val_Y = format_output(val)
+
     # Normalize the training and test data
     norm_train_X = np.array(norm(train, train))
     norm_test_X = np.array(norm(test, train))
     norm_val_X = np.array(norm(val, train))
-
-    train_Y = format_output(train)
-    test_Y = format_output(test)
-    val_Y = format_output(val)
 
     return norm_train_X, norm_test_X, norm_val_X, train_Y, test_Y, val_Y
 
@@ -39,8 +39,6 @@ def norm(x, train):
     # Get PRICE and PTRATIO as the 2 outputs and format them as np arrays
     # PTRATIO - pupil-teacher ratio by town
     train_stats = train.describe()
-    train_stats.pop('PRICE')
-    train_stats.pop('PTRATIO')
     train_stats = train_stats.transpose()
 
     return (x - train_stats['mean']) / train_stats['std']
