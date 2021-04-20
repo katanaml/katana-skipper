@@ -1,5 +1,5 @@
 # Katana ML Orchestrator
-This is a simple and flexible ML orchestrator. It works on top of Docker and Kubernetes, it helps to bring ML microservices to production quickly. You can manage ML flow through UI. Orchestrator is designed to work in generic way and you can adjust it to your requirements. Enjoy!
+This is a simple and flexible ML orchestrator. It helps to orchestrate events across a set of microservices and create executable flow to handle requests. Orchestrator is designed to be configurable with any microservises. Enjoy!
 
 ## Author
 
