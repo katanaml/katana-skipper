@@ -1,5 +1,5 @@
-# Katana ML Orchestrator
-This is a simple and flexible ML orchestrator. It helps to orchestrate events across a set of microservices and create executable flow to handle requests. Orchestrator is designed to be configurable with any microservises. Enjoy!
+# Katana ML Skipper
+This is a simple and flexible ML workflow engine. It helps to orchestrate events across a set of microservices and create executable flow to handle requests. Engine is designed to be configurable with any microservises. Enjoy!
 
 ## Author
 
