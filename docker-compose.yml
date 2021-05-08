@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  invoice-service:
+    image: katanaml/invoice-service
+    build:
+      context: ./invoiceservice
+      dockerfile: Dockerfile
+    container_name: invoice-service
+    ports:
+      - 8001:8000
+    command: uvicorn invoiceservice.app.main:app --reload --host 0.0.0.0
+    volumes:
+      - /Users/andrejb/infra/shared/wallets/Wallet_katanaDB:/usr/lib/oracle/21/client64/lib/network/admin:Z,ro
+    environment:
+      - USERNAME=user
+      - PASSWORD=pass
+      - CONNECT_STRING=tcps://adb.eu-frankfurt-1.oraclecloud.com:1522/abc_db_medium.adb.oraclecloud.com
+    networks:
+      - network1
+    restart: 'no'
+
+networks:
+  network1:
+    name: katana-network
