@@ -1,24 +1,28 @@
 version: '3.9'
 
 services:
-  invoice-service:
-    image: katanaml/invoice-service
+  rabbitmq:
+    image: katanaml/rabbitmq-service
     build:
-      context: ./invoiceservice
+      context: ./rabbitmq
       dockerfile: Dockerfile
-    container_name: invoice-service
+    container_name: rabbitmq-service
     ports:
-      - 8001:8000
-    command: uvicorn invoiceservice.app.main:app --reload --host 0.0.0.0
+      - 5672:5672
+      - 15672:15672
     volumes:
-      - /Users/andrejb/infra/shared/wallets/Wallet_katanaDB:/usr/lib/oracle/21/client64/lib/network/admin:Z,ro
+      - ./backend-rabbitmq/etc/:/etc/backend/
+      - ./backend-rabbitmq/data/:/var/lib/backend/
+      - ./backend-rabbitmq/logs/:/var/log/backend/
     environment:
-      - USERNAME=user
-      - PASSWORD=pass
-      - CONNECT_STRING=tcps://adb.eu-frankfurt-1.oraclecloud.com:1522/abc_db_medium.adb.oraclecloud.com
+      - RABBITMQ_DEFAULT_USER=skipper
+      - RABBITMQ_DEFAULT_PASS=welcome1
+      - RABBITMQ_NODENAME=rabbitnode@localhost
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
     networks:
       - network1
-    restart: 'no'
+    restart: always
 
 networks:
   network1:
