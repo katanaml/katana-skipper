@@ -153,3 +153,5 @@ services/trainingservice/.idea/modules.xml
 services/trainingservice/.idea/trainingservice.iml
 services/trainingservice/.idea/vcs.xml
 services/dataservice/.idea/vcs.xml
+engine/.idea/misc.xml
+engine/.idea/vcs.xml
