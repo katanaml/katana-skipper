@@ -9,8 +9,8 @@ Katana ML, Red Samurai Consulting, Andrej Baranovskij
 
 ### Start/Stop
 
-docker-compose up --build -d
-docker-compose down
+* docker-compose up --build -d
+* docker-compose down
 
 ### URLs
 
