@@ -12,6 +12,12 @@ Katana ML, Red Samurai Consulting, Andrej Baranovskij
 * docker-compose up --build -d
 * docker-compose down
 
+### Components
+
+* **engine** - workflow implementation
+* **services** - a set of microservices
+* **rabbitmq** - service for RabbitMQ broker
+
 ### URLs
 
 * RabbitMQ: http://localhost:15672/ (skipper/welcome1)
