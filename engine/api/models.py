@@ -2,5 +2,10 @@ from pydantic import BaseModel
 
 
 class WorkflowTask(BaseModel):
-    taskId: str
-    taskResult: str
+    task_id: str
+    task_status: str
+
+
+class WorkflowTaskResult(BaseModel):
+    task_id: str
+    task_status: str

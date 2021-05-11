@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.router import router
+from api.router import router_tasks
 
-app = FastAPI(openapi_url='/api/v1/skipper/openapi.json', docs_url='/api/v1/skipper/docs')
+app = FastAPI(openapi_url='/api/v1/skipper/tasks/openapi.json', docs_url='/api/v1/skipper/tasks/docs')
 
 app.add_middleware(
     CORSMiddleware,
@@ -12,4 +12,4 @@ app.add_middleware(
     allow_credentials=True,
 )
 
-app.include_router(router, prefix='/api/v1/skipper')
+app.include_router(router_tasks, prefix='/api/v1/skipper/tasks')
