@@ -3,6 +3,7 @@ from .models import WorkflowTask, WorkflowTaskResult, WorkflowTaskData
 from .tasks import process_workflow
 from celery.result import AsyncResult
 from fastapi.responses import JSONResponse
+import json
 
 router_tasks = APIRouter()
 
@@ -14,9 +15,15 @@ def touch():
 
 @router_tasks.post('/start', response_model=WorkflowTask, status_code=202)
 async def start_workflow_task(workflow_task_data: WorkflowTaskData):
-    task_id = process_workflow.delay(workflow_task_data.task_type,
-                                     workflow_task_data.payload,
-                                     workflow_task_data.description)
+    payload = {
+        'task_type': workflow_task_data.task_type,
+        'payload': workflow_task_data.payload,
+        'description': workflow_task_data.description
+    }
+    payload_json = json.dumps(payload, indent=4)
+
+    task_id = process_workflow.delay(workflow_task_data.task_type, payload_json)
+
     return {'task_id': str(task_id),
             'task_status': 'Processing'}
 
