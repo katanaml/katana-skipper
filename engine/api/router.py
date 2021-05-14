@@ -38,5 +38,5 @@ async def workflow_task_result(task_id):
                                      'task_status': 'Processing'})
     result = task.get()
     return {'task_id': task_id,
-            'task_status': 'Success',
+            'task_status': 'SUCCESS',
             'outcome': str(result)}

@@ -15,7 +15,7 @@ services:
       - ./backend-rabbitmq/data/:/var/lib/backend/
       - ./backend-rabbitmq/logs/:/var/log/backend/
     environment:
-      - RABBITMQ_DEFAULT_USER=skipper
+      - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=welcome1
       - RABBITMQ_NODENAME=rabbitnode@localhost
       - RABBITMQ_USER=skipper
