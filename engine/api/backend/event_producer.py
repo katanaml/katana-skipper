@@ -23,12 +23,12 @@ class EventProducer(object):
         if self.corr_id == props.correlation_id:
             self.response = body
 
-    def call(self, payload):
+    def call(self, queue_name, payload):
         self.response = None
         self.corr_id = str(uuid.uuid4())
         self.channel.basic_publish(
             exchange='',
-            routing_key='skipper_web_api',
+            routing_key=queue_name,
             properties=pika.BasicProperties(
                 reply_to=self.callback_queue,
                 correlation_id=self.corr_id
