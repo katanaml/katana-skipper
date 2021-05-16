@@ -1,1 +1,0 @@
-python trainingservice_test.py

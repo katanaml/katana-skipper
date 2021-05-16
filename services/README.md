@@ -1,5 +1,5 @@
-# Microservices
+# ML Microservices
 
 - Data processing service
-- Training service
-- Serving service
+- ML model training service
+- ML model serving service
