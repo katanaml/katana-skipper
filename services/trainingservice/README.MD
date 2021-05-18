@@ -2,4 +2,4 @@
 
 ## Instructions
 
-* a
+* **python main.py**
