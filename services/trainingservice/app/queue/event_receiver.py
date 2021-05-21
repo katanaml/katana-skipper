@@ -1,5 +1,4 @@
 import pika
-import json
 from app.training_service import TrainingService
 
 
@@ -19,17 +18,9 @@ class EventReceiver(object):
         print("Awaiting requests for [x] training service [x]")
         channel.start_consuming()
 
-
     def on_request(self, ch, method, props, body):
-        body_json = json.loads(body)
-
         training_service = TrainingService()
-        res = training_service.call(body_json)
-
-        payload = {
-            'result': res
-        }
-        response = json.dumps(payload, indent=4)
+        response, task_type = training_service.call(body)
 
         ch.basic_publish(exchange='',
                          routing_key=props.reply_to,
@@ -37,4 +28,4 @@ class EventReceiver(object):
                          body=response)
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
-        print('Processed request:', body_json['task_type'])
+        print('Processed request:', task_type)

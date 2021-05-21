@@ -1,6 +1,5 @@
 import pika
 import uuid
-import json
 
 
 class EventProducer(object):
@@ -25,8 +24,6 @@ class EventProducer(object):
             self.response = body
 
     def call(self, queue_name, payload):
-        payload = json.dumps(payload, indent=4)
-
         self.response = None
         self.corr_id = str(uuid.uuid4())
         self.channel.basic_publish(

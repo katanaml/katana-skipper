@@ -11,9 +11,16 @@ class TrainingService(object):
         pass
 
     def call(self, data):
+        data_json = json.loads(data)
+
         self.run_training(data)
 
-        return 'TASK_COMPLETED'
+        payload = {
+            'result': 'TASK_COMPLETED'
+        }
+        response = json.dumps(payload)
+
+        return response, data_json['task_type']
 
     def build_model(self, columns_len):
         # Define model layers.

@@ -13,7 +13,7 @@ def on_request(ch, method, props, body):
     payload = {
         'result': 'TASK_COMPLETED'
     }
-    response = json.dumps(payload, indent=4)
+    response = json.dumps(payload)
 
     ch.basic_publish(exchange='',
                      routing_key=props.reply_to,

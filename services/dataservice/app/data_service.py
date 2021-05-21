@@ -12,7 +12,8 @@ class DataService(object):
         pass
 
     def call(self, data):
-        norm_train_x, norm_test_x, norm_val_x, train_y, test_y, val_y = self.prepare_datasets(float(data['payload']))
+        data_json = json.loads(data)
+        norm_train_x, norm_test_x, norm_val_x, train_y, test_y, val_y = self.prepare_datasets(float(data_json['payload']))
 
         print()
         print('Normalized training X:', norm_train_x.shape)
@@ -47,7 +48,7 @@ class DataService(object):
 
         response = json.dumps(data)
 
-        return response
+        return response, data_json['task_type']
 
     def prepare_datasets(self, data_split):
         # Loading the Boston Housing dataset

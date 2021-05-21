@@ -20,7 +20,7 @@ async def start_workflow_task(workflow_task_data: WorkflowTaskData):
         'payload': workflow_task_data.payload,
         'description': workflow_task_data.description
     }
-    payload_json = json.dumps(payload, indent=4)
+    payload_json = json.dumps(payload)
 
     task_id = process_workflow.delay(workflow_task_data.task_type, payload_json)
 

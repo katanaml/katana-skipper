@@ -1,5 +1,4 @@
 import pika
-import json
 from app.data_service import DataService
 
 
@@ -20,10 +19,8 @@ class EventReceiver(object):
         channel.start_consuming()
 
     def on_request(self, ch, method, props, body):
-        body_json = json.loads(body)
-
         data_service = DataService()
-        response = data_service.call(body_json)
+        response, task_type = data_service.call(body)
 
         ch.basic_publish(exchange='',
                          routing_key=props.reply_to,
@@ -31,4 +28,4 @@ class EventReceiver(object):
                          body=response)
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
-        print('Processed request:', body_json['task_type'])
+        print('Processed request:', task_type)
