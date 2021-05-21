@@ -2,6 +2,8 @@
 
 ## Instructions
 
+* **pip install -r requirements.txt**
+
 * **uvicorn endpoint:app --reload**
 
 * **celery -A api.worker worker --loglevel=INFO**
