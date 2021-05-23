@@ -18,6 +18,8 @@ docker-compose up --build -d
 docker-compose down
 ```
 
+This will start container. To run engine and services, navigate to related folders and follow instructions.
+
 ### Components
 
 * **[engine](https://github.com/katanaml/katana-skipper/tree/master/engine)** - workflow implementation
