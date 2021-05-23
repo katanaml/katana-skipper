@@ -1,7 +1,7 @@
 # Katana ML Skipper
 This is a simple and flexible ML workflow engine. It helps to orchestrate events across a set of microservices and create executable flow to handle requests. Engine is designed to be configurable with any microservises. Enjoy!
 
-![Skipper](https://github.com/katanaml/katana-skipper/blob/master/skipper.png)
+![Skipper](https://github.com/katanaml/katana-skipper/blob/master/skipper.png | width=400)
 
 ## Author
 
