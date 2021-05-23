@@ -7,7 +7,7 @@ This is a simple and flexible ML workflow engine. It helps to orchestrate events
 
 ## Author
 
-Katana ML, Red Samurai Consulting, Andrej Baranovskij
+Katana ML, Andrej Baranovskij
 
 ## Instructions
 
@@ -28,7 +28,7 @@ docker-compose down
 
 * RabbitMQ: http://localhost:15672/ (skipper/welcome1)
 
-### Usage
+## Usage
 
 This project is under active development, code is updated often. You could use Skipper engine to run Web API and communicate with a group of ML microservises implemented under services package. At the moment, even communication logic is hardcoded, it will be implemented to be declarative in the next phases of the project.
 
