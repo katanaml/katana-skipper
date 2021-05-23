@@ -13,8 +13,10 @@ Katana ML, Red Samurai Consulting, Andrej Baranovskij
 
 ### Start/Stop
 
-* docker-compose up --build -d
-* docker-compose down
+```
+docker-compose up --build -d
+docker-compose down
+```
 
 ### Components
 
@@ -26,6 +28,10 @@ Katana ML, Red Samurai Consulting, Andrej Baranovskij
 
 * RabbitMQ: http://localhost:15672/ (skipper/welcome1)
 
+### Usage
+
+This project is under active development, code is updated often. You could use Skipper engine to run Web API and communicate with a group of ML microservises implemented under services package. At the moment, even communication logic is hardcoded, it will be implemented to be declarative in the next phases of the project.
+
 ## License
 
-Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML. [Copy of the license](https://github.com/katanaml/katana-pipeline/blob/master/LICENSE).
+Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-pipeline/blob/master/LICENSE).
