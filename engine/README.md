@@ -1,4 +1,4 @@
-# Katana ML Skipper Workflow engine
+# Katana ML Skipper Workflow Engine
 
 ## Author
 
