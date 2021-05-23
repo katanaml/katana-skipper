@@ -22,7 +22,7 @@ docker-compose down
 
 * **[engine](https://github.com/katanaml/katana-skipper/tree/master/engine)** - workflow implementation
 * **[services](https://github.com/katanaml/katana-skipper/tree/master/services)** - a set of microservices
-* **rabbitmq** - service for RabbitMQ broker
+* **[rabbitmq](https://github.com/katanaml/katana-skipper/tree/master/rabbitmq)** - service for RabbitMQ broker
 
 ### URLs
 
