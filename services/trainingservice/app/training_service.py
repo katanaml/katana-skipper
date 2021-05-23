@@ -90,7 +90,7 @@ class TrainingService(object):
 
         # Train the model for 100 epochs
         history = model.fit(norm_train_x, train_y,
-                            epochs=1000, batch_size=10, validation_data=(norm_test_x, test_y))
+                            epochs=200, batch_size=10, validation_data=(norm_test_x, test_y))
 
         # Test the model and print loss and rmse for both outputs
         loss, Y1_loss, Y2_loss, Y1_rmse, Y2_rmse = model.evaluate(x=norm_val_x, y=val_y)
