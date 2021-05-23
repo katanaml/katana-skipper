@@ -1,13 +1,39 @@
-# Workflow engine
+# Katana ML Skipper Workflow engine
+
+## Author
+
+Katana ML, Andrej Baranovskij
 
 ## Instructions
 
-* **pip install -r requirements.txt**
+1. Install libraries
 
-* **uvicorn endpoint:app --reload**
+```
+pip install -r requirements.txt
+```
 
-* **celery -A api.worker worker --loglevel=INFO**
+2. Start FastAPI
 
-* **python event_receiver_test.py**
+```
+uvicorn endpoint:app --reload
+```
 
-* URL: http://127.0.0.1:8000/docs
+3. Start Celery task distributed queue
+
+```
+celery -A api.worker worker --loglevel=INFO
+```
+
+4. Optional - start RabbitMQ test receiver
+
+```
+python event_receiver_test.py
+```
+
+5. Web API FastAPI endpoint
+
+URL: http://127.0.0.1:8000/docs
+
+## License
+
+Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-pipeline/blob/master/LICENSE).
