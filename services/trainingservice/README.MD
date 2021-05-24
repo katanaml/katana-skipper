@@ -26,7 +26,7 @@ python main.py
 │   ├── queue
 │       ├── event_producer.py
 │       └── event_receiver.py
-│   └── data_service.py
+│   └── training_service.py
 ├── main.py
 ├── README.md
 └── requirements.txt
