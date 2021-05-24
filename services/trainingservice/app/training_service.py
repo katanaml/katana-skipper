@@ -4,6 +4,8 @@ import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, Input
 from .queue.event_producer import EventProducer
+import calendar
+import time
 
 
 class TrainingService(object):
@@ -82,7 +84,7 @@ class TrainingService(object):
         model = self.build_model(len(norm_train_x[0]))
 
         # Specify the optimizer, and compile the model with loss functions for both outputs
-        optimizer = tf.keras.optimizers.SGD(lr=0.001)
+        optimizer = tf.keras.optimizers.SGD(learning_rate=0.001)
         model.compile(optimizer=optimizer,
                       loss={'price_output': 'mse', 'ptratio_output': 'mse'},
                       metrics={'price_output': tf.keras.metrics.RootMeanSquaredError(),
@@ -90,10 +92,12 @@ class TrainingService(object):
 
         # Train the model for 100 epochs
         history = model.fit(norm_train_x, train_y,
-                            epochs=200, batch_size=10, validation_data=(norm_test_x, test_y))
+                            epochs=50, batch_size=10, validation_data=(norm_test_x, test_y))
 
         # Test the model and print loss and rmse for both outputs
         loss, Y1_loss, Y2_loss, Y1_rmse, Y2_rmse = model.evaluate(x=norm_val_x, y=val_y)
+
+
 
         print()
         print(f'loss: {loss}')
@@ -102,3 +106,7 @@ class TrainingService(object):
         print(f'price_rmse: {Y1_rmse}')
         print(f'ptratio_rmse: {Y2_rmse}')
         print()
+
+        # Save model
+        ts = calendar.timegm(time.gmtime())
+        model.save('../models/model_boston_' + str(ts) + '/', save_format='tf')
