@@ -19,14 +19,13 @@ class EventReceiver(object):
         channel.start_consuming()
 
     def on_request(self, ch, method, props, body):
-        pass
-        # training_service = TrainingService()
-        # response, task_type = training_service.call(body)
+        serving_service = ServingService()
+        response, task_type = serving_service.call(body)
 
-        # ch.basic_publish(exchange='',
-        #                  routing_key=props.reply_to,
-        #                  properties=pika.BasicProperties(correlation_id=props.correlation_id),
-        #                  body=response)
-        # ch.basic_ack(delivery_tag=method.delivery_tag)
+        ch.basic_publish(exchange='',
+                         routing_key=props.reply_to,
+                         properties=pika.BasicProperties(correlation_id=props.correlation_id),
+                         body=response)
+        ch.basic_ack(delivery_tag=method.delivery_tag)
 
-        # print('Processed request:', task_type)
+        print('Processed request:', task_type)

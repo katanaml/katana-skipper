@@ -8,15 +8,21 @@ celery_log = get_task_logger(__name__)
 
 
 @app.task(name='api.process_workflow')
-def process_workflow(task_type, data):
+def process_workflow(payload):
+    payload_json = json.loads(payload)
+    task_type = payload_json['task_type']
+
     queue_name = None
     if task_type == 'training':
         queue_name = 'skipper_training'
     elif task_type == 'inference':
         queue_name = 'skipper_inference'
 
+    if queue_name is None:
+        return
+
     event_producer = EventProducer()
-    response = event_producer.call(queue_name, data)
+    response = event_producer.call(queue_name, payload)
     response_json = json.loads(response)
 
     celery_log.info(task_type + " task completed")

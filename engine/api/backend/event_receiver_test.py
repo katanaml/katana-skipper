@@ -6,7 +6,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost',
                                                                port=5672,
                                                                credentials=credentials))
 channel = connection.channel()
-channel.queue_declare(queue='skipper_training')
+channel.queue_declare(queue='skipper_serving')
 
 
 def on_request(ch, method, props, body):
@@ -26,7 +26,7 @@ def on_request(ch, method, props, body):
 
 
 channel.basic_qos(prefetch_count=1)
-channel.basic_consume(queue='skipper_training', on_message_callback=on_request)
+channel.basic_consume(queue='skipper_serving', on_message_callback=on_request)
 
 print(" [x] Awaiting requests")
 channel.start_consuming()
