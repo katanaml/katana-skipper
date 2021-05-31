@@ -85,6 +85,8 @@ class DataService(object):
         train_stats = train.describe()
         train_stats = train_stats.transpose()
 
+        train_stats.to_csv('../models/train_stats.csv', header=True)
+
         return (x - train_stats['mean']) / train_stats['std']
 
     def format_output(self, data):

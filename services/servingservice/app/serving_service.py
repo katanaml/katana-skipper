@@ -2,6 +2,7 @@ import os
 import json
 import tensorflow as tf
 import pandas as pd
+import numpy as np
 
 
 class ServingService(object):
@@ -10,13 +11,21 @@ class ServingService(object):
 
     def call(self, data):
         data_json = json.loads(data)
-        payload = pd.DataFrame(data_json['data'], index=['i', ])
-        print(payload)
+        payload = pd.DataFrame(data_json['data'], index=[0, ])
+        payload.columns = [x.upper() for x in payload.columns]
+
+        train_stats = pd.read_csv('../models/train_stats.csv', index_col=0)
+        x = np.array(self.norm(payload, train_stats))
 
         models = self.get_immediate_subdirectories('../models/')
         saved_model = tf.keras.models.load_model('../models/' + max(models))
 
-        result = [0]
+        predictions = saved_model.predict(x)
+
+        result = {
+            'price': str(predictions[0][0][0]),
+            'ptratio': str(predictions[1][0][0])
+        }
         response = json.dumps(result)
 
         return response, data_json['task_type']
@@ -24,3 +33,6 @@ class ServingService(object):
     def get_immediate_subdirectories(self, a_dir):
         return [name for name in os.listdir(a_dir)
                 if os.path.isdir(os.path.join(a_dir, name))]
+
+    def norm(self, x, train_stats):
+        return (x - train_stats['mean']) / train_stats['std']

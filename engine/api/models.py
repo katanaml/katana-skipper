@@ -23,9 +23,9 @@ class WorkflowTaskData(BaseModel):
                                 age=(float, ...),
                                 dis=(float, ...),
                                 rad=(int, ...),
-                                tax=296,
+                                tax=(int, ...),
                                 b=(float, ...),
-                                lstat=(float, ...))] = None
+                                lstat=4.98)] = None
     description: Optional[str] = None
 
 
