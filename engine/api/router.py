@@ -42,7 +42,6 @@ async def workflow_task_result(task_id):
                    responses={202: {'model': WorkflowTaskCancelled, 'description': 'Accepted: Not Ready'}})
 async def execute_workflow_task(workflow_task_data: WorkflowTaskData):
     payload = workflow_task_data.json()
-    print(payload)
 
     queue_name = None
     if workflow_task_data.task_type == 'serving':
