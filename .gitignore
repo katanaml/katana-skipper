@@ -158,3 +158,9 @@ engine/.idea/vcs.xml
 services/dataservice/.idea/misc.xml
 services/servingservice/.idea/misc.xml
 services/servingservice/.idea/vcs.xml
+event-handler/.idea/event-handler.iml
+event-handler/.idea/inspectionProfiles/profiles_settings.xml
+event-handler/.idea/inspectionProfiles/Project_Default.xml
+event-handler/.idea/misc.xml
+event-handler/.idea/modules.xml
+event-handler/.idea/vcs.xml
