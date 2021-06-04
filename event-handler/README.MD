@@ -6,30 +6,19 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
-1. Install libraries
-
-```
-pip install -r requirements.txt
-```
-
-2. Start service
-
-```
-python main.py
-```
+TODO
 
 ## Structure
 
 ```
 .
-├── app 
-│   ├── queue
-│       ├── event_producer.py
-│       └── event_receiver.py
-│   └── serving_service.py
-├── main.py
+├── event-handler 
+│   ├── __init__.py
+│   └── __main__.py
+├── LICENSE
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+└── setup.py
 ```
 
 ## License
