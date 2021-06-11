@@ -4,7 +4,7 @@ from .tasks import process_workflow
 from celery.result import AsyncResult
 from fastapi.responses import JSONResponse
 import json
-from .backend.event_producer import EventProducer
+from skipper_lib.events.event_producer import EventProducer
 
 router_tasks = APIRouter()
 
@@ -52,7 +52,7 @@ def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
                             content={'task_id': '-',
                                      'task_status': 'Wrong task type'})
 
-    event_producer = EventProducer()
+    event_producer = EventProducer(username='skipper', password='welcome1', host='localhost', port=5672)
     response = json.loads(event_producer.call(queue_name, payload))
 
     return {'task_id': '-',

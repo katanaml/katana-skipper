@@ -1,5 +1,5 @@
 from .worker import app
-from .backend.event_producer import EventProducer
+from skipper_lib.events.event_producer import EventProducer
 from celery.utils.log import get_task_logger
 import json
 
@@ -21,7 +21,7 @@ def process_workflow(payload):
     if queue_name is None:
         return
 
-    event_producer = EventProducer()
+    event_producer = EventProducer(username='skipper', password='welcome1', host='localhost', port=5672)
     response = event_producer.call(queue_name, payload)
     response_json = json.loads(response)
 
