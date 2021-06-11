@@ -14,8 +14,8 @@ def touch():
     return 'API is running'
 
 
-@router_tasks.post('/start', response_model=WorkflowTask, status_code=202)
-async def start_workflow_task(workflow_task_data: WorkflowTaskData):
+@router_tasks.post('/execute_async', response_model=WorkflowTask, status_code=202)
+def exec_workflow_task_async(workflow_task_data: WorkflowTaskData):
     payload = workflow_task_data.json()
 
     task_id = process_workflow.delay(payload)
@@ -24,9 +24,9 @@ async def start_workflow_task(workflow_task_data: WorkflowTaskData):
             'task_status': 'Processing'}
 
 
-@router_tasks.get('/result/{task_id}', response_model=WorkflowTaskResult, status_code=202,
+@router_tasks.get('/workflow/{task_id}', response_model=WorkflowTaskResult, status_code=202,
                   responses={202: {'model': WorkflowTask, 'description': 'Accepted: Not Ready'}})
-async def workflow_task_result(task_id):
+def exec_workflow_task_result(task_id):
     task = AsyncResult(task_id)
     if not task.ready():
         return JSONResponse(status_code=202,
@@ -38,9 +38,9 @@ async def workflow_task_result(task_id):
             'outcome': str(result)}
 
 
-@router_tasks.post('/execute', response_model=WorkflowTaskResult, status_code=202,
+@router_tasks.post('/execute_sync', response_model=WorkflowTaskResult, status_code=202,
                    responses={202: {'model': WorkflowTaskCancelled, 'description': 'Accepted: Not Ready'}})
-async def execute_workflow_task(workflow_task_data: WorkflowTaskData):
+def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
     payload = workflow_task_data.json()
 
     queue_name = None
