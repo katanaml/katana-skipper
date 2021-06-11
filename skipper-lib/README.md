@@ -80,14 +80,17 @@ from skipper_lib.events.event_producer import EventProducer
 
 ```
 .
-├── app 
-│   ├── queue
+├── LICENSE
+├── poetry.lock
+├── pyproject.toml
+├── skipper_lib
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── events
+│       ├── __init__.py
 │       ├── event_producer.py
 │       └── event_receiver.py
-│   └── training_service.py
-├── main.py
-├── README.md
-└── requirements.txt
+└── README.md
 ```
 
 ## License
