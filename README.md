@@ -32,6 +32,7 @@ This will start container. To run engine and services, navigate to related folde
 ### URLs
 
 * RabbitMQ: http://localhost:15672/ (skipper/welcome1)
+* PyPI: https://pypi.org/project/skipper-lib/
 
 ## Usage
 
