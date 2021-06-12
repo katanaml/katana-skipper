@@ -3,7 +3,7 @@ import json
 import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, Input
-from .queue.event_producer import EventProducer
+from skipper_lib.events.event_producer import EventProducer
 import calendar
 import time
 
@@ -41,7 +41,7 @@ class TrainingService(object):
         return model
 
     def prepare_datasets(self, data):
-        event_producer = EventProducer()
+        event_producer = EventProducer(username='skipper', password='welcome1', host='localhost', port=5672)
         response = event_producer.call('skipper_data', data)
 
         data = json.loads(response)
