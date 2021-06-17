@@ -24,7 +24,7 @@ def exec_workflow_task_async(workflow_task_data: WorkflowTaskData):
             'task_status': 'Processing'}
 
 
-@router_tasks.get('/workflow/{task_id}', response_model=WorkflowTaskResult, status_code=202,
+@router_tasks.get('/{task_id}', response_model=WorkflowTaskResult, status_code=202,
                   responses={202: {'model': WorkflowTask, 'description': 'Accepted: Not Ready'}})
 async def exec_workflow_task_result(task_id):
     task = AsyncResult(task_id)
