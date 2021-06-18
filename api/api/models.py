@@ -6,7 +6,6 @@ from typing import Optional
 
 class TaskType(str, Enum):
     TRAINING = 'training'
-    INFERENCE = 'inference'
     SERVING = 'serving'
 
 

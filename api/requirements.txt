@@ -4,3 +4,4 @@ pydantic==1.8.2
 celery==4.4.7
 pika==1.2.0
 skipper-lib
+requests

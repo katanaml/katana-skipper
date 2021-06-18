@@ -1,11 +1,8 @@
 [
    {
-      "serving":"skipper_serving"
+      "serving_sync":"skipper_serving"
    },
    {
-      "training":"skipper_training"
-   },
-   {
-      "inference":"skipper_inference"
+      "training_async":"skipper_training"
    }
 ]
