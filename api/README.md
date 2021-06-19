@@ -1,4 +1,4 @@
-# Katana ML Skipper Workflow API
+# Katana ML Skipper Web API
 
 ## Author
 
