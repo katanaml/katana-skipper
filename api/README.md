@@ -33,9 +33,6 @@ URL: http://127.0.0.1:8000/docs
 ```
 .
 ├── api 
-│   ├── backend
-│       ├── event_producer.py
-│       └── event_receiver.py
 │   ├── models.py
 │   ├── router.py
 │   ├── tasks.py
