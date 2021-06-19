@@ -28,7 +28,7 @@ uvicorn endpoint:app --reload
 celery -A api.worker worker --loglevel=INFO
 ```
 
-4. Web API FastAPI endpoint
+4. Web API FastAPI endpoints
 
 ```
 URL: http://127.0.0.1:8000/docs
