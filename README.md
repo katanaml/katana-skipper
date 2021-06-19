@@ -21,11 +21,12 @@ docker-compose up --build -d
 docker-compose down
 ```
 
-This will start container. To run engine and services, navigate to related folders and follow instructions.
+This will start RabbitMQ container. To run engine and services, navigate to related folders and follow instructions.
 
 ### Components
 
-* **[engine](https://github.com/katanaml/katana-skipper/tree/master/engine)** - workflow implementation
+* **[api](https://github.com/katanaml/katana-skipper/tree/master/api)** - Web API implementation
+* **[workflow](https://github.com/katanaml/katana-skipper/tree/master/workflow)** - workflow logic
 * **[services](https://github.com/katanaml/katana-skipper/tree/master/services)** - a set of microservices
 * **[rabbitmq](https://github.com/katanaml/katana-skipper/tree/master/rabbitmq)** - service for RabbitMQ broker
 
@@ -36,7 +37,7 @@ This will start container. To run engine and services, navigate to related folde
 
 ## Usage
 
-This project is under active development, code is updated often. You could use Skipper engine to run Web API and communicate with a group of ML microservises implemented under services package. At the moment, even communication logic is hardcoded, it will be implemented to be declarative in the next phases of the project.
+This project is under active development, code is updated often. You could use Skipper engine to run Web API, workflow and communicate with a group of ML microservises implemented under services package.
 
 ## License
 
