@@ -1,11 +1,30 @@
 # Katana ML Skipper Workflow
 
+It returns queue name, based on task ID. This allows to route event to the correct queue, without hardcoding logic in the Web API.
+
 ## Author
 
 Katana ML, Andrej Baranovskij
 
 ## Instructions
 
+1. Install libraries
+
+```
+pip install -r requirements.txt
+```
+
+2. Start FastAPI
+
+```
+uvicorn endpoint:app --reload
+```
+
+3. Workflow FastAPI endpoints
+
+```
+URL: http://127.0.0.1:5000/docs
+```
 
 
 ## Structure
@@ -13,13 +32,10 @@ Katana ML, Andrej Baranovskij
 ```
 .
 ├── api 
-│   ├── backend
-│       ├── event_producer.py
-│       └── event_receiver.py
 │   ├── models.py
 │   ├── router.py
-│   ├── tasks.py
-│   └── worker.py
+│   ├── workflow.json
+│   └── workflow.py
 ├── endpoint.py
 ├── README.md
 └── requirements.txt
