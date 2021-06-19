@@ -23,9 +23,6 @@ python main.py
 ```
 .
 ├── app 
-│   ├── queue
-│       ├── event_producer.py
-│       └── event_receiver.py
 │   └── serving_service.py
 ├── main.py
 ├── README.md
