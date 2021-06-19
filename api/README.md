@@ -30,7 +30,9 @@ celery -A api.worker worker --loglevel=INFO
 
 4. Web API FastAPI endpoint
 
+```
 URL: http://127.0.0.1:8000/docs
+```
 
 ## Structure
 
