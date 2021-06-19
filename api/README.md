@@ -1,5 +1,9 @@
 # Katana ML Skipper Web API
 
+Web API implements external access endpoints. Clients can trigger actions in the workflow through this API. It runs async and sync endpoints. Async endpoint is executed through Celery Distributed Queue. When async task is started, API returns task ID. Using this task ID, we can check task status and get result when ready. Sync task sends event through RabbitMQ RPC and waits for the response.
+
+To make the API generic, there is a Worklow service, called through Requests. Based on request type, it returns queue name, where event should be sent.
+
 ## Author
 
 Katana ML, Andrej Baranovskij
