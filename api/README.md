@@ -24,13 +24,7 @@ uvicorn endpoint:app --reload
 celery -A api.worker worker --loglevel=INFO
 ```
 
-4. Optional - start RabbitMQ test receiver
-
-```
-python event_receiver_test.py
-```
-
-5. Web API FastAPI endpoint
+4. Web API FastAPI endpoint
 
 URL: http://127.0.0.1:8000/docs
 
