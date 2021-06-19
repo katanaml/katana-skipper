@@ -37,7 +37,7 @@ This will start RabbitMQ container. To run engine and services, navigate to rela
 
 ## Usage
 
-This project is under active development, code is updated often. You could use Skipper engine to run Web API, workflow and communicate with a group of ML microservises implemented under services package.
+You can use Skipper engine to run Web API, workflow and communicate with a group of ML microservises implemented under services package.
 
 ## License
 
