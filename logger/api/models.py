@@ -17,3 +17,8 @@ class LogReceiver(BaseModel):
     queue_name: str
     service_name: str
     task_type: str
+
+
+class LogWorkflow(BaseModel):
+    service_id: str
+    queue_name: str
