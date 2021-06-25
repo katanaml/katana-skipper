@@ -17,7 +17,7 @@ pip install -r requirements.txt
 2. Start FastAPI
 
 ```
-uvicorn endpoint:app --reload
+uvicorn endpoint:app --port=5000 --reload
 ```
 
 3. Workflow FastAPI endpoints
