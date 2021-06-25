@@ -1,9 +1,13 @@
 import pika
+import requests
 
 
 class EventReceiver(object):
-    def __init__(self, username, password, host, port, queue_name, service):
+    def __init__(self, username, password, host, port, queue_name, service, service_name, logger):
         self.service_worker = service
+        self.service_name = service_name
+        self.queue_name = queue_name
+        self.logger = logger
 
         credentials = pika.PlainCredentials(username, password)
         connection = pika.BlockingConnection(pika.ConnectionParameters(host=host,
@@ -21,6 +25,15 @@ class EventReceiver(object):
 
     def on_request(self, ch, method, props, body):
         service_instance = self.service_worker()
+
+        if self.logger is not None:
+            params = {"correlation_id": props.correlation_id,
+                      "queue_name": self.queue_name,
+                      "service_name": self.service_name,
+                      "task_type": 'start'
+                      }
+            requests.post(self.logger, json=params)
+
         response, task_type = service_instance.call(body)
 
         ch.basic_publish(exchange='',
@@ -28,5 +41,13 @@ class EventReceiver(object):
                          properties=pika.BasicProperties(correlation_id=props.correlation_id),
                          body=response)
         ch.basic_ack(delivery_tag=method.delivery_tag)
+
+        if self.logger is not None:
+            params = {"correlation_id": props.correlation_id,
+                      "queue_name": self.queue_name,
+                      "service_name": self.service_name,
+                      "task_type": 'end'
+                      }
+            requests.post(self.logger, json=params)
 
         print('Processed request:', task_type)

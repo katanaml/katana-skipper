@@ -8,7 +8,9 @@ def main():
                                    host='localhost',
                                    port=5672,
                                    queue_name='skipper_data',
-                                   service=DataService)
+                                   service=DataService,
+                                   service_name='data',
+                                   logger='http://127.0.0.1:5001/api/v1/skipper/logger/log_receiver')
 
 
 if __name__ == "__main__":

@@ -20,7 +20,12 @@ def process_workflow(payload):
     if queue_name is '-':
         return
 
-    event_producer = EventProducer(username='skipper', password='welcome1', host='localhost', port=5672)
+    event_producer = EventProducer(username='skipper',
+                                   password='welcome1',
+                                   host='localhost',
+                                   port=5672,
+                                   service_name='api_async',
+                                   logger='http://127.0.0.1:5001/api/v1/skipper/logger/log_producer')
     response = event_producer.call(queue_name, payload)
     response_json = json.loads(response)
 

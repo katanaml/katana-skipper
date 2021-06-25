@@ -1,9 +1,12 @@
 import pika
 import uuid
+import requests
 
 
 class EventProducer(object):
-    def __init__(self, username, password, host, port):
+    def __init__(self, username, password, host, port, service_name, logger):
+        self.service_name = service_name
+        self.logger = logger
         self.credentials = pika.PlainCredentials(username, password)
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=host,
                                                                             port=port,
@@ -26,6 +29,15 @@ class EventProducer(object):
     def call(self, queue_name, payload):
         self.response = None
         self.corr_id = str(uuid.uuid4())
+
+        if self.logger is not None:
+            params = {"correlation_id": self.corr_id,
+                      "queue_name": queue_name,
+                      "service_name": self.service_name,
+                      "task_type": 'start'
+                      }
+            requests.post(self.logger, json=params)
+
         self.channel.basic_publish(
             exchange='',
             routing_key=queue_name,
@@ -35,6 +47,16 @@ class EventProducer(object):
             ),
             body=payload
         )
+
         while self.response is None:
             self.connection.process_data_events()
+
+        if self.logger is not None:
+            params = {"correlation_id": self.corr_id,
+                      "queue_name": queue_name,
+                      "service_name": self.service_name,
+                      "task_type": 'end'
+                      }
+            requests.post(self.logger, json=params)
+
         return self.response

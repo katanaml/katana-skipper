@@ -22,10 +22,11 @@ Version number should be updated in __init__.py and pyproject.toml
 pip install poetry
 ```
 
-2. Add pika library
+2. Add pika and requests libraries
 
 ```
 poetry add pika
+poetry add requests
 ```
 
 3. Build

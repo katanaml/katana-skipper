@@ -53,7 +53,12 @@ def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
                             content={'task_id': '-',
                                      'task_status': 'Wrong task type'})
 
-    event_producer = EventProducer(username='skipper', password='welcome1', host='localhost', port=5672)
+    event_producer = EventProducer(username='skipper',
+                                   password='welcome1',
+                                   host='localhost',
+                                   port=5672,
+                                   service_name='api_sync',
+                                   logger='http://127.0.0.1:5001/api/v1/skipper/logger/log_producer')
     response = json.loads(event_producer.call(queue_name, payload))
 
     return {'task_id': '-',
