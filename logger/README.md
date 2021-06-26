@@ -1,6 +1,6 @@
 # Katana ML Skipper Logger
 
-It returns queue name, based on task ID. This allows to route event to the correct queue, without hardcoding logic in the Web API.
+Logger service, logging runs in the background, without blocking API endpoint
 
 ## Author
 
@@ -17,13 +17,13 @@ pip install -r requirements.txt
 2. Start FastAPI
 
 ```
-uvicorn endpoint:app --reload
+uvicorn endpoint:app --port=5001 --reload
 ```
 
-3. Workflow FastAPI endpoints
+3. Logger FastAPI endpoints
 
 ```
-URL: http://127.0.0.1:5000/docs
+URL: http://127.0.0.1:5001/docs
 ```
 
 
@@ -32,10 +32,9 @@ URL: http://127.0.0.1:5000/docs
 ```
 .
 ├── api 
+│   ├── logger.py
 │   ├── models.py
-│   ├── router.py
-│   ├── workflow.json
-│   └── workflow.py
+│   └── router.py
 ├── endpoint.py
 ├── README.md
 └── requirements.txt

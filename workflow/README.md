@@ -1,6 +1,6 @@
 # Katana ML Skipper Workflow
 
-It returns queue name, based on task ID. This allows to route event to the correct queue, without hardcoding logic in the Web API.
+Returns queue name, based on task ID. This allows to route event to the correct queue, without hardcoding logic in the Web API.
 
 ## Author
 
