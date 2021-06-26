@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi import BackgroundTasks
 from .models import LogTask
 from .models import LogProducer
 from .models import LogReceiver
@@ -16,21 +17,21 @@ def touch():
 
 
 @router_logger.post('/log_producer', response_model=LogTask, status_code=202)
-def exec_log_producer(logger_data: LogProducer):
-    print_producer(logger_data)
+def exec_log_producer(logger_data: LogProducer, background_tasks: BackgroundTasks):
+    background_tasks.add_task(print_producer, logger_data)
 
     return {'status': 'logged'}
 
 
 @router_logger.post('/log_receiver', response_model=LogTask, status_code=202)
-def exec_log_receiver(logger_data: LogReceiver):
-    print_receiver(logger_data)
+def exec_log_receiver(logger_data: LogReceiver, background_tasks: BackgroundTasks):
+    background_tasks.add_task(print_receiver, logger_data)
 
     return {'status': 'logged'}
 
 
 @router_logger.post('/log_workflow', response_model=LogTask, status_code=202)
-def exec_log_workflow(logger_data: LogWorkflow):
-    print_workflow(logger_data)
+def exec_log_workflow(logger_data: LogWorkflow, background_tasks: BackgroundTasks):
+    background_tasks.add_task(print_workflow, logger_data)
 
     return {'status': 'logged'}
