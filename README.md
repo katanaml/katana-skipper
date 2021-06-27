@@ -29,6 +29,8 @@ This will start RabbitMQ container. To run engine and services, navigate to rela
 * **[workflow](https://github.com/katanaml/katana-skipper/tree/master/workflow)** - workflow logic
 * **[services](https://github.com/katanaml/katana-skipper/tree/master/services)** - a set of microservices
 * **[rabbitmq](https://github.com/katanaml/katana-skipper/tree/master/rabbitmq)** - service for RabbitMQ broker
+* **[skipper-lib](https://github.com/katanaml/katana-skipper/tree/master/skipper-lib)** - reusable Python library to streamline event communication through RabbitMQ
+* **[logger](https://github.com/katanaml/katana-skipper/tree/master/logger)** - logger service
 
 ### URLs
 
