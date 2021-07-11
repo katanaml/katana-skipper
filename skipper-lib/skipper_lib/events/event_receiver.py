@@ -32,7 +32,10 @@ class EventReceiver(object):
                       "service_name": self.service_name,
                       "task_type": 'start'
                       }
-            requests.post(self.logger, json=params)
+            try:
+                requests.post(self.logger, json=params)
+            except requests.exceptions.RequestException as e:
+                print('Logger service is not available')
 
         response, task_type = service_instance.call(body)
 
@@ -48,6 +51,9 @@ class EventReceiver(object):
                       "service_name": self.service_name,
                       "task_type": 'end'
                       }
-            requests.post(self.logger, json=params)
+            try:
+                requests.post(self.logger, json=params)
+            except requests.exceptions.RequestException as e:
+                print('Logger service is not available')
 
         print('Processed request:', task_type)

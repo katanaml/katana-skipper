@@ -5,7 +5,7 @@ from celery.result import AsyncResult
 from fastapi.responses import JSONResponse
 import json
 from skipper_lib.events.event_producer import EventProducer
-import requests
+import skipper_lib.workflow.workflow_helper as workflow_helper
 
 router_tasks = APIRouter()
 
@@ -44,9 +44,9 @@ async def exec_workflow_task_result(task_id):
 def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
     payload = workflow_task_data.json()
 
-    param = workflow_task_data.task_type + '_sync'
-    r = requests.get('http://127.0.0.1:5000/api/v1/skipper/workflow/' + param)
-    queue_name = r.json()['queue_name']
+    queue_name = workflow_helper.call(workflow_task_data.task_type,
+                                      'http://127.0.0.1:5000/api/v1/skipper/workflow/',
+                                      '_sync')
 
     if queue_name is '-':
         return JSONResponse(status_code=202,

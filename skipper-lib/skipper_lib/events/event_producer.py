@@ -36,7 +36,10 @@ class EventProducer(object):
                       "service_name": self.service_name,
                       "task_type": 'start'
                       }
-            requests.post(self.logger, json=params)
+            try:
+                requests.post(self.logger, json=params)
+            except requests.exceptions.RequestException as e:
+                print('Logger service is not available')
 
         self.channel.basic_publish(
             exchange='',
@@ -57,6 +60,9 @@ class EventProducer(object):
                       "service_name": self.service_name,
                       "task_type": 'end'
                       }
-            requests.post(self.logger, json=params)
+            try:
+                requests.post(self.logger, json=params)
+            except requests.exceptions.RequestException as e:
+                print('Logger service is not available')
 
         return self.response

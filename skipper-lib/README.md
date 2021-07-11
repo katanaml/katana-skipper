@@ -7,6 +7,8 @@ This is a helper library for Katana ML Skipper workflow product. The idea of thi
 Supported functionality:
 
 - API to communicate with RabbitMQ for event receiver/producer
+- Workflow call helper
+- Logger call helper
 
 ## Author
 
@@ -91,6 +93,12 @@ from skipper_lib.events.event_producer import EventProducer
 │       ├── __init__.py
 │       ├── event_producer.py
 │       └── event_receiver.py
+│   ├── logger
+│       ├── __init__.py
+│       └── logger_helper.py
+│   ├── workflow
+│       ├── __init__.py
+│       └── workflow_helper.py
 └── README.md
 ```
 
