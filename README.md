@@ -23,6 +23,12 @@ docker-compose down
 
 This will start RabbitMQ container. To run engine and services, navigate to related folders and follow instructions.
 
+Web API FastAPI endpoint:
+
+```
+http://127.0.0.1:8000/docs
+```
+
 ### Components
 
 * **[api](https://github.com/katanaml/katana-skipper/tree/master/api)** - Web API implementation
