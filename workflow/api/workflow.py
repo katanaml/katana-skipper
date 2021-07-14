@@ -1,6 +1,6 @@
 import json
-import requests
 import skipper_lib.logger.logger_helper as logger_helper
+import os
 
 
 def get_queue_name(service_id):
@@ -17,7 +17,7 @@ def get_queue_name(service_id):
 
     params = {"service_id": service_id,
               "queue_name": queue_name}
-    logger_helper.call('http://127.0.0.1:5001/api/v1/skipper/logger/log_workflow',
+    logger_helper.call(os.getenv('LOGGER_URL'),
                        params)
 
     return queue_name
