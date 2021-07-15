@@ -1,8 +1,10 @@
 from celery import Celery
+import os
+
 
 app = Celery(
     'skipper_celery_api',
-    broker='pyamqp://skipper:welcome1@localhost//',
+    broker=os.getenv('RABBITMQ_BROKER'),
     backend='rpc://',
     include=['api.tasks']
 )

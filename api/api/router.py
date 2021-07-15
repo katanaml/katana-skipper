@@ -6,6 +6,7 @@ from fastapi.responses import JSONResponse
 import json
 from skipper_lib.events.event_producer import EventProducer
 import skipper_lib.workflow.workflow_helper as workflow_helper
+import os
 
 router_tasks = APIRouter()
 
@@ -45,7 +46,7 @@ def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
     payload = workflow_task_data.json()
 
     queue_name = workflow_helper.call(workflow_task_data.task_type,
-                                      'http://127.0.0.1:5000/api/v1/skipper/workflow/',
+                                      os.getenv('WORKFLOW_URL'),
                                       '_sync')
 
     if queue_name is '-':
@@ -53,12 +54,12 @@ def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
                             content={'task_id': '-',
                                      'task_status': 'Wrong task type'})
 
-    event_producer = EventProducer(username='skipper',
-                                   password='welcome1',
-                                   host='localhost',
+    event_producer = EventProducer(username=os.getenv('RABBITMQ_USER'),
+                                   password=os.getenv('RABBITMQ_PASSWORD'),
+                                   host=os.getenv('RABBITMQ_HOST'),
                                    port=5672,
                                    service_name='api_sync',
-                                   logger='http://127.0.0.1:5001/api/v1/skipper/logger/log_producer')
+                                   logger=os.getenv('LOGGER_PRODUCER_URL'))
     response = json.loads(event_producer.call(queue_name, payload))
 
     return {'task_id': '-',

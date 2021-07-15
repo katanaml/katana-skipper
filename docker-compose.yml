@@ -50,6 +50,46 @@ services:
     networks:
       - network1
 
+  api:
+    image: katanaml/skipper-api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: skipper-api
+    ports:
+      - 8000:8000
+    command: uvicorn endpoint:app --port=8000 --host 0.0.0.0
+    environment:
+      - WORKFLOW_URL=http://workflow:5000/api/v1/skipper/workflow/
+      - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer
+      - RABBITMQ_BROKER=pyamqp://skipper:welcome1@rabbitmq//
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+    networks:
+      - network1
+    depends_on:
+      - rabbitmq
+
+  api-celery:
+    image: katanaml/skipper-api-celery
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: skipper-api-celery
+    command: celery -A api.worker worker --loglevel=INFO
+    environment:
+      - WORKFLOW_URL=http://workflow:5000/api/v1/skipper/workflow/
+      - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer
+      - RABBITMQ_BROKER=pyamqp://skipper:welcome1@rabbitmq//
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+    networks:
+      - network1
+    depends_on:
+      - api
+
 networks:
   network1:
     name: katana-network
