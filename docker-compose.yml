@@ -64,6 +64,7 @@ services:
       - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer
       - RABBITMQ_BROKER=pyamqp://skipper:welcome1@rabbitmq//
       - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
       - RABBITMQ_USER=skipper
       - RABBITMQ_PASSWORD=welcome1
     networks:
@@ -83,12 +84,33 @@ services:
       - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer
       - RABBITMQ_BROKER=pyamqp://skipper:welcome1@rabbitmq//
       - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
       - RABBITMQ_USER=skipper
       - RABBITMQ_PASSWORD=welcome1
     networks:
       - network1
     depends_on:
       - api
+
+  data-service:
+    image: katanaml/data-service
+    build:
+      context: ./services/dataservice
+      dockerfile: Dockerfile
+    container_name: data-service
+    command: python main.py
+    environment:
+      - LOGGER_RECEIVER_URL=http://logger:5001/api/v1/skipper/logger/log_receiver
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+      - QUEUE_NAME=skipper_data
+      - SERVICE_NAME=data
+    networks:
+      - network1
+    depends_on:
+      - rabbitmq
 
 networks:
   network1:

@@ -24,7 +24,7 @@ def process_workflow(payload):
     event_producer = EventProducer(username=os.getenv('RABBITMQ_USER'),
                                    password=os.getenv('RABBITMQ_PASSWORD'),
                                    host=os.getenv('RABBITMQ_HOST'),
-                                   port=5672,
+                                   port=os.getenv('RABBITMQ_PORT'),
                                    service_name='api_async',
                                    logger=os.getenv('LOGGER_PRODUCER_URL'))
     response = event_producer.call(queue_name, payload)
