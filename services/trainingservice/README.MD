@@ -29,6 +29,7 @@ python main.py
 ├── app 
 │   └── training_service.py
 ├── main.py
+├── Dockerfile
 ├── README.md
 └── requirements.txt
 ```
