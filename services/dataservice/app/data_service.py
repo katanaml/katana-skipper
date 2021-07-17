@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 import numpy as np
 import json
@@ -85,7 +87,8 @@ class DataService(object):
         train_stats = train.describe()
         train_stats = train_stats.transpose()
 
-        train_stats.to_csv('../models/train_stats.csv', header=True)
+        train_stats.to_csv(os.getenv('STATS_FILE', '/services/models/train_stats.csv'),
+                           header=True)
 
         return (x - train_stats['mean']) / train_stats['std']
 

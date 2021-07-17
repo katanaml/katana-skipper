@@ -71,6 +71,7 @@ services:
       - network1
     depends_on:
       - rabbitmq
+    restart: on-failure
 
   api-celery:
     image: katanaml/skipper-api-celery
@@ -91,6 +92,7 @@ services:
       - network1
     depends_on:
       - api
+    restart: on-failure
 
   data-service:
     image: katanaml/data-service
@@ -99,6 +101,8 @@ services:
       dockerfile: Dockerfile
     container_name: data-service
     command: python main.py
+    volumes:
+      - ./services/models/:/usr/src/dataservice/models:rw
     environment:
       - LOGGER_RECEIVER_URL=http://logger:5001/api/v1/skipper/logger/log_receiver
       - RABBITMQ_HOST=rabbitmq
@@ -107,10 +111,12 @@ services:
       - RABBITMQ_PASSWORD=welcome1
       - QUEUE_NAME=skipper_data
       - SERVICE_NAME=data
+      - STATS_FILE=/usr/src/dataservice/models/train_stats.csv
     networks:
       - network1
     depends_on:
       - rabbitmq
+    restart: on-failure
 
 networks:
   network1:

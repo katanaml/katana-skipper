@@ -15,18 +15,20 @@ def process_workflow(payload):
     task_type = payload_json['task_type']
 
     queue_name = workflow_helper.call(task_type,
-                                      os.getenv('WORKFLOW_URL'),
+                                      os.getenv('WORKFLOW_URL',
+                                                'http://127.0.0.1:5000/api/v1/skipper/workflow/'),
                                       '_async')
 
     if queue_name is '-':
         return
 
-    event_producer = EventProducer(username=os.getenv('RABBITMQ_USER'),
-                                   password=os.getenv('RABBITMQ_PASSWORD'),
-                                   host=os.getenv('RABBITMQ_HOST'),
-                                   port=os.getenv('RABBITMQ_PORT'),
+    event_producer = EventProducer(username=os.getenv('RABBITMQ_USER', 'skipper'),
+                                   password=os.getenv('RABBITMQ_PASSWORD', 'welcome1'),
+                                   host=os.getenv('RABBITMQ_HOST', '127.0.0.1'),
+                                   port=os.getenv('RABBITMQ_PORT', 5672),
                                    service_name='api_async',
-                                   logger=os.getenv('LOGGER_PRODUCER_URL'))
+                                   logger=os.getenv('LOGGER_PRODUCER_URL',
+                                                    'http://127.0.0.1:5001/api/v1/skipper/logger/log_producer'))
     response = event_producer.call(queue_name, payload)
     response_json = json.loads(response)
 
