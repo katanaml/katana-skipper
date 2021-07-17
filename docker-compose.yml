@@ -144,6 +144,30 @@ services:
       - rabbitmq
     restart: on-failure
 
+  serving-service:
+    image: katanaml/serving-service
+    build:
+      context: ./services/servingservice
+      dockerfile: Dockerfile
+    container_name: serving-service
+    command: python main.py
+    volumes:
+      - ./services/models/:/usr/src/servingservice/models:rw
+    environment:
+      - LOGGER_RECEIVER_URL=http://logger:5001/api/v1/skipper/logger/log_receiver
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+      - QUEUE_NAME=skipper_serving
+      - SERVICE_NAME=serving
+      - MODELS_FOLDER=/usr/src/servingservice/models/
+    networks:
+      - network1
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+
 networks:
   network1:
     name: katana-network

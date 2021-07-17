@@ -1,5 +1,5 @@
 pika==1.2.0
 numpy==1.19.5
-tensorflow
-pandas
-skipper-lib
+tensorflow==2.5.0
+pandas==1.2.4
+skipper-lib==1.1.3

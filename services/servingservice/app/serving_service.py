@@ -14,11 +14,11 @@ class ServingService(object):
         payload = pd.DataFrame(data_json['data'], index=[0, ])
         payload.columns = [x.upper() for x in payload.columns]
 
-        train_stats = pd.read_csv('../models/train_stats.csv', index_col=0)
+        train_stats = pd.read_csv(os.getenv('MODELS_FOLDER', '../models/') + 'train_stats.csv', index_col=0)
         x = np.array(self.norm(payload, train_stats))
 
-        models = self.get_immediate_subdirectories('../models/')
-        saved_model = tf.keras.models.load_model('../models/' + max(models))
+        models = self.get_immediate_subdirectories(os.getenv('MODELS_FOLDER', '../models/'))
+        saved_model = tf.keras.models.load_model(os.getenv('MODELS_FOLDER', '../models/') + max(models))
 
         predictions = saved_model.predict(x)
 
