@@ -48,6 +48,7 @@ http://127.0.0.1:8000/docs
 │   ├── tasks.py
 │   └── worker.py
 ├── endpoint.py
+├── Dockerfile
 ├── README.md
 └── requirements.txt
 ```
