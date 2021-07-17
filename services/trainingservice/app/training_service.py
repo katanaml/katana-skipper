@@ -6,6 +6,7 @@ from tensorflow.keras.layers import Dense, Input
 from skipper_lib.events.event_producer import EventProducer
 import calendar
 import time
+import os
 
 
 class TrainingService(object):
@@ -41,13 +42,14 @@ class TrainingService(object):
         return model
 
     def prepare_datasets(self, data):
-        event_producer = EventProducer(username='skipper',
-                                       password='welcome1',
-                                       host='localhost',
-                                       port=5672,
-                                       service_name='training',
-                                       logger='http://127.0.0.1:5001/api/v1/skipper/logger/log_producer')
-        response = event_producer.call('skipper_data', data)
+        event_producer = EventProducer(username=os.getenv('RABBITMQ_USER', 'skipper'),
+                                       password=os.getenv('RABBITMQ_PASSWORD', 'welcome1'),
+                                       host=os.getenv('RABBITMQ_HOST', '127.0.0.1'),
+                                       port=os.getenv('RABBITMQ_PORT', 5672),
+                                       service_name=os.getenv('SERVICE_NAME', 'training'),
+                                       logger=os.getenv('LOGGER_PRODUCER_URL',
+                                                        'http://127.0.0.1:5001/api/v1/skipper/logger/log_producer'))
+        response = event_producer.call(os.getenv('QUEUE_NAME_SEND', 'skipper_data'), data)
 
         data = json.loads(response)
         norm_train_x = np.array(data[0])
@@ -117,4 +119,4 @@ class TrainingService(object):
 
         # Save model
         ts = calendar.timegm(time.gmtime())
-        model.save('../models/model_boston_' + str(ts) + '/', save_format='tf')
+        model.save(os.getenv('MODELS_FOLDER', '../models/model_boston_') + str(ts) + '/', save_format='tf')

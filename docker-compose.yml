@@ -118,6 +118,32 @@ services:
       - rabbitmq
     restart: on-failure
 
+  training-service:
+    image: katanaml/training-service
+    build:
+      context: ./services/trainingservice
+      dockerfile: Dockerfile
+    container_name: training-service
+    command: python main.py
+    volumes:
+      - ./services/models/:/usr/src/trainingservice/models:rw
+    environment:
+      - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer
+      - LOGGER_RECEIVER_URL=http://logger:5001/api/v1/skipper/logger/log_receiver
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+      - QUEUE_NAME=skipper_training
+      - SERVICE_NAME=training
+      - QUEUE_NAME_SEND=skipper_data
+      - MODELS_FOLDER=/usr/src/trainingservice/models/model_boston_
+    networks:
+      - network1
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+
 networks:
   network1:
     name: katana-network

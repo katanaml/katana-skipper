@@ -6,6 +6,10 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
+Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
+
+Use below instructions, if you choose to run the service without Docker.
+
 1. Install libraries
 
 ```
