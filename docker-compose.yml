@@ -168,6 +168,17 @@ services:
       - rabbitmq
     restart: on-failure
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx_config.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - network1
+    depends_on:
+      - api
+
 networks:
   network1:
     name: katana-network
