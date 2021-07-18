@@ -26,7 +26,7 @@ This will start RabbitMQ container. To run engine and services, navigate to rela
 Web API FastAPI endpoint:
 
 ```
-http://127.0.0.1:8000/docs
+http://127.0.0.1:8080/api/v1/skipper/tasks/docs
 ```
 
 ### Components
