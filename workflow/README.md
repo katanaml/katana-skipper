@@ -8,7 +8,7 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
-Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
+#### Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
 Use below instructions, if you choose to run the service without Docker.
 
@@ -27,7 +27,27 @@ uvicorn endpoint:app --port=5000 --reload
 3. Workflow FastAPI endpoints
 
 ```
-URL: http://127.0.0.1:5000/docs
+http://127.0.0.1:5000/docs
+```
+
+#### Use below instructions to build and run individual container:
+
+1. Build container
+
+```
+docker build --tag katanaml/skipper-workflow .
+```
+
+2. Run container
+
+```
+docker run -it -d --name skipper-workflow -p 5000:5000  katanaml/skipper-workflow:latest
+```
+
+3. Logger FastAPI endpoints
+
+```
+http://127.0.0.1:5000/docs
 ```
 
 
