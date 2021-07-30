@@ -10,7 +10,7 @@ Katana ML, Andrej Baranovskij
 
 Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
-Use below instructions, if you choose to run the service without Docker.
+#### Use below instructions, if you choose to run the service without Docker.
 
 1. Install libraries
 
@@ -27,7 +27,27 @@ uvicorn endpoint:app --port=5001 --reload
 3. Logger FastAPI endpoints
 
 ```
-URL: http://127.0.0.1:5001/docs
+http://127.0.0.1:5001/docs
+```
+
+#### Use below instructions to build and run individual container:
+
+1. Build container
+
+```
+docker build --tag katanaml/skipper-logger .
+```
+
+2. Run container
+
+```
+docker run -it -d --name skipper-logger -p 5001:5001  katanaml/skipper-logger:latest
+```
+
+3. Logger FastAPI endpoints
+
+```
+http://127.0.0.1:5001/docs
 ```
 
 
