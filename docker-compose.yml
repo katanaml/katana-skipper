@@ -32,7 +32,6 @@ services:
     container_name: skipper-logger
     ports:
       - 5001:5001
-    command: uvicorn endpoint:app --port=5001 --host 0.0.0.0
     networks:
       - network1
 
