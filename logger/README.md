@@ -44,6 +44,12 @@ docker build --tag katanaml/skipper-logger .
 docker run -it -d --name skipper-logger -p 5001:5001  katanaml/skipper-logger:latest
 ```
 
+3. Logger FastAPI endpoints
+
+```
+URL: http://127.0.0.1:5001/docs
+```
+
 
 ## Structure
 
