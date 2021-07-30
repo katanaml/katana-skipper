@@ -43,7 +43,6 @@ services:
     container_name: skipper-workflow
     ports:
       - 5000:5000
-    command: uvicorn endpoint:app --port=5000 --host 0.0.0.0
     environment:
       - LOGGER_URL=http://logger:5001/api/v1/skipper/logger/log_workflow
     networks:
