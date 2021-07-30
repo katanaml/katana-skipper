@@ -54,6 +54,7 @@ services:
       context: ./api
       dockerfile: Dockerfile
     container_name: skipper-api
+    command: uvicorn endpoint:app --port=8000 --host 0.0.0.0
     ports:
       - 8000:8000
     environment:
@@ -76,6 +77,7 @@ services:
       context: ./api
       dockerfile: celery/Dockerfile
     container_name: skipper-api-celery
+    command: celery -A api.worker worker --loglevel=INFO
     environment:
       - WORKFLOW_URL=http://workflow:5000/api/v1/skipper/workflow/
       - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer

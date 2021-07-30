@@ -7,5 +7,3 @@ RUN pip install -r requirements.txt \
     && rm -rf /root/.cache/pip
 
 EXPOSE 8000
-
-ENTRYPOINT ["uvicorn", "endpoint:app", "--port=8000", "--host", "0.0.0.0"]
