@@ -27,7 +27,7 @@ uvicorn endpoint:app --port=5001 --reload
 3. Logger FastAPI endpoints
 
 ```
-URL: http://127.0.0.1:5001/docs
+http://127.0.0.1:5001/docs
 ```
 
 #### Use below instructions to build and run individual container:
@@ -47,7 +47,7 @@ docker run -it -d --name skipper-logger -p 5001:5001  katanaml/skipper-logger:la
 3. Logger FastAPI endpoints
 
 ```
-URL: http://127.0.0.1:5001/docs
+http://127.0.0.1:5001/docs
 ```
 
 
