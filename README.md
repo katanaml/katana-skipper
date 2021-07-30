@@ -16,6 +16,8 @@ Katana ML, Andrej Baranovskij
 
 ### Start/Stop
 
+#### Docker Compose
+
 ```
 docker-compose up --build -d
 docker-compose down
