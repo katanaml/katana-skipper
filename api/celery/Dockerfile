@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt \
 
 EXPOSE 8000
 
-ENTRYPOINT ["uvicorn", "endpoint:app", "--port=8000", "--host", "0.0.0.0"]
+ENTRYPOINT ["celery", "-A", "api.worker", "worker", "--loglevel=INFO"]

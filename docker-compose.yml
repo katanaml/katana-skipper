@@ -56,7 +56,6 @@ services:
     container_name: skipper-api
     ports:
       - 8000:8000
-    command: uvicorn endpoint:app --port=8000 --host 0.0.0.0
     environment:
       - WORKFLOW_URL=http://workflow:5000/api/v1/skipper/workflow/
       - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer
@@ -75,9 +74,8 @@ services:
     image: katanaml/skipper-api-celery
     build:
       context: ./api
-      dockerfile: Dockerfile
+      dockerfile: celery/Dockerfile
     container_name: skipper-api-celery
-    command: celery -A api.worker worker --loglevel=INFO
     environment:
       - WORKFLOW_URL=http://workflow:5000/api/v1/skipper/workflow/
       - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer

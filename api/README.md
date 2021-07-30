@@ -47,6 +47,8 @@ http://127.0.0.1:8000/docs
 │   ├── router.py
 │   ├── tasks.py
 │   └── worker.py
+├── celery 
+│   ├── Dockerfile
 ├── endpoint.py
 ├── Dockerfile
 ├── README.md
