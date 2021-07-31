@@ -8,7 +8,7 @@ Katana ML, Andrej Baranovskij
 
 Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
-Use below instructions, if you choose to run the service without Docker.
+#### Use below instructions, if you choose to run the service without Docker.
 
 1. Install libraries
 
@@ -20,6 +20,20 @@ pip install -r requirements.txt
 
 ```
 python main.py
+```
+
+#### Use below instructions to build and run individual container:
+
+1. Build container
+
+```
+docker build --tag katanaml/data-service .
+```
+
+2. Run container
+
+```
+docker run -it -d --name data-service katanaml/data-service:latest
 ```
 
 ## Structure
