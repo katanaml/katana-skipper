@@ -30,6 +30,12 @@ uvicorn endpoint:app --port=5001 --reload
 http://127.0.0.1:5001/docs
 ```
 
+4. Monitor logs
+
+```
+docker logs --follow skipper-logger
+```
+
 #### Use below instructions to build and run individual container.
 
 1. Build container
@@ -48,6 +54,12 @@ docker run -it -d --name skipper-logger -p 5001:5001  katanaml/skipper-logger:la
 
 ```
 http://127.0.0.1:5001/docs
+```
+
+4. Monitor logs
+
+```
+docker logs --follow skipper-logger
 ```
 
 
