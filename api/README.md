@@ -12,7 +12,7 @@ Katana ML, Andrej Baranovskij
 
 Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
-Use below instructions, if you choose to run the service without Docker.
+#### Use below instructions, if you choose to run the service without Docker.
 
 1. Install libraries
 
@@ -36,6 +36,18 @@ celery -A api.worker worker --loglevel=INFO
 
 ```
 http://127.0.0.1:8000/docs
+```
+
+#### Use below instructions to build and run individual container:
+
+1. Build container
+
+```
+docker build --tag katanaml/skipper-api .
+```
+
+```
+docker build --tag katanaml/skipper-api-celery .
 ```
 
 ## Structure
