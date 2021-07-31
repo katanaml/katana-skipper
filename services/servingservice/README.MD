@@ -22,7 +22,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-#### Use below instructions to build and run individual container:
+#### Use below instructions to build and run individual container.
 
 1. Build container
 
