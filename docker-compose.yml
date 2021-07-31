@@ -98,7 +98,6 @@ services:
       context: ./services/dataservice
       dockerfile: Dockerfile
     container_name: data-service
-    command: python main.py
     volumes:
       - ./services/models/:/usr/src/dataservice/models:rw
     environment:
