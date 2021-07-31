@@ -75,7 +75,7 @@ services:
     image: katanaml/skipper-api-celery
     build:
       context: ./api
-      dockerfile: celery/Dockerfile
+      dockerfile: Dockerfile
     container_name: skipper-api-celery
     command: celery -A api.worker worker --loglevel=INFO
     environment:
