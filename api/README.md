@@ -38,7 +38,7 @@ celery -A api.worker worker --loglevel=INFO
 http://127.0.0.1:8000/docs
 ```
 
-#### Use below instructions to build and run individual container:
+#### Use below instructions to build individual container:
 
 1. Build container
 
