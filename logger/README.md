@@ -30,7 +30,7 @@ uvicorn endpoint:app --port=5001 --reload
 http://127.0.0.1:5001/docs
 ```
 
-#### Use below instructions to build and run individual container:
+#### Use below instructions to build and run individual container.
 
 1. Build container
 
