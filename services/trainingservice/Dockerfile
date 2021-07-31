@@ -5,3 +5,5 @@ COPY . .
 
 RUN pip install -r requirements.txt \
     && rm -rf /root/.cache/pip
+
+ENTRYPOINT ["python", "main.py"]

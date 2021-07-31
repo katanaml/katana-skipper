@@ -121,7 +121,6 @@ services:
       context: ./services/trainingservice
       dockerfile: Dockerfile
     container_name: training-service
-    command: python main.py
     volumes:
       - ./services/models/:/usr/src/trainingservice/models:rw
     environment:
@@ -147,7 +146,6 @@ services:
       context: ./services/servingservice
       dockerfile: Dockerfile
     container_name: serving-service
-    command: python main.py
     volumes:
       - ./services/models/:/usr/src/servingservice/models:rw
     environment:
