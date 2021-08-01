@@ -4,6 +4,6 @@ WORKDIR /usr/src/servingservice
 COPY . .
 
 RUN pip install -r requirements.txt \
-    && rm -rf /root/.cache/pip \
+    && rm -rf /root/.cache/pip
 
 ENTRYPOINT ["python", "main.py"]
