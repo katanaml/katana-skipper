@@ -50,6 +50,50 @@ docker run -it -d --name skipper-workflow -p 5000:5000  katanaml/skipper-workflo
 http://127.0.0.1:5000/docs
 ```
 
+#### Use below instructions to build and run Kubernetes Pod.
+
+1. Create Pod
+
+```
+kubectl apply -f workflow-pod.yaml
+```
+
+2. Check Pod status
+
+```
+kubectl get pods
+```
+
+3. Describe Pod
+
+```
+kubectl describe pods skipper-workflow
+```
+
+4. Open Pod port for testing purposes
+
+```
+kubectl port-forward skipper-workflow 5000:5000
+```
+
+5. Open Pod logs
+
+```
+kubectl logs -f skipper-workflow
+```
+
+6. Test URL
+
+```
+http://127.0.0.1:5000/docs
+```
+
+7. Delete Pod, if not needed
+
+```
+kubectl delete -f workflow-pod.yaml
+```
+
 
 ## Structure
 
@@ -63,6 +107,7 @@ http://127.0.0.1:5000/docs
 ├── endpoint.py
 ├── Dockerfile
 ├── README.md
+├── workflow-pod.yaml
 └── requirements.txt
 ```
 
