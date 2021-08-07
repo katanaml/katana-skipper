@@ -10,7 +10,7 @@ Katana ML, Andrej Baranovskij
 
 Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
-#### Use below instructions, if you choose to run the service without Docker.
+#### Run the service without Docker.
 
 1. Install libraries
 
@@ -30,7 +30,7 @@ uvicorn endpoint:app --port=5000 --reload
 http://127.0.0.1:5000/docs
 ```
 
-#### Use below instructions to build and run individual container.
+#### Build and run individual container.
 
 1. Build container
 
@@ -50,7 +50,7 @@ docker run -it -d --name skipper-workflow -p 5000:5000  katanaml/skipper-workflo
 http://127.0.0.1:5000/docs
 ```
 
-#### Use below instructions to build and run Kubernetes Pod.
+#### Build and run Kubernetes Pod.
 
 1. Create Pod
 
