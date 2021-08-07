@@ -38,6 +38,14 @@ Web API FastAPI endpoint:
 http://127.0.0.1:8080/api/v1/skipper/tasks/docs
 ```
 
+#### Kubernetes
+
+Build Docker images:
+
+```
+docker-compose build
+```
+
 ### Components
 
 * **[api](https://github.com/katanaml/katana-skipper/tree/master/api)** - Web API implementation
