@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: skipper-workflow
+spec:
+  containers:
+  - image: katanaml/skipper-workflow:latest
+    name: skipper-workflow
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      httpGet:
+        path: /api/v1/skipper/workflow/
+        port: 5000
+      initialDelaySeconds: 5
+      timeoutSeconds: 1
+      periodSeconds: 10
+      failureThreshold: 3
+    ports:
+    - containerPort: 5000
+      name: http
+      protocol: TCP
