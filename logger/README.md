@@ -10,7 +10,7 @@ Katana ML, Andrej Baranovskij
 
 Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
-#### Use below instructions, if you choose to run the service without Docker.
+#### Run the service without Docker
 
 1. Install libraries
 
@@ -36,7 +36,7 @@ http://127.0.0.1:5001/docs
 docker logs --follow skipper-logger
 ```
 
-#### Use below instructions to build and run individual container.
+#### Build and run individual container
 
 1. Build container
 
