@@ -7,6 +7,9 @@ spec:
   - image: katanaml/skipper-workflow:latest
     name: skipper-workflow
     imagePullPolicy: IfNotPresent
+    env:
+      - name: LOGGER_URL
+        value: "http://logger:5001/api/v1/skipper/logger/log_workflow"
     livenessProbe:
       httpGet:
         path: /api/v1/skipper/workflow/
