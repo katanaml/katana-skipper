@@ -62,6 +62,55 @@ http://127.0.0.1:5001/docs
 docker logs --follow skipper-logger
 ```
 
+#### Build and run Kubernetes Pod
+
+1. Create Pod
+
+```
+kubectl apply -f logger-pod.yaml
+```
+
+2. Check Pod status
+
+```
+kubectl get pods
+```
+
+3. Describe Pod
+
+```
+kubectl describe pods skipper-logger
+```
+
+4. Open Pod port for testing purposes
+
+```
+kubectl port-forward deploy/skipper-logger 5001:5001
+```
+
+5. Open Pod logs
+
+```
+kubectl logs -f -l app=skipper-logger
+```
+
+6. Test URL
+
+```
+http://127.0.0.1:5001/docs
+```
+
+7. Delete Pod, if not needed
+
+```
+kubectl delete -f logger-pod.yaml
+```
+
+8. Check Pod service
+
+```
+kubectl get svc skipper-logger
+```
 
 ## Structure
 
@@ -74,6 +123,7 @@ docker logs --follow skipper-logger
 ├── endpoint.py
 ├── Dockerfile
 ├── README.md
+├── logger-pod.yaml
 └── requirements.txt
 ```
 

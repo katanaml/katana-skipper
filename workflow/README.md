@@ -73,13 +73,13 @@ kubectl describe pods skipper-workflow
 4. Open Pod port for testing purposes
 
 ```
-kubectl port-forward skipper-workflow 5000:5000
+kubectl port-forward deploy/skipper-workflow 5000:5000
 ```
 
 5. Open Pod logs
 
 ```
-kubectl logs -f skipper-workflow
+kubectl logs -f -l app=skipper-workflow
 ```
 
 6. Test URL
@@ -92,6 +92,12 @@ http://127.0.0.1:5000/docs
 
 ```
 kubectl delete -f workflow-pod.yaml
+```
+
+8. Check Pod service
+
+```
+kubectl get svc skipper-workflow
 ```
 
 
