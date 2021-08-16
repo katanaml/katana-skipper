@@ -73,31 +73,31 @@ kubectl create ns katana-skipper
 2. Create Pod
 
 ```
-kubectl apply -f logger-pod.yaml
+kubectl apply -n katana-skipper -f logger-pod.yaml
 ```
 
 3. Check Pod status
 
 ```
-kubectl get pods
+kubectl get -n katana-skipper pods
 ```
 
 4. Describe Pod
 
 ```
-kubectl describe pods skipper-logger
+kubectl describe -n katana-skipper pods skipper-logger
 ```
 
 5. Open Pod port for testing purposes
 
 ```
-kubectl port-forward deploy/skipper-logger 5001:5001
+kubectl port-forward -n katana-skipper deploy/skipper-logger 5001:5001
 ```
 
 6. Open Pod logs
 
 ```
-kubectl logs -f -l app=skipper-logger
+kubectl logs -n katana-skipper -f -l app=skipper-logger
 ```
 
 7. Test URL
@@ -109,13 +109,13 @@ http://127.0.0.1:5001/docs
 8. Check Pod service
 
 ```
-kubectl get svc skipper-logger
+kubectl get -n katana-skipper svc skipper-logger
 ```
 
 9. Delete Pod, if not needed
 
 ```
-kubectl delete -f logger-pod.yaml
+kubectl delete -n katana-skipper -f logger-pod.yaml
 ```
 
 ## Structure
