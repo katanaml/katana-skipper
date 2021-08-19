@@ -118,6 +118,12 @@ kubectl get -n katana-skipper svc skipper-logger
 kubectl delete -n katana-skipper -f logger-pod.yaml
 ```
 
+10. Delete all Pods and resources
+
+```
+kubectl delete all --all -n katana-skipper
+```
+
 ## Structure
 
 ```
