@@ -52,52 +52,64 @@ http://127.0.0.1:5000/docs
 
 #### Build and run Kubernetes Pod
 
-1. Create Pod
+1. Create namespace
 
 ```
-kubectl apply -f workflow-pod.yaml
+kubectl create ns katana-skipper
 ```
 
-2. Check Pod status
+2. Create Pod
 
 ```
-kubectl get pods
+kubectl apply -n katana-skipper -f workflow-pod.yaml
 ```
 
-3. Describe Pod
+3. Check Pod status
 
 ```
-kubectl describe pods skipper-workflow
+kubectl get -n katana-skipper pods
 ```
 
-4. Open Pod port for testing purposes
+4. Describe Pod
 
 ```
-kubectl port-forward deploy/skipper-workflow 5000:5000
+kubectl describe -n katana-skipper pods skipper-workflow
 ```
 
-5. Open Pod logs
+5. Open Pod port for testing purposes
 
 ```
-kubectl logs -f -l app=skipper-workflow
+kubectl port-forward -n katana-skipper deploy/skipper-workflow 5000:5000
 ```
 
-6. Test URL
+6. Open Pod logs
+
+```
+kubectl logs -n katana-skipper -f -l app=skipper-workflow
+```
+
+7. Test URL
 
 ```
 http://127.0.0.1:5000/docs
 ```
 
-7. Delete Pod, if not needed
-
-```
-kubectl delete -f workflow-pod.yaml
-```
-
 8. Check Pod service
 
 ```
-kubectl get svc skipper-workflow
+kubectl get -n katana-skipper svc skipper-workflow
+```
+
+9. Delete Pod, if not needed
+
+```
+kubectl delete -n katana-skipper -f workflow-pod.yaml
+```
+
+10. Delete all Pods and resources
+
+```
+kubectl delete all --all -n katana-skipper
 ```
 
 
