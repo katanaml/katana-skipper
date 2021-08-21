@@ -1,6 +1,6 @@
 # Katana ML Skipper Logger
 
-Logger service, logging runs in the background, without blocking API endpoint
+Logger service, logging runs in the background, without blocking API endpoint.
 
 ## Author
 
