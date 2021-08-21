@@ -8,11 +8,11 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
-Use Docker Compose to run all services, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
+Use Docker Compose to build all images, check main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
 #### Build and run Kubernetes Pod
 
-Instructions are based on material explained by [That DevOps Guy](https://www.youtube.com/c/MarcelDempers)
+Instructions are based on content explained by [That DevOps Guy](https://www.youtube.com/c/MarcelDempers)
 
 1. Create namespace
 
