@@ -50,7 +50,7 @@ docker-compose build
 
 * **[api](https://github.com/katanaml/katana-skipper/tree/master/api)** - Web API implementation
 * **[workflow](https://github.com/katanaml/katana-skipper/tree/master/workflow)** - workflow logic
-* **[services](https://github.com/katanaml/katana-skipper/tree/master/services)** - a set of microservices
+* **[services](https://github.com/katanaml/katana-skipper/tree/master/services)** - a set of sample microservices, you should replace this with your own services. Update references in docker-compose.yml
 * **[rabbitmq](https://github.com/katanaml/katana-skipper/tree/master/rabbitmq)** - service for RabbitMQ broker
 * **[skipper-lib](https://github.com/katanaml/katana-skipper/tree/master/skipper-lib)** - reusable Python library to streamline event communication through RabbitMQ
 * **[logger](https://github.com/katanaml/katana-skipper/tree/master/logger)** - logger service
