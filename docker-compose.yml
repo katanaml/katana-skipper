@@ -92,6 +92,7 @@ services:
       - api
     restart: on-failure
 
+  # Sample set of services, you should replace with your own services
   data-service:
     image: katanaml/data-service
     build:
@@ -162,6 +163,7 @@ services:
     depends_on:
       - rabbitmq
     restart: on-failure
+  # Sample set of services, you should replace with your own services
 
   nginx:
     image: nginx:latest
