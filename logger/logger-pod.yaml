@@ -21,7 +21,7 @@ spec:
               port: 5001
             initialDelaySeconds: 5
             timeoutSeconds: 1
-            periodSeconds: 10
+            periodSeconds: 600
             failureThreshold: 3
           ports:
             - containerPort: 5001
