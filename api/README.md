@@ -50,6 +50,68 @@ docker build --tag katanaml/skipper-api .
 docker build --tag katanaml/skipper-api-celery .
 ```
 
+#### Build and run Kubernetes Pod
+
+1. Create namespace
+
+```
+kubectl create ns katana-skipper
+```
+
+2. Create Pod
+
+```
+kubectl apply -n katana-skipper -f api-pod.yaml
+```
+
+3. Check Pod status
+
+```
+kubectl get -n katana-skipper pods
+```
+
+4. Describe Pod
+
+```
+kubectl describe -n katana-skipper pods skipper-api
+```
+
+5. Open Pod port for testing purposes
+
+```
+kubectl port-forward -n katana-skipper deploy/skipper-api 8000:8000
+```
+
+6. Open Pod logs
+
+```
+kubectl logs -n katana-skipper -f -l app=skipper-api
+```
+
+7. Test URL
+
+```
+http://127.0.0.1:8000/docs
+```
+
+8. Check Pod service
+
+```
+kubectl get -n katana-skipper svc skipper-api
+```
+
+9. Delete Pod, if not needed
+
+```
+kubectl delete -n katana-skipper -f api-pod.yaml
+```
+
+10. Delete all Pods and resources
+
+```
+kubectl delete all --all -n katana-skipper
+```
+
 ## Structure
 
 ```
@@ -62,6 +124,7 @@ docker build --tag katanaml/skipper-api-celery .
 ├── endpoint.py
 ├── Dockerfile
 ├── README.md
+├── api-pod.yaml
 └── requirements.txt
 ```
 
