@@ -63,9 +63,15 @@ spec:
         - name: RABBITMQ_DEFAULT_PASS
           value: "welcome1"
         - name: RABBITMQ_USER
-          value: "skipper"
+          valueFrom:
+            secretKeyRef:
+              name: rabbit-secret
+              key: RABBITMQ_USER
         - name: RABBITMQ_PASSWORD
-          value: "welcome1"
+          valueFrom:
+            secretKeyRef:
+              name: rabbit-secret
+              key: RABBITMQ_PASSWORD
         volumeMounts:
         - name: data
           mountPath: /var/lib/rabbitmq

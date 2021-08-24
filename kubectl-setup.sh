@@ -56,6 +56,24 @@ kubectl get -n katana-skipper deployments
 
 # Skipper API
 
+kubectl apply -n katana-skipper -f api/api-pod.yaml
+
+kubectl rollout status -n katana-skipper deploy/skipper-api
+
+kubectl get -n katana-skipper pods
+
+kubectl get -n katana-skipper svc skipper-api
+
+kubectl get -n katana-skipper deployments
+
 # Skipper API Celery
+
+kubectl apply -n katana-skipper -f api/api-celery-pod.yaml
+
+kubectl rollout status -n katana-skipper deploy/skipper-api-celery
+
+kubectl get -n katana-skipper pods
+
+kubectl get -n katana-skipper deployments
 
 # Nginx
