@@ -35,7 +35,7 @@ celery -A api.worker worker --loglevel=INFO
 4. Web API FastAPI endpoints
 
 ```
-http://127.0.0.1:8000/docs
+http://localhost:8000/api/v1/skipper/tasks/docs
 ```
 
 #### Build individual container
@@ -91,7 +91,7 @@ kubectl logs -n katana-skipper -f -l app=skipper-api
 7. Test URL
 
 ```
-http://127.0.0.1:8000/docs
+http://localhost:8000/api/v1/skipper/tasks/docs
 ```
 
 8. Check Pod service
