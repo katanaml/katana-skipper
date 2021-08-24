@@ -50,7 +50,7 @@ docker build --tag katanaml/skipper-api .
 docker build --tag katanaml/skipper-api-celery .
 ```
 
-#### Build and run Kubernetes Pod
+#### Build and run Kubernetes Pod for API
 
 1. Create namespace
 
@@ -112,6 +112,50 @@ kubectl delete -n katana-skipper -f api-pod.yaml
 kubectl delete all --all -n katana-skipper
 ```
 
+#### Build and run Kubernetes Pod for API Celery
+
+1. Create namespace
+
+```
+kubectl create ns katana-skipper
+```
+
+2. Create Pod
+
+```
+kubectl apply -n katana-skipper -f api-celery-pod.yaml
+```
+
+3. Check Pod status
+
+```
+kubectl get -n katana-skipper pods
+```
+
+4. Describe Pod
+
+```
+kubectl describe -n katana-skipper pods skipper-api-celery
+```
+
+5. Open Pod logs
+
+```
+kubectl logs -n katana-skipper -f -l app=skipper-api-celery
+```
+
+6. Delete Pod, if not needed
+
+```
+kubectl delete -n katana-skipper -f api-celery-pod.yaml
+```
+
+6. Delete all Pods and resources
+
+```
+kubectl delete all --all -n katana-skipper
+```
+
 ## Structure
 
 ```
@@ -125,6 +169,7 @@ kubectl delete all --all -n katana-skipper
 ├── Dockerfile
 ├── README.md
 ├── api-pod.yaml
+├── api-celery-pod.yaml
 └── requirements.txt
 ```
 
