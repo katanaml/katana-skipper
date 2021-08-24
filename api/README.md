@@ -150,7 +150,7 @@ kubectl logs -n katana-skipper -f -l app=skipper-api-celery
 kubectl delete -n katana-skipper -f api-celery-pod.yaml
 ```
 
-6. Delete all Pods and resources
+7. Delete all Pods and resources
 
 ```
 kubectl delete all --all -n katana-skipper
