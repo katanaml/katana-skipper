@@ -46,16 +46,20 @@ Build Docker images:
 docker-compose build
 ```
 
-Setup Kubernetes:
+Setup Kubernetes services:
 
 ```
 ./kubectl-setup.sh
 ```
 
-Remove Kubernetes:
+Remove Kubernetes services:
 
 ```
 kubectl delete all --all -n katana-skipper
+```
+
+```
+kubectl delete all -all -n rabbits
 ```
 
 ### Components
