@@ -46,6 +46,18 @@ Build Docker images:
 docker-compose build
 ```
 
+Setup Kubernetes:
+
+```
+./kubectl-setup.sh
+```
+
+Remove Kubernetes:
+
+```
+kubectl delete all --all -n katana-skipper
+```
+
 ### Components
 
 * **[api](https://github.com/katanaml/katana-skipper/tree/master/api)** - Web API implementation
