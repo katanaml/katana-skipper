@@ -47,7 +47,7 @@ If you are using local Kubernetes setup, install [NGINX Ingress Controller](http
 Build Docker images:
 
 ```
-docker-compose build
+docker-compose -f docker-compose-kubernetes.yml build
 ```
 
 Setup Kubernetes services:
@@ -59,11 +59,7 @@ Setup Kubernetes services:
 Remove Kubernetes services:
 
 ```
-kubectl delete all --all -n katana-skipper
-```
-
-```
-kubectl delete all -all -n rabbits
+./kubectl-remove.sh
 ```
 
 ### Components
