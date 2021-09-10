@@ -76,4 +76,6 @@ kubectl get -n katana-skipper pods
 
 kubectl get -n katana-skipper deployments
 
-# Nginx
+# Skipper API Ingress
+
+kubectl apply -n katana-skipper -f api/api-ingress.yaml

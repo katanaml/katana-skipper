@@ -69,3 +69,6 @@ spec:
     app: skipper-api
   ports:
     - port: 8000
+      protocol: TCP
+      targetPort: http
+  type: ClusterIP
