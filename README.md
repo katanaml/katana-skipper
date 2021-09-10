@@ -40,6 +40,10 @@ http://127.0.0.1:8080/api/v1/skipper/tasks/docs
 
 #### Kubernetes
 
+NGINX Ingress Controller:
+
+If you are using local Kubernetes setup, install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/)
+
 Build Docker images:
 
 ```
