@@ -62,7 +62,7 @@ Skipper API endpoint published through NGINX Ingress (you can setup your own hos
 http://kubernetes.docker.internal/api/v1/skipper/tasks/docs
 ```
 
-Check ingress pod name by running:
+Check NGINX Ingress Controller pod name:
 
 ```
 kubectl get pods -n ingress-nginx
@@ -77,7 +77,7 @@ ingress-nginx-admission-patch-x8zvw        0/1     Completed   0          14m
 ingress-nginx-controller-fd7bb8d66-tnb9t   1/1     Running     0          14m
 ```
 
-NGINX Ingress controller logs:
+NGINX Ingress Controller logs:
 
 ```
 kubectl logs -n ingress-nginx -l <POD NAME>
