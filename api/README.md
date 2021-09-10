@@ -170,6 +170,7 @@ kubectl delete all --all -n katana-skipper
 ├── README.md
 ├── api-pod.yaml
 ├── api-celery-pod.yaml
+├── api-ingress.yaml
 └── requirements.txt
 ```
 
