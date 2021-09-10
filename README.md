@@ -56,6 +56,39 @@ Setup Kubernetes services:
 ./kubectl-setup.sh
 ```
 
+Skipper API endpoint published through NGINX Ingress (you can setup your own host in /etc/hosts):
+
+```
+http://kubernetes.docker.internal/api/v1/skipper/tasks/docs
+```
+
+Check ingress pod name by running:
+
+```
+kubectl get pods -n ingress-nginx
+```
+
+Sample response, copy the name of 'Running' pod:
+
+```
+NAME                                       READY   STATUS      RESTARTS   AGE
+ingress-nginx-admission-create-dhtcm       0/1     Completed   0          14m
+ingress-nginx-admission-patch-x8zvw        0/1     Completed   0          14m
+ingress-nginx-controller-fd7bb8d66-tnb9t   1/1     Running     0          14m
+```
+
+NGINX Ingress controller logs:
+
+```
+kubectl logs -n ingress-nginx -l <POD NAME>
+```
+
+Skipper API logs:
+
+```
+kubectl logs -n katana-skipper -f -l app=skipper-api
+```
+
 Remove Kubernetes services:
 
 ```
