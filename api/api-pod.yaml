@@ -1,4 +1,18 @@
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+  labels:
+    app: skipper-api
+data:
+  WORKFLOW_URL: http://skipper-workflow:5000/api/v1/skipper/workflow/
+  LOGGER_PRODUCER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_producer
+  RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
+  RABBITMQ_PORT: 5672
+
+---
+
+apiVersion: v1
 kind: Secret
 metadata:
   name: api-secret
@@ -31,18 +45,30 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: WORKFLOW_URL
-              value: "http://skipper-workflow:5000/api/v1/skipper/workflow/"
+              valueFrom:
+                configMapRef:
+                  name: api-config
+                  key: WORKFLOW_URL
             - name: LOGGER_PRODUCER_URL
-              value: "http://skipper-logger:5001/api/v1/skipper/logger/log_producer"
+              valueFrom:
+                configMapRef:
+                  name: api-config
+                  key: LOGGER_PRODUCER_URL
             - name: RABBITMQ_BROKER
               valueFrom:
                 secretKeyRef:
                   name: api-secret
                   key: RABBITMQ_BROKER
             - name: RABBITMQ_HOST
-              value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
+              valueFrom:
+                configMapRef:
+                  name: api-config
+                  key: RABBITMQ_HOST
             - name: RABBITMQ_PORT
-              value: "5672"
+              valueFrom:
+                configMapRef:
+                  name: api-config
+                  key: RABBITMQ_PORT
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:

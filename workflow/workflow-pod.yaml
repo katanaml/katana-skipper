@@ -1,3 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: workflow-config
+  labels:
+    app: skipper-workflow
+data:
+  LOGGER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_workflow
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,7 +28,10 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: LOGGER_URL
-              value: "http://skipper-logger:5001/api/v1/skipper/logger/log_workflow"
+              valueFrom:
+                configMapRef:
+                  name: workflow-config
+                  key: LOGGER_URL
           livenessProbe:
             httpGet:
               path: /api/v1/skipper/workflow/
