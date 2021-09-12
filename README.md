@@ -80,7 +80,7 @@ ingress-nginx-controller-fd7bb8d66-tnb9t   1/1     Running     0          14m
 NGINX Ingress Controller logs:
 
 ```
-kubectl logs -n ingress-nginx -l <POD NAME>
+kubectl logs -n ingress-nginx -f <POD NAME>
 ```
 
 Skipper API logs:
