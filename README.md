@@ -106,8 +106,23 @@ Remove Kubernetes services:
 
 ### URLs
 
-* Web API: http://127.0.0.1:8080/api/v1/skipper/tasks/docs
-* RabbitMQ: http://localhost:15672/ (skipper/welcome1)
+* Web API
+
+```
+http://127.0.0.1:8080/api/v1/skipper/tasks/docs
+```
+
+If running on local Kubernetes with Docker Desktop:
+
+```
+http://kubernetes.docker.internal/api/v1/skipper/tasks/docs
+```
+
+* RabbitMQ:
+
+```
+http://localhost:15672/ (skipper/welcome1)
+```
 
 Make sure port forwarding is enabled:
 
@@ -115,7 +130,11 @@ Make sure port forwarding is enabled:
 kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 ```
 
-* PyPI: https://pypi.org/project/skipper-lib/
+* PyPI
+
+```
+https://pypi.org/project/skipper-lib/
+```
 
 ## Usage
 
