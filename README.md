@@ -124,7 +124,7 @@ http://kubernetes.docker.internal/api/v1/skipper/tasks/docs
 http://localhost:15672/ (skipper/welcome1)
 ```
 
-Make sure port forwarding is enabled:
+If running on local Kubernets, make sure port forwarding is enabled:
 
 ```
 kubectl -n rabbits port-forward rabbitmq-0 15672:15672
