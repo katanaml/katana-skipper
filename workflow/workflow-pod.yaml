@@ -29,7 +29,7 @@ spec:
           env:
             - name: LOGGER_URL
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: workflow-config
                   key: LOGGER_URL
           livenessProbe:

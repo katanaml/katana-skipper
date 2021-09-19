@@ -7,8 +7,9 @@ metadata:
 data:
   WORKFLOW_URL: http://skipper-workflow:5000/api/v1/skipper/workflow/
   LOGGER_PRODUCER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_producer
+  RABBITMQ_BROKER: pyamqp://skipper:welcome1@rabbitmq-0.rabbitmq.rabbits.svc.cluster.local//
   RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
-  RABBITMQ_PORT: 5672
+  RABBITMQ_PORT: '5672'
 
 ---
 
@@ -20,7 +21,6 @@ type: Opaque
 data:
   RABBITMQ_USER: c2tpcHBlcg==
   RABBITMQ_PASSWORD: d2VsY29tZTE=
-  RABBITMQ_BROKER: cHlhbXFwOi8vc2tpcHBlcjp3ZWxjb21lMUByYWJiaXRtcS0wLnJhYmJpdG1xLnJhYmJpdHMuc3ZjLmNsdXN0ZXIubG9jYWwvLw==
 
 ---
 
@@ -46,27 +46,27 @@ spec:
           env:
             - name: WORKFLOW_URL
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: api-celery-config
                   key: WORKFLOW_URL
             - name: LOGGER_PRODUCER_URL
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: api-celery-config
                   key: LOGGER_PRODUCER_URL
             - name: RABBITMQ_BROKER
               valueFrom:
-                secretKeyRef:
-                  name: api-celery-secret
+                configMapKeyRef:
+                  name: api-celery-config
                   key: RABBITMQ_BROKER
             - name: RABBITMQ_HOST
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: api-celery-config
                   key: RABBITMQ_HOST
             - name: RABBITMQ_PORT
               valueFrom:
-                configMapRef:
+                configMapKeyRef:
                   name: api-celery-config
                   key: RABBITMQ_PORT
             - name: RABBITMQ_USER
