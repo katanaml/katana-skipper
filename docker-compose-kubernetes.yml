@@ -6,7 +6,6 @@ services:
     build:
       context: ./rabbitmq
       dockerfile: Dockerfile
-    container_name: rabbitmq-service
     ports:
       - 5672:5672
       - 15672:15672
@@ -16,7 +15,6 @@ services:
     build:
       context: ./logger
       dockerfile: Dockerfile
-    container_name: skipper-logger
     ports:
       - 5001:5001
 
@@ -25,7 +23,6 @@ services:
     build:
       context: ./workflow
       dockerfile: Dockerfile
-    container_name: skipper-workflow
     ports:
       - 5000:5000
 
@@ -34,8 +31,6 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    container_name: skipper-api
-    command: uvicorn endpoint:app --port=8000 --host 0.0.0.0
     ports:
       - 8000:8000
 
@@ -45,19 +40,16 @@ services:
     build:
       context: ./services/dataservice
       dockerfile: Dockerfile
-    container_name: data-service
 
   training-service:
     image: katanaml/training-service
     build:
       context: ./services/trainingservice
       dockerfile: Dockerfile
-    container_name: training-service
 
   serving-service:
     image: katanaml/serving-service
     build:
       context: ./services/servingservice
       dockerfile: Dockerfile
-    container_name: serving-service
   # Sample set of services, you should replace with your own services
