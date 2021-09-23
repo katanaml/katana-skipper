@@ -112,13 +112,13 @@ http://127.0.0.1:5001/docs
 kubectl get -n katana-skipper svc skipper-logger
 ```
 
-9. Delete Pod, if not needed
+9. Delete Deployment
 
 ```
 kubectl delete -n katana-skipper -f logger-pod.yaml
 ```
 
-10. Delete all Pods and resources
+10. Delete all resources
 
 ```
 kubectl delete all --all -n katana-skipper
