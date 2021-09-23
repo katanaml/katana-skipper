@@ -126,9 +126,6 @@ kubectl delete all --all -n katana-skipper
 ├── main.py
 ├── Dockerfile
 ├── README.md
-├── trainingservice-pv.yaml
-├── trainingservice-pvc.yaml
-├── trainingservice-pod.yaml
 └── requirements.txt
 ```
 
