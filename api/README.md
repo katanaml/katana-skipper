@@ -144,13 +144,13 @@ kubectl describe -n katana-skipper pods skipper-api-celery
 kubectl logs -n katana-skipper -f -l app=skipper-api-celery
 ```
 
-6. Delete Pod, if not needed
+6. Delete Deployment
 
 ```
 kubectl delete -n katana-skipper -f api-celery-pod.yaml
 ```
 
-7. Delete all Pods and resources
+7. Delete all resources
 
 ```
 kubectl delete all --all -n katana-skipper
