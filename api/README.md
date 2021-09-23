@@ -100,13 +100,13 @@ http://localhost:8000/api/v1/skipper/tasks/docs
 kubectl get -n katana-skipper svc skipper-api
 ```
 
-9. Delete Pod, if not needed
+9. Delete Deployment
 
 ```
 kubectl delete -n katana-skipper -f api-pod.yaml
 ```
 
-10. Delete all Pods and resources
+10. Delete all resources
 
 ```
 kubectl delete all --all -n katana-skipper
