@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: skipper-logger
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: skipper-logger

@@ -29,6 +29,7 @@ kind: Deployment
 metadata:
   name: skipper-api
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: skipper-api
@@ -43,6 +44,14 @@ spec:
           command: ["uvicorn"]
           args: ["endpoint:app", "--port=8000", "--host", "0.0.0.0"]
           imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /api/v1/skipper/tasks/
+              port: 8000
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 600
+            failureThreshold: 3
           env:
             - name: WORKFLOW_URL
               valueFrom:

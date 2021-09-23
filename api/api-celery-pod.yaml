@@ -29,6 +29,7 @@ kind: Deployment
 metadata:
   name: skipper-api-celery
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: skipper-api-celery
