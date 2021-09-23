@@ -101,7 +101,7 @@ kubectl exec -it -n katana-skipper <POD_NAME> -c training-service -- bash
 12. Delete Deployment and Volumes
 
 ```
-kubectl delete -n katana-skipper -f trainingservice-pv.yaml
+kubectl delete -f trainingservice-pv.yaml
 ```
 
 ```
