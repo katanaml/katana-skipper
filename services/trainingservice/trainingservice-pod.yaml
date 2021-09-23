@@ -1,0 +1,179 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: training-config
+  labels:
+    app: training-service
+data:
+  LOGGER_PRODUCER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_producer
+  LOGGER_RECEIVER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_receiver
+  RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
+  RABBITMQ_PORT: '5672'
+  QUEUE_NAME: skipper_training
+  SERVICE_NAME: training
+  QUEUE_NAME_SEND: skipper_data
+  MODELS_FOLDER: /usr/src/trainingservice/models/model_boston_
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data-config
+  labels:
+    app: data-service
+data:
+  LOGGER_RECEIVER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_receiver
+  RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
+  RABBITMQ_PORT: '5672'
+  QUEUE_NAME: skipper_data
+  SERVICE_NAME: data
+  STATS_FILE: /usr/src/dataservice/models/train_stats.csv
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: training-secret
+type: Opaque
+data:
+  RABBITMQ_USER: c2tpcHBlcg==
+  RABBITMQ_PASSWORD: d2VsY29tZTE=
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: data-secret
+type: Opaque
+data:
+  RABBITMQ_USER: c2tpcHBlcg==
+  RABBITMQ_PASSWORD: d2VsY29tZTE=
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: training-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: training-service
+  template:
+    metadata:
+      labels:
+        app: training-service
+    spec:
+      containers:
+        - image: katanaml/training-service:latest
+          name: training-service
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/trainingservice/models
+          env:
+            - name: LOGGER_PRODUCER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: LOGGER_PRODUCER_URL
+            - name: LOGGER_RECEIVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: LOGGER_RECEIVER_URL
+            - name: RABBITMQ_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: RABBITMQ_HOST
+            - name: RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: RABBITMQ_PORT
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: training-secret
+                  key: RABBITMQ_USER
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: training-secret
+                  key: RABBITMQ_PASSWORD
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: QUEUE_NAME
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: SERVICE_NAME
+            - name: QUEUE_NAME_SEND
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: QUEUE_NAME_SEND
+            - name: MODELS_FOLDER
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: MODELS_FOLDER
+        - image: katanaml/data-service:latest
+          name: data-service
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/dataservice/models
+          env:
+            - name: LOGGER_RECEIVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: data-config
+                  key: LOGGER_RECEIVER_URL
+            - name: RABBITMQ_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: data-config
+                  key: RABBITMQ_HOST
+            - name: RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: data-config
+                  key: RABBITMQ_PORT
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: data-secret
+                  key: RABBITMQ_USER
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: data-secret
+                  key: RABBITMQ_PASSWORD
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: data-config
+                  key: QUEUE_NAME
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: data-config
+                  key: SERVICE_NAME
+            - name: STATS_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: data-config
+                  key: STATS_FILE
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: training-service-claim

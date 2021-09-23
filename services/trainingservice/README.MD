@@ -36,15 +36,99 @@ docker build --tag katanaml/training-service .
 docker run -it -d --name training-service -p 5001:5001  katanaml/training-service:latest
 ```
 
+#### Build and run Kubernetes Pod
+
+1. Create namespace
+
+```
+kubectl create ns katana-skipper
+```
+
+2. Check available storage class
+
+```
+kubectl get storageclass
+```
+
+3. Create volume
+
+```
+kubectl apply -f trainingservice-pv.yaml
+```
+
+4. Create volume claim
+
+```
+kubectl apply -n katana-skipper trainingservice-pvc.yaml
+```
+
+5. Create Pod
+
+```
+kubectl apply -n katana-skipper -f trainingservice-pod.yaml
+```
+
+6. Check Pod status
+
+```
+kubectl get -n katana-skipper pods
+```
+
+7. Open Pod logs, use data-service for sidecar container logs
+
+```
+kubectl logs -n katana-skipper -f -l app=training-service -c training-service
+```
+
+8. Check volume
+
+```
+kubectl get pv
+```
+
+9. Check volume claim
+
+```
+kubectl get -n katana-skipper pvc
+```
+
+10. Execute commands inside container
+
+```
+kubectl exec -it -n katana-skipper <POD_NAME> -c training-service -- bash
+```
+
+12. Delete Deployment and Volumes
+
+```
+kubectl delete -n katana-skipper -f trainingservice-pv.yaml
+```
+
+```
+kubectl delete -n katana-skipper -f trainingservice-pvc.yaml
+```
+
+```
+kubectl delete -n katana-skipper -f trainingservice-pod.yaml
+```
+
+10. Delete all resources
+
+```
+kubectl delete all --all -n katana-skipper
+
 ## Structure
 
 ```
 .
-├── app 
+├── app
 │   └── training_service.py
 ├── main.py
 ├── Dockerfile
 ├── README.md
+├── trainingservice-pv.yaml
+├── trainingservice-pvc.yaml
+├── trainingservice-pod.yaml
 └── requirements.txt
 ```
 
