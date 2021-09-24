@@ -98,7 +98,7 @@ kubectl get -n katana-skipper pvc
 kubectl exec -it -n katana-skipper <POD_NAME> -c training-service -- bash
 ```
 
-12. Delete Deployment and Volumes
+11. Delete Deployment and Volumes
 
 ```
 kubectl delete -n katana-skipper -f trainingservice-pod.yaml
@@ -112,7 +112,7 @@ kubectl delete -n katana-skipper -f trainingservice-pvc.yaml
 kubectl delete -f trainingservice-pv.yaml
 ```
 
-10. Delete all resources
+12. Delete all resources
 
 ```
 kubectl delete all --all -n katana-skipper
