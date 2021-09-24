@@ -84,7 +84,7 @@ kubectl apply -n katana-skipper -f api/api-ingress.yaml
 
 kubectl apply -f services/trainingservice/trainingservice-pv.yaml
 
-kubectl apply -n katana-skipper services/trainingservice/trainingservice-pvc.yaml
+kubectl apply -n katana-skipper -f services/trainingservice/trainingservice-pvc.yaml
 
 kubectl apply -n katana-skipper -f services/trainingservice/trainingservice-pod.yaml
 
