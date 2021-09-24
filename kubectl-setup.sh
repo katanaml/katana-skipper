@@ -79,3 +79,17 @@ kubectl get -n katana-skipper deployments
 # Skipper API Ingress
 
 kubectl apply -n katana-skipper -f api/api-ingress.yaml
+
+# Training service and Data processing sidecar running in single Pod
+
+kubectl apply -f services/trainingservice/trainingservice-pv.yaml
+
+kubectl apply -n katana-skipper services/trainingservice/trainingservice-pvc.yaml
+
+kubectl apply -n katana-skipper -f services/trainingservice/trainingservice-pod.yaml
+
+kubectl rollout status -n katana-skipper deploy/training-service
+
+kubectl get -n katana-skipper pods
+
+kubectl get -n katana-skipper deployments

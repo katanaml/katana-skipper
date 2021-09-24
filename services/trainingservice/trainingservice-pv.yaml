@@ -7,6 +7,7 @@ metadata:
 spec:
   #kubectl get storageclass
   storageClassName: hostpath
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 1Gi
   accessModes:

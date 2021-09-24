@@ -59,7 +59,7 @@ kubectl apply -f trainingservice-pv.yaml
 4. Create volume claim
 
 ```
-kubectl apply -n katana-skipper trainingservice-pvc.yaml
+kubectl apply -n katana-skipper -f trainingservice-pvc.yaml
 ```
 
 5. Create Pod
@@ -101,7 +101,7 @@ kubectl exec -it -n katana-skipper <POD_NAME> -c training-service -- bash
 12. Delete Deployment and Volumes
 
 ```
-kubectl delete -f trainingservice-pv.yaml
+kubectl delete -n katana-skipper -f trainingservice-pod.yaml
 ```
 
 ```
@@ -109,7 +109,7 @@ kubectl delete -n katana-skipper -f trainingservice-pvc.yaml
 ```
 
 ```
-kubectl delete -n katana-skipper -f trainingservice-pod.yaml
+kubectl delete -f trainingservice-pv.yaml
 ```
 
 10. Delete all resources
