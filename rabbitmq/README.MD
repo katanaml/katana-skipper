@@ -74,7 +74,7 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 http://localhost:15672/ (skipper/welcome1)
 ```
 
-11. Delete all Pods and resources
+11. Delete all resources
 
 ```
 kubectl delete all --all -n rabbits

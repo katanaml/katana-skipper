@@ -116,6 +116,7 @@ kubectl delete -f trainingservice-pv.yaml
 
 ```
 kubectl delete all --all -n katana-skipper
+```
 
 ## Structure
 
