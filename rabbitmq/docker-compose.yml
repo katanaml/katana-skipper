@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: katanaml/rabbitmq-service
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: rabbitmq-service
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./backend-rabbitmq/etc/:/etc/backend/
+      - ./backend-rabbitmq/data/:/var/lib/backend/
+      - ./backend-rabbitmq/logs/:/var/log/backend/
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=welcome1
+      - RABBITMQ_NODENAME=rabbitnode@localhost
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+    networks:
+      - network1
+    restart: always
+
+networks:
+  network1:
+    name: katana-network
