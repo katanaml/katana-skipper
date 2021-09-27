@@ -10,6 +10,14 @@ Katana ML, Andrej Baranovskij
 
 To run all services, check instructions in main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
+#### Running RabbitMQ service locally
+
+1. Run Docker Compose script
+
+```
+docker-compose up --build -d
+```
+
 #### Build and run Kubernetes Pod
 
 Instructions are based on content explained by [That DevOps Guy](https://www.youtube.com/c/MarcelDempers)
