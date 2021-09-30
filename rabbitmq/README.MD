@@ -18,6 +18,12 @@ To run all services, check instructions in main [README](https://github.com/kata
 docker-compose up --build -d
 ```
 
+2. RabbitMQ dashboard
+
+```
+http://localhost:15672 (skipper/welcome1)
+```
+
 #### Build and run Kubernetes Pod
 
 Instructions are based on content explained by [That DevOps Guy](https://www.youtube.com/c/MarcelDempers)

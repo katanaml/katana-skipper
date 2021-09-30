@@ -33,7 +33,7 @@ docker build --tag katanaml/training-service .
 2. Run container
 
 ```
-docker run -it -d --name training-service -p 5001:5001  katanaml/training-service:latest
+docker run -it -d --name training-service katanaml/training-service:latest
 ```
 
 #### Build and run Kubernetes Pod

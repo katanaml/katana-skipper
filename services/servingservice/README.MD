@@ -22,6 +22,12 @@ pip install -r requirements.txt
 python main.py
 ```
 
+3. Start storage service
+
+```
+python storage_controller.py
+```
+
 #### Build and run individual container
 
 1. Build container
@@ -33,7 +39,7 @@ docker build --tag katanaml/serving-service .
 2. Run container
 
 ```
-docker run -it -d --name serving-service -p 5001:5001  katanaml/serving-service:latest
+docker run -it -d --name serving-service katanaml/serving-service:latest
 ```
 
 ## Structure
