@@ -163,6 +163,29 @@ services:
     depends_on:
       - rabbitmq
     restart: on-failure
+
+  storage-service:
+    image: katanaml/storage-service
+    build:
+      context: ./services/servingservice/storage
+      dockerfile: Dockerfile
+    container_name: storage-service
+    volumes:
+      - ./services/models/serving/:/usr/src/servingservice/storage/models/serving:rw
+    environment:
+      - LOGGER_RECEIVER_URL=http://logger:5001/api/v1/skipper/logger/log_receiver
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+      - QUEUE_NAME=skipper_storage
+      - SERVICE_NAME=serving
+      - MODELS_FOLDER=/usr/src/servingservice/storage/models/serving/
+    networks:
+      - network1
+    depends_on:
+      - rabbitmq
+    restart: on-failure
   # Sample set of services, you should replace with your own services
 
   nginx:

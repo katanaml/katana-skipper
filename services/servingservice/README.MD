@@ -45,6 +45,12 @@ docker run -it -d --name serving-service -p 5001:5001  katanaml/serving-service:
 ├── main.py
 ├── Dockerfile
 ├── README.md
+├── storage 
+├────  app
+│       └── storage_service.py
+│      ├── Dockerfile
+│      ├── requirements.txt
+│      └── storage_controller.py
 └── requirements.txt
 ```
 
