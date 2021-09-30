@@ -33,7 +33,7 @@ docker build --tag katanaml/serving-service .
 2. Run container
 
 ```
-docker run -it -d --name serving-service -p 5001:5001  katanaml/serving-service:latest
+docker run -it -d --name serving-service katanaml/serving-service:latest
 ```
 
 ## Structure
