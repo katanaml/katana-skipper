@@ -22,6 +22,12 @@ pip install -r requirements.txt
 python main.py
 ```
 
+3. Start storage service
+
+```
+python storage_controller.py
+```
+
 #### Build and run individual container
 
 1. Build container
