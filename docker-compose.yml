@@ -133,7 +133,8 @@ services:
       - RABBITMQ_PASSWORD=welcome1
       - QUEUE_NAME=skipper_training
       - SERVICE_NAME=training
-      - QUEUE_NAME_SEND=skipper_data
+      - QUEUE_NAME_DATA=skipper_data
+      - QUEUE_NAME_STORAGE=skipper_storage
       - MODELS_FOLDER=/usr/src/trainingservice/models/model_boston_
     networks:
       - network1

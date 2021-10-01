@@ -6,6 +6,8 @@ from tensorflow.keras.layers import Dense, Input
 from skipper_lib.events.event_producer import EventProducer
 import calendar
 import time
+import shutil
+import base64
 import os
 
 
@@ -41,15 +43,8 @@ class TrainingService(object):
 
         return model
 
-    def prepare_datasets(self, data):
-        event_producer = EventProducer(username=os.getenv('RABBITMQ_USER', 'skipper'),
-                                       password=os.getenv('RABBITMQ_PASSWORD', 'welcome1'),
-                                       host=os.getenv('RABBITMQ_HOST', '127.0.0.1'),
-                                       port=os.getenv('RABBITMQ_PORT', 5672),
-                                       service_name=os.getenv('SERVICE_NAME', 'training'),
-                                       logger=os.getenv('LOGGER_PRODUCER_URL',
-                                                        'http://127.0.0.1:5001/api/v1/skipper/logger/log_producer'))
-        response = event_producer.call(os.getenv('QUEUE_NAME_SEND', 'skipper_data'), data)
+    def prepare_datasets(self, data, event_producer):
+        response = event_producer.call(os.getenv('QUEUE_NAME_DATA', 'skipper_data'), data)
 
         data = json.loads(response)
         norm_train_x = np.array(data[0])
@@ -86,7 +81,15 @@ class TrainingService(object):
         return norm_train_x, norm_test_x, norm_val_x, train_y, test_y, val_y
 
     def run_training(self, data):
-        norm_train_x, norm_test_x, norm_val_x, train_y, test_y, val_y = self.prepare_datasets(data)
+        event_producer = EventProducer(username=os.getenv('RABBITMQ_USER', 'skipper'),
+                                       password=os.getenv('RABBITMQ_PASSWORD', 'welcome1'),
+                                       host=os.getenv('RABBITMQ_HOST', '127.0.0.1'),
+                                       port=os.getenv('RABBITMQ_PORT', 5672),
+                                       service_name=os.getenv('SERVICE_NAME', 'training'),
+                                       logger=os.getenv('LOGGER_PRODUCER_URL',
+                                                        'http://127.0.0.1:5001/api/v1/skipper/logger/log_producer'))
+
+        norm_train_x, norm_test_x, norm_val_x, train_y, test_y, val_y = self.prepare_datasets(data, event_producer)
 
         model = self.build_model(len(norm_train_x[0]))
 
@@ -120,3 +123,38 @@ class TrainingService(object):
         # Save model
         ts = calendar.timegm(time.gmtime())
         model.save(os.getenv('MODELS_FOLDER', '../models/model_boston_') + str(ts) + '/', save_format='tf')
+
+        # Send model to the queue
+        shutil.make_archive(base_name=os.getenv('MODELS_FOLDER', '../models/model_boston_') + str(ts),
+                            format='zip',
+                            root_dir=os.getenv('MODELS_FOLDER', '../models/model_boston_') + str(ts))
+
+        model_encoded = None
+        try:
+            with open(os.getenv('MODELS_FOLDER', '../models/model_boston_') + str(ts) + '.zip', 'rb') as model_file:
+                model_encoded = base64.b64encode(model_file.read())
+        except Exception as e:
+            print(str(e))
+
+        stats_encoded = None
+        try:
+            with open(os.getenv('MODELS_FOLDER', '../models'), 'rb') as stats_file:
+                stats_encoded = base64.b64encode(stats_file.read())
+        except Exception as e:
+            print(str(e))
+
+        model_encoded = model_encoded.decode('utf-8')
+        stats_encoded = stats_encoded.decode('utf-8')
+
+        data = {
+            'name': 'model_boston_' + str(ts),
+            'archive_name': 'model_boston_' + str(ts) + '.zip',
+            'model': model_encoded,
+            'stats': stats_encoded,
+            'stats_name': 'train_stats.csv'
+        }
+        response = json.dumps(data)
+
+        response = event_producer.call(os.getenv('QUEUE_NAME_STORAGE', 'skipper_storage'), data)
+
+
