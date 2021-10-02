@@ -138,7 +138,7 @@ class TrainingService(object):
 
         stats_encoded = None
         try:
-            with open(os.getenv('MODELS_FOLDER', '../models'), 'rb') as stats_file:
+            with open(os.getenv('MODELS_FOLDER', '../models/train_stats.csv'), 'rb') as stats_file:
                 stats_encoded = base64.b64encode(stats_file.read())
         except Exception as e:
             print(str(e))
@@ -153,8 +153,8 @@ class TrainingService(object):
             'stats': stats_encoded,
             'stats_name': 'train_stats.csv'
         }
-        response = json.dumps(data)
+        content = json.dumps(data)
 
-        response = event_producer.call(os.getenv('QUEUE_NAME_STORAGE', 'skipper_storage'), data)
+        response = event_producer.call(os.getenv('QUEUE_NAME_STORAGE', 'skipper_storage'), content)
 
 

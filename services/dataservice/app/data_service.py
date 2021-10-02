@@ -87,7 +87,7 @@ class DataService(object):
         train_stats = train.describe()
         train_stats = train_stats.transpose()
 
-        train_stats.to_csv(os.getenv('STATS_FILE', '/services/models/train_stats.csv'),
+        train_stats.to_csv(os.getenv('STATS_FILE', '../models/train_stats.csv'),
                            header=True)
 
         return (x - train_stats['mean']) / train_stats['std']
