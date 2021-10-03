@@ -12,7 +12,9 @@ data:
   QUEUE_NAME: skipper_training
   SERVICE_NAME: training
   QUEUE_NAME_SEND: skipper_data
+  QUEUE_NAME_STORAGE: skipper_storage
   MODELS_FOLDER: /usr/src/trainingservice/models/model_boston_
+  STATS_FILE: /usr/src/dataservice/models/train_stats.csv
 
 ---
 
@@ -111,6 +113,11 @@ spec:
                 configMapKeyRef:
                   name: training-config
                   key: QUEUE_NAME
+            - name: QUEUE_NAME_STORAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: QUEUE_NAME_STORAGE
             - name: SERVICE_NAME
               valueFrom:
                 configMapKeyRef:
@@ -126,6 +133,11 @@ spec:
                 configMapKeyRef:
                   name: training-config
                   key: MODELS_FOLDER
+            - name: STATS_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: training-config
+                  key: STATS_FILE
         - image: katanaml/data-service:latest
           name: data-service
           imagePullPolicy: IfNotPresent
