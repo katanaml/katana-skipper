@@ -158,7 +158,7 @@ services:
       - RABBITMQ_PASSWORD=welcome1
       - QUEUE_NAME=skipper_serving
       - SERVICE_NAME=serving
-      - MODELS_FOLDER=/usr/src/servingservice/models/
+      - MODELS_FOLDER=/usr/src/servingservice/models/serving/
     networks:
       - network1
     depends_on:
