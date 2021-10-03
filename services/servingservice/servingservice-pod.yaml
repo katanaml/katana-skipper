@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: serving-config
+  labels:
+    app: serving-service
+data:
+  LOGGER_RECEIVER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_receiver
+  RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
+  RABBITMQ_PORT: '5672'
+  QUEUE_NAME: skipper_serving
+  SERVICE_NAME: serving
+  MODELS_FOLDER: /usr/src/servingservice/models/serving/
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: storage-config
+  labels:
+    app: storage-service
+data:
+  LOGGER_RECEIVER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_receiver
+  RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
+  RABBITMQ_PORT: '5672'
+  QUEUE_NAME: skipper_storage
+  SERVICE_NAME: serving
+  MODELS_FOLDER: /usr/src/servingservice/storage/models/serving/
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: serving-secret
+type: Opaque
+data:
+  RABBITMQ_USER: c2tpcHBlcg==
+  RABBITMQ_PASSWORD: d2VsY29tZTE=
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: storage-secret
+type: Opaque
+data:
+  RABBITMQ_USER: c2tpcHBlcg==
+  RABBITMQ_PASSWORD: d2VsY29tZTE=
+
+---
