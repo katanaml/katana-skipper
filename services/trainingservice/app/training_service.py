@@ -138,7 +138,7 @@ class TrainingService(object):
 
         stats_encoded = None
         try:
-            with open(os.getenv('MODELS_FOLDER', '../models/train_stats.csv'), 'rb') as stats_file:
+            with open(os.getenv('STATS_FILE', '../models/train_stats.csv'), 'rb') as stats_file:
                 stats_encoded = base64.b64encode(stats_file.read())
         except Exception as e:
             print(str(e))
