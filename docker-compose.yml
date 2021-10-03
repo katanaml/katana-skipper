@@ -136,7 +136,7 @@ services:
       - QUEUE_NAME_DATA=skipper_data
       - QUEUE_NAME_STORAGE=skipper_storage
       - MODELS_FOLDER=/usr/src/trainingservice/models/model_boston_
-      - STATS_FILE=/usr/src/dataservice/models/train_stats.csv
+      - STATS_FILE=/usr/src/trainingservice/models/train_stats.csv
     networks:
       - network1
     depends_on:
