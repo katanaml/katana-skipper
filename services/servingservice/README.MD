@@ -42,16 +42,101 @@ docker build --tag katanaml/serving-service .
 docker run -it -d --name serving-service katanaml/serving-service:latest
 ```
 
+#### Build and run Kubernetes Pod
+
+1. Create namespace
+
+```
+kubectl create ns katana-skipper
+```
+
+2. Check available storage class
+
+```
+kubectl get storageclass
+```
+
+3. Create volume
+
+```
+kubectl apply -f servingservice-pv.yaml
+```
+
+4. Create volume claim
+
+```
+kubectl apply -n katana-skipper -f servingservice-pvc.yaml
+```
+
+5. Create Pod
+
+```
+kubectl apply -n katana-skipper -f servingservice-pod.yaml
+```
+
+6. Check Pod status
+
+```
+kubectl get -n katana-skipper pods
+```
+
+7. Open Pod logs, use storage-service for sidecar container logs
+
+```
+kubectl logs -n katana-skipper -f -l app=serving-service -c serving-service
+```
+
+8. Check volume
+
+```
+kubectl get pv
+```
+
+9. Check volume claim
+
+```
+kubectl get -n katana-skipper pvc
+```
+
+10. Execute commands inside container
+
+```
+kubectl exec -it -n katana-skipper <POD_NAME> -c serving-service -- bash
+```
+
+11. Delete Deployment and Volumes
+
+```
+kubectl delete -n katana-skipper -f servingservice-pod.yaml
+```
+
+```
+kubectl delete -n katana-skipper -f servingservice-pvc.yaml
+```
+
+```
+kubectl delete -f servingservice-pv.yaml
+```
+
+12. Delete all resources
+
+```
+kubectl delete all --all -n katana-skipper
+```
+
 ## Structure
 
 ```
 .
-├── app 
+├── app
 │   └── serving_service.py
 ├── main.py
 ├── Dockerfile
 ├── README.md
-├── storage 
+├── servingservice-pv.yaml
+├── servingservice-pvc.yaml
+├── servingservice-pod.yaml
+├── storage
 ├────  app
 │       └── storage_service.py
 │      ├── Dockerfile

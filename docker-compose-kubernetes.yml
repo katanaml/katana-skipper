@@ -52,4 +52,11 @@ services:
     build:
       context: ./services/servingservice
       dockerfile: Dockerfile
+
+  storage-service:
+    image: katanaml/storage-service
+    build:
+      context: ./services/servingservice/storage
+      dockerfile: Dockerfile
+    container_name: storage-service
   # Sample set of services, you should replace with your own services
