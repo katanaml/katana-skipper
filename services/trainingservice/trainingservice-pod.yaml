@@ -72,7 +72,7 @@ spec:
     spec:
       containers:
         - image: katanaml/training-service:latest
-          name: training-service
+          name: training-main-service
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: data
