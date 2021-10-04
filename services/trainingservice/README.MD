@@ -77,7 +77,7 @@ kubectl get -n katana-skipper pods
 7. Open Pod logs, use data-service for sidecar container logs
 
 ```
-kubectl logs -n katana-skipper -f -l app=training-service -c training-service
+kubectl logs -n katana-skipper -f -l app=training-service -c training-main-service
 ```
 
 8. Check volume
@@ -95,7 +95,7 @@ kubectl get -n katana-skipper pvc
 10. Execute commands inside container
 
 ```
-kubectl exec -it -n katana-skipper <POD_NAME> -c training-service -- bash
+kubectl exec -it -n katana-skipper <POD_NAME> -c training-main-service -- bash
 ```
 
 11. Delete Deployment and Volumes
