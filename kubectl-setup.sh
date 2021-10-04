@@ -93,3 +93,17 @@ kubectl rollout status -n katana-skipper deploy/training-service
 kubectl get -n katana-skipper pods
 
 kubectl get -n katana-skipper deployments
+
+# Serving service and Storage sidecar running in single Pod
+
+kubectl apply -f services/servingservice/servingservice-pv.yaml
+
+kubectl apply -n katana-skipper -f services/servingservice/servingservice-pvc.yaml
+
+kubectl apply -n katana-skipper -f services/servingservice/servingservice-pod.yaml
+
+kubectl rollout status -n katana-skipper deploy/serving-service
+
+kubectl get -n katana-skipper pods
+
+kubectl get -n katana-skipper deployments
