@@ -51,3 +51,117 @@ data:
   RABBITMQ_PASSWORD: d2VsY29tZTE=
 
 ---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serving-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serving-service
+  template:
+    metadata:
+      labels:
+        app: serving-service
+    spec:
+      containers:
+        - image: katanaml/serving-service:latest
+          name: serving-main-service
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/servingservice/models/serving
+          env:
+            - name: LOGGER_RECEIVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: serving-config
+                  key: LOGGER_RECEIVER_URL
+            - name: RABBITMQ_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: serving-config
+                  key: RABBITMQ_HOST
+            - name: RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: serving-config
+                  key: RABBITMQ_PORT
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: serving-secret
+                  key: RABBITMQ_USER
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: serving-secret
+                  key: RABBITMQ_PASSWORD
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: serving-config
+                  key: QUEUE_NAME
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: serving-config
+                  key: SERVICE_NAME
+            - name: MODELS_FOLDER
+              valueFrom:
+                configMapKeyRef:
+                  name: serving-config
+                  key: MODELS_FOLDER
+        - image: katanaml/storage-service:latest
+          name: storage-service
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/servingservice/storage/models/serving/
+          env:
+            - name: LOGGER_RECEIVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: storage-config
+                  key: LOGGER_RECEIVER_URL
+            - name: RABBITMQ_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: storage-config
+                  key: RABBITMQ_HOST
+            - name: RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: storage-config
+                  key: RABBITMQ_PORT
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: storage-secret
+                  key: RABBITMQ_USER
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: storage-secret
+                  key: RABBITMQ_PASSWORD
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: storage-config
+                  key: QUEUE_NAME
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: storage-config
+                  key: SERVICE_NAME
+            - name: MODELS_FOLDER
+              valueFrom:
+                configMapKeyRef:
+                  name: storage-config
+                  key: MODELS_FOLDER
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: serving-service-claim
