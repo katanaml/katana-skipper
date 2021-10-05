@@ -110,7 +110,13 @@ kubectl get -n katana-skipper pvc
 kubectl exec -it -n katana-skipper <POD_NAME> -c serving-main-service -- bash
 ```
 
-11. Delete Deployment and Volumes
+11. Scale Pod
+
+```
+kubectl scale -n katana-skipper deployment serving-service --replicas=3
+```
+
+12. Delete Deployment and Volumes
 
 ```
 kubectl delete -n katana-skipper -f servingservice-pod.yaml
@@ -124,7 +130,7 @@ kubectl delete -n katana-skipper -f servingservice-pvc.yaml
 kubectl delete -f servingservice-pv.yaml
 ```
 
-12. Delete all resources
+13. Delete all resources
 
 ```
 kubectl delete all --all -n katana-skipper
