@@ -86,6 +86,12 @@ kubectl get -n katana-skipper pods
 kubectl logs -n katana-skipper -f -l app=serving-service -c serving-main-service
 ```
 
+or
+
+```
+kubectl logs -n katana-skipper -f <POD_NAME> -c serving-main-service
+```
+
 8. Check volume
 
 ```
