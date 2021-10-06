@@ -103,6 +103,7 @@ Remove Kubernetes services:
 * **[rabbitmq](https://github.com/katanaml/katana-skipper/tree/master/rabbitmq)** - service for RabbitMQ broker
 * **[skipper-lib](https://github.com/katanaml/katana-skipper/tree/master/skipper-lib)** - reusable Python library to streamline event communication through RabbitMQ
 * **[logger](https://github.com/katanaml/katana-skipper/tree/master/logger)** - logger service
+* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud
 
 ### URLs
 
