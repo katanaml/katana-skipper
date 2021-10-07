@@ -52,19 +52,19 @@ nano services/trainingservice/trainingservice-pvc.yaml
 nano services/servingservice/servingservice-pv.yaml
 ```
 
-8. Edit services/servingservice/servingservice-pvc.yaml, change storageClassName to 'oci'
+10. Edit services/servingservice/servingservice-pvc.yaml, change storageClassName to 'oci'
 
 ```
 nano services/servingservice/servingservice-pvc.yaml
 ```
 
-10. Setup Kubernetes services:
+11. Setup Kubernetes services:
 
 ```
 ./kubectl-setup.sh
 ```
 
-11. Skipper API endpoint URL
+12. Skipper API endpoint URL
 
 ```
 http://<Load Balancer IP>/api/v1/skipper/tasks/docs
@@ -74,7 +74,7 @@ Check Load Balancer IP:
 
 ![LoadBalancer](https://github.com/katanaml/katana-skipper/blob/master/oci-loadbalancer.png)
 
-12. More info about Kubernetes cluster management on [OCI](https://docs.oracle.com/en/learn/container_engine_kubernetes/#introduction)
+13. More info about Kubernetes cluster management on [OCI](https://docs.oracle.com/en/learn/container_engine_kubernetes/#introduction)
 
 ## License
 
