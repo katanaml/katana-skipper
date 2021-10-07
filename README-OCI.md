@@ -28,43 +28,31 @@ git clone https://github.com/katanaml/katana-skipper
 nano rabbitmq/rabbit-statefulset.yaml
 ```
 
-6. Edit api/api-ingress.yaml file, remove 'host' reference to configure Inrgess with OCI public IP
+6. Edit api/api-ingress.yaml file, remove 'host' element to configure Ingress with OCI public IP
 
 ```
 nano api/api-ingress.yaml
 ```
 
-7. Edit services/trainingservice/trainingservice-pv.yaml, change 'hostpath' to 'oci'
-
-Check storage class:
-
-```
-kubectl get storageclass
-```
+7. Edit services/trainingservice/trainingservice-pv.yaml, change storageClassName to 'oci'
 
 ```
 nano services/trainingservice/trainingservice-pv.yaml
 ```
 
-8. Edit services/trainingservice/trainingservice-pvc.yaml, change 'hostpath' to 'oci'
+8. Edit services/trainingservice/trainingservice-pvc.yaml, change storageClassName to 'oci'
 
 ```
 nano services/trainingservice/trainingservice-pvc.yaml
 ```
 
-9. Edit services/servingservice/servingservice-pv.yaml, change 'hostpath' to 'oci'
-
-Check storage class:
-
-```
-kubectl get storageclass
-```
+9. Edit services/servingservice/servingservice-pv.yaml, change storageClassName to 'oci'
 
 ```
 nano services/servingservice/servingservice-pv.yaml
 ```
 
-8. Edit services/servingservice/servingservice-pvc.yaml, change 'hostpath' to 'oci'
+8. Edit services/servingservice/servingservice-pvc.yaml, change storageClassName to 'oci'
 
 ```
 nano services/servingservice/servingservice-pvc.yaml
