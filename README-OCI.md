@@ -10,7 +10,7 @@ Katana ML, Andrej Baranovskij
 
 1. Push Skipper images to Docker registry, this registry should be accessible from OCI
 
-2. Open Cloud Shell, follow OCI instructions in Kubernetes setup wizard
+2. Open OCI Cloud Shell, follow OCI instructions in Kubernetes setup wizard
 
 ![OCI](https://github.com/katanaml/katana-skipper/blob/master/oci-shell.png)
 
