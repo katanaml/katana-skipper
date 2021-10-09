@@ -1,5 +1,9 @@
 version: '3.9'
 
+networks:
+  network1:
+    name: katana-network
+
 services:
   rabbitmq:
     image: katanaml/rabbitmq-service
@@ -11,9 +15,9 @@ services:
       - 5672:5672
       - 15672:15672
     volumes:
-      - ./backend-rabbitmq/etc/:/etc/backend/
-      - ./backend-rabbitmq/data/:/var/lib/backend/
-      - ./backend-rabbitmq/logs/:/var/log/backend/
+      - ./rabbitmq-volume/etc/:/etc/backend/
+      - ./rabbitmq-volume/data/:/var/lib/backend/
+      - ./rabbitmq-volume/logs/:/var/log/backend/
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=welcome1
@@ -200,7 +204,3 @@ services:
       - network1
     depends_on:
       - api
-
-networks:
-  network1:
-    name: katana-network
