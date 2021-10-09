@@ -2,7 +2,7 @@
 
 # thinking
 
-opensource ML workflow engine along with some awesome machine learning services 💗⚡
+Opensource machine learning services 💗⚡
 
 Available ML Services
 
