@@ -1,7 +1,8 @@
 ![](docs/assets/logo.png)
 
 # thinking
-Simple and flexible ML workflow engine along with some awesome machine learning services 💗⚡
+
+opensource ML workflow engine along with some awesome machine learning services 💗⚡
 
 Available ML Services
 
