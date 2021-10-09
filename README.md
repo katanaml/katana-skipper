@@ -22,7 +22,7 @@ Install docker and run `docker compose up --build -d` in terminal. That is all y
 
 ### Credits
 
-Built on top of [katana-skipper workflow engine](https://github.com/katanaml/katana-skipper)
+Built on top of [katana-skipper workflow engine](https://github.com/katanaml/katana-skipper).
 
 ### Licence
 
