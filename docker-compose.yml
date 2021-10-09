@@ -97,6 +97,7 @@ services:
     restart: on-failure
 
   # Sample set of services, you should replace with your own services
+  # use any new queue name in queue environment variables as long as producer and consumer names match. 
   data-service:
     image: katanaml/data-service
     build:
@@ -111,7 +112,7 @@ services:
       - RABBITMQ_PORT=5672
       - RABBITMQ_USER=skipper
       - RABBITMQ_PASSWORD=welcome1
-      - QUEUE_NAME=skipper_data
+      - QUEUE_NAME=skipper_data_custom_queue
       - SERVICE_NAME=data
       - STATS_FILE=/usr/src/dataservice/models/train_stats.csv
     networks:
@@ -137,7 +138,7 @@ services:
       - RABBITMQ_PASSWORD=welcome1
       - QUEUE_NAME=skipper_training
       - SERVICE_NAME=training
-      - QUEUE_NAME_DATA=skipper_data
+      - QUEUE_NAME_DATA=skipper_data_custom_queue
       - QUEUE_NAME_STORAGE=skipper_storage
       - MODELS_FOLDER=/usr/src/trainingservice/models/model_boston_
       - STATS_FILE=/usr/src/trainingservice/models/train_stats.csv
