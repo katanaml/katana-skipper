@@ -2,7 +2,7 @@
 
 # thinking
 
-Opensource machine learning services 💗⚡
+Open source machine learning services 💗⚡
 
 Available ML Services
 
