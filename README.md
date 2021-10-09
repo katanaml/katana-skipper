@@ -8,6 +8,7 @@ Available ML Services
 
 - Data Annotation PLatform (Lablestudio) [Coming soon]
 - Invoice OCR [Coming soon]
+- ...
 - Want to suggest a new service? Submit a feature request.
 
 More services will be added on popular demand.
