@@ -103,7 +103,6 @@ Remove Kubernetes services:
 * **[rabbitmq](https://github.com/katanaml/katana-skipper/tree/master/rabbitmq)** - service for RabbitMQ broker
 * **[skipper-lib](https://github.com/katanaml/katana-skipper/tree/master/skipper-lib)** - reusable Python library to streamline event communication through RabbitMQ
 * **[logger](https://github.com/katanaml/katana-skipper/tree/master/logger)** - logger service
-* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud
 
 ### URLs
 
@@ -137,9 +136,11 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 https://pypi.org/project/skipper-lib/
 ```
 
+* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud
+
 ## Usage
 
-You can use Skipper engine to run Web API, workflow and communicate with a group of ML microservises implemented under services package.
+You can use Skipper engine to run Web API, workflow and communicate with a group of ML microservices implemented under services package.
 
 ## License
 
