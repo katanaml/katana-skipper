@@ -2,6 +2,8 @@
 
 # thinking
 
+Machine learning made easy. 
+
 Open source machine learning services 💗⚡
 
 Available ML Services
