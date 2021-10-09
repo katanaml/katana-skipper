@@ -4,9 +4,9 @@
 
 Machine learning made easy. 
 
-Open source machine learning services 💗⚡
+Open source machine learning platform 💗⚡
 
-Available ML Services
+The following are supported:
 
 - Data Annotation PLatform (Lablestudio) [Coming soon]
 - Invoice OCR [Coming soon]
