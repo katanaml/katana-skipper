@@ -102,7 +102,7 @@ services:
     volumes:
       - ./volumes/label-studio/data/:/label-studio/data:rw
     ports:
-      - 5003:8080
+      - 8989:8080
     networks:
       - network1
     restart: always

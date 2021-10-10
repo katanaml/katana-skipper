@@ -2,9 +2,7 @@
 
 # thinking
 
-Machine learning made easy. 
-
-Open source machine learning platform 💗⚡
+Machine learning made easy 💗⚡
 
 The following are supported:
 
@@ -15,6 +13,7 @@ The following are supported:
 
 More services will be added on popular demand.
 
+###
 
 ### How to run?
 
