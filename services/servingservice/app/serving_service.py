@@ -14,19 +14,30 @@ class ServingService(object):
         payload = pd.DataFrame(data_json['data'], index=[0, ])
         payload.columns = [x.upper() for x in payload.columns]
 
+        print("loading training stats")
+
         train_stats = pd.read_csv(os.getenv('MODELS_FOLDER', '../models/serving/') + 'train_stats.csv', index_col=0)
         x = np.array(self.norm(payload, train_stats))
+
+        print("loading saved model")
 
         models = self.get_immediate_subdirectories(os.getenv('MODELS_FOLDER', '../models/serving/'))
         saved_model = tf.keras.models.load_model(os.getenv('MODELS_FOLDER', '../models/serving/') + max(models))
 
+        print("making predictions with sample:")
+        print(x)
+
         predictions = saved_model.predict(x)
+
+        print("out:", predictions)
 
         result = {
             'price': str(predictions[0][0][0]),
             'ptratio': str(predictions[1][0][0])
         }
         response = json.dumps(result)
+
+        print("response:", response)
 
         return response, data_json['task_type']
 

@@ -1,3 +1,11 @@
+# volumes
+volumes/label-studio/data/export
+volumes/label-studio/data/media
+volumes/label-studio/data/label_studio.sqlite3
+
+# trained models during development
+services/models/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

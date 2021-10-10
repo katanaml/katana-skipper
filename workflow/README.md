@@ -1,3 +1,6 @@
+> Workflow is just a key-value microservice which will use api/workflow.json .
+> values are rmq queue names and keys are service-ids ( service-ids are i.e task_name_{sync|async} )
+
 # Katana ML Skipper Workflow
 
 Returns queue name, based on task ID. This allows to route event to the correct queue, without hardcoding logic in the Web API.

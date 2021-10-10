@@ -11,7 +11,7 @@ class TaskType(str, Enum):
 
 class WorkflowTaskData(BaseModel):
     task_type: TaskType
-    payload: str
+    payload: float = 0.75
     data: Optional[create_model('Data',
                                 crim=(float, ...),
                                 zn=(int, ...),
