@@ -15,9 +15,9 @@ services:
       - 5672:5672
       - 15672:15672
     volumes:
-      - ./rabbitmq-volume/etc/:/etc/backend/
-      - ./rabbitmq-volume/data/:/var/lib/backend/
-      - ./rabbitmq-volume/logs/:/var/log/backend/
+      - ./volumes/rabbitmq/etc/:/etc/backend/
+      - ./volumes/rabbitmq/data/:/var/lib/backend/
+      - ./volumes/rabbitmq/logs/:/var/log/backend/
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=welcome1
@@ -95,6 +95,18 @@ services:
     depends_on:
       - api
     restart: on-failure
+
+  label-studio:
+    image: heartexlabs/label-studio:1.3.0
+    container_name: label-studio
+    volumes:
+      - ./volumes/label-studio/data/:/label-studio/data:rw
+    ports:
+      - 5003:8080
+    networks:
+      - network1
+    restart: always
+
 
   # Sample set of services, you should replace with your own services
   # use any new queue name in queue environment variables as long as producer and consumer names match. 
