@@ -15,11 +15,9 @@ More services will be added on popular demand.
 
 ### How to run?
 
-Install docker and run `docker compose up --build -d`. That is all you have to do.
+Install docker and run `docker compose up --build -d`. After build completion, the services will be up and running on the ports mentioned below.
 
-> *More information will be added soon.*
-
-#### Port information
+**Port information**
 
 | Port | Name | User interface | Short description |
 --- | --- | --- | --- |
