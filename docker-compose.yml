@@ -107,6 +107,16 @@ services:
       - network1
     restart: always
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx_config.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - network1
+    depends_on:
+      - api
 
   # Sample set of services, you should replace with your own services
   # use any new queue name in queue environment variables as long as producer and consumer names match. 
@@ -207,13 +217,3 @@ services:
     restart: on-failure
   # Sample set of services, you should replace with your own services
 
-  nginx:
-    image: nginx:latest
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./nginx_config.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - network1
-    depends_on:
-      - api
