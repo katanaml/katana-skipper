@@ -29,7 +29,7 @@ Install docker and run `docker compose up --build -d`. The services will be up a
 | `5432` | Postgres DB | Coming soon | Persistent database |
 | `5432` | PgAdmin | Coming soon | Web UI for postgres DB |
 | `7777` | Web app | Coming soon | Web app for everything here |   
-| `9999` | backend  | Coming soon | Backend for app at port `s7777` |
+| `9999` | backend  | Coming soon | Backend for app at port `7777` |
 | `8080` | NGINX |-| Reverse proxy for tasks API  |
 | `5672` | RabbitMQ port | - | Port for event producer and receiver |  
 
