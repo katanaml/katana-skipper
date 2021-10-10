@@ -6,7 +6,7 @@ Machine learning made easy 💗⚡
 
 The following are supported:
 
-- Data Annotation PLatform (Lablestudio) [Coming soon]
+- Data Annotation PLatform (Lablestudio)
 - Invoice OCR [Coming soon]
 - ...
 - Want to suggest a new service? Submit a feature request.
