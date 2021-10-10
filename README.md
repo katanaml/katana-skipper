@@ -2,7 +2,7 @@
 
 # thinking
 
-Machine learning made easy 💗⚡
+Machine learning made easy and open source 💗⚡
 
 The following are supported:
 
