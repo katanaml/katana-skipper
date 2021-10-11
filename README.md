@@ -2,11 +2,11 @@
 
 # thinking
 
-Machine learning made easy 💗⚡
+One stop shop for machine learning. simple, flexible and open source 💗⚡
 
 The following are supported:
 
-- Data Annotation PLatform (Lablestudio) [Coming soon]
+- Data Annotation PLatform (Lablestudio)
 - Invoice OCR [Coming soon]
 - ...
 - Want to suggest a new service? Submit a feature request.

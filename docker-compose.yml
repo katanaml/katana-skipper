@@ -95,7 +95,7 @@ services:
     depends_on:
       - api
     restart: on-failure
-
+    
   frontend:
     image: thinking/frontend
     container_name: frontend
