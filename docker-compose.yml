@@ -6,7 +6,7 @@ networks:
 
 services:
   rabbitmq:
-    image: katanaml/rabbitmq-service
+    image: thinking/rabbitmq-service
     build:
       context: ./rabbitmq
       dockerfile: Dockerfile
@@ -29,7 +29,7 @@ services:
     restart: always
 
   logger:
-    image: katanaml/skipper-logger
+    image: thinking/skipper-logger
     build:
       context: ./logger
       dockerfile: Dockerfile
@@ -40,7 +40,7 @@ services:
       - network1
 
   workflow:
-    image: katanaml/skipper-workflow
+    image: thinking/skipper-workflow
     build:
       context: ./workflow
       dockerfile: Dockerfile
@@ -53,7 +53,7 @@ services:
       - network1
 
   api:
-    image: katanaml/skipper-api
+    image: thinking/skipper-api
     build:
       context: ./api
       dockerfile: Dockerfile
@@ -76,7 +76,7 @@ services:
     restart: on-failure
 
   api-celery:
-    image: katanaml/skipper-api-celery
+    image: thinking/skipper-api-celery
     build:
       context: ./api
       dockerfile: Dockerfile
@@ -95,10 +95,25 @@ services:
     depends_on:
       - api
     restart: on-failure
+
+  backend:
+    image: thinking/backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-service
+    volumes:
+      - './backend/:/usr/src/backend'
+    ports:
+      - 9999:9999
+    networks:
+      - network1
+
+    restart: always
     
   frontend:
     image: thinking/frontend
-    container_name: frontend
+    container_name: frontend-service
     build: 
       context: ./frontend
       dockerfile: Dockerfile
@@ -109,6 +124,11 @@ services:
     stdin_open: true
     working_dir: /usr/src/app
     command: npm start
+    networks:
+      - network1
+    depends_on:
+      - backend
+    restart: always
 
   label-studio:
     image: heartexlabs/label-studio:1.3.0
@@ -135,7 +155,7 @@ services:
   # Sample set of services, you should replace with your own services
   # use any new queue name in queue environment variables as long as producer and consumer names match. 
   data-service:
-    image: katanaml/data-service
+    image: thinking/data-service
     build:
       context: ./services/dataservice
       dockerfile: Dockerfile
@@ -158,7 +178,7 @@ services:
     restart: on-failure
 
   training-service:
-    image: katanaml/training-service
+    image: thinking/training-service
     build:
       context: ./services/trainingservice
       dockerfile: Dockerfile
@@ -185,7 +205,7 @@ services:
     restart: on-failure
 
   serving-service:
-    image: katanaml/serving-service
+    image: thinking/serving-service
     build:
       context: ./services/servingservice
       dockerfile: Dockerfile
@@ -208,7 +228,7 @@ services:
     restart: on-failure
 
   storage-service:
-    image: katanaml/storage-service
+    image: thinking/storage-service
     build:
       context: ./services/servingservice/storage
       dockerfile: Dockerfile
