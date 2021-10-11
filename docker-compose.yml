@@ -95,6 +95,20 @@ services:
     depends_on:
       - api
     restart: on-failure
+    
+  frontend:
+    image: thinking/frontend
+    container_name: frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - './frontend/app/:/usr/src/app'
+    ports:
+      - 3000:3000
+    stdin_open: true
+    working_dir: /usr/src/app
+    command: npm start
 
   label-studio:
     image: heartexlabs/label-studio:1.3.0
@@ -215,5 +229,3 @@ services:
     depends_on:
       - rabbitmq
     restart: on-failure
-  # Sample set of services, you should replace with your own services
-

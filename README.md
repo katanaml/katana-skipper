@@ -2,7 +2,7 @@
 
 # thinking
 
-Machine learning made easy and open source 💗⚡
+One stop shop for machine learning. simple, flexible and open source 💗⚡
 
 The following are supported:
 
