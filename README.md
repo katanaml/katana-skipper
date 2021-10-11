@@ -6,7 +6,7 @@ Machine learning made easy 💗⚡
 
 The following are supported:
 
-- Data Annotation PLatform (Lablestudio)
+- Data Annotation PLatform (Lablestudio) [Coming soon]
 - Invoice OCR [Coming soon]
 - ...
 - Want to suggest a new service? Submit a feature request.
@@ -33,7 +33,6 @@ Install docker and run `docker compose up --build -d`. The services will be up a
 | `8080` | NGINX |-| Reverse proxy for tasks API  |
 | `5672` | RabbitMQ port | - | Port for event producer and receiver |  
 
-
 --- 
 
 ### Credits
@@ -42,6 +41,8 @@ Install docker and run `docker compose up --build -d`. The services will be up a
 - Built on top of [katana-skipper workflow engine](https://github.com/katanaml/katana-skipper).
 - OCR powered by [MMOCR](https://github.com/open-mmlab/mmocr)
 - Data annotation with [Label Studio](https://github.com/heartexlabs/label-studio)
+
+---
 
 ### Licence
 
