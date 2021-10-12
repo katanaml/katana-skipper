@@ -10,7 +10,7 @@ This is a simple and flexible ML workflow engine. It helps to orchestrate events
 
 ## Author
 
-Katana ML, Andrej Baranovskij
+Katana ML, [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## Instructions
 
