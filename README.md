@@ -23,21 +23,21 @@ Install docker and run `docker compose up --build -d`. The services will be up a
 --- | --- | --- | --- |
 | `8989` | Label studio | http://127.0.0.1:8989 | Data annotation platform |
 | `1572` | RabbitMQ | http://127.0.0.1:15672 | Transient message broker. `username:skipper` `password:welcome1`|
+| `5672` | RabbitMQ port | - | Port for event producer and receiver |  
 | `8000` | Celery API | http://127.0.0.1:8000/docs | Post tasks to task queues and view their status |
 | `5000` | Wrokflow API | http://127.0.0.1:5000/docs | Get names of queues using task service IDs |
 | `5001` | Logger API |  http://127.0.0.1:5001/docs | Log all infomation in background |
-| `5432` | Postgres DB | Coming soon | Persistent database |
-| `5432` | PgAdmin | Coming soon | Web UI for postgres DB |
+| `5432` | Postgres DB | - | Persistent database |
+| `5432` | PgAdmin | http://127.0.0.1:5050 | Web UI for postgres DB |
 | `3000` | frontend | http://127.0.0.1:3000/ | Web app for everything here |   
 | `9999` | backend  | http://127.0.0.1:9999/docs | Backend for app at port `3000` |
-| `8080` | NGINX |-| Reverse proxy for tasks API  |
-| `5672` | RabbitMQ port | - | Port for event producer and receiver |  
+| `8080` | NGINX | - | Reverse proxy for tasks API  |
 
 --- 
 
 ### Credits
 
-- Our contributors (you can be one of them to. Go to issues section and see if you can send a PR)
+- Our contributors (you can be one of them too. Go to issues section and see if you can send a PR)
 - Built on top of [katana-skipper workflow engine](https://github.com/katanaml/katana-skipper).
 - OCR powered by [MMOCR](https://github.com/open-mmlab/mmocr)
 - Data annotation with [Label Studio](https://github.com/heartexlabs/label-studio)

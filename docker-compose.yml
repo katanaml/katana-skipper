@@ -96,6 +96,32 @@ services:
       - api
     restart: on-failure
 
+  postgres:
+    container_name: postgres-service
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: test_db
+    ports:
+      - "5432:5432"
+    networks:
+      - network1
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4-service
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    networks:
+      - network1
+    restart: always
+
   backend:
     image: thinking/backend
     build:
@@ -108,7 +134,6 @@ services:
       - 9999:9999
     networks:
       - network1
-
     restart: always
     
   frontend:
