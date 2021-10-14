@@ -142,6 +142,8 @@ https://pypi.org/project/skipper-lib/
 
 You can use Skipper engine to run Web API, workflow and communicate with a group of ML microservices implemented under services package.
 
+Skipper can be deployed to any Cloud vendor with Kubernetes or Docker support. You can scale Skipper runtime on Cloud using Kubernetes commands.
+
 ## License
 
 Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-pipeline/blob/master/LICENSE).
