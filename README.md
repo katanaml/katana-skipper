@@ -2,7 +2,7 @@
 [![PyPI - Python](https://img.shields.io/badge/python-v3.7+-blue.svg)](https://github.com/katanaml/katana-skipper)
 [![GitHub Stars](https://img.shields.io/github/stars/katanaml/katana-skipper.svg)](https://github.com/katanaml/katana-skipper/stargazers) 
 [![GitHub Issues](https://img.shields.io/github/issues/katanaml/katana-skipper.svg)](https://github.com/katanaml/katana-skipper/issues) 
-[![Current Version](https://img.shields.io/badge/version-21.1-green.svg)](https://github.com/katanaml/katana-skipper)
+[![Current Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/katanaml/katana-skipper)
 
 This is a simple and flexible ML workflow engine. It helps to orchestrate events across a set of microservices and create executable flow to handle requests. Engine is designed to be configurable with any microservices. Enjoy!
 
@@ -10,7 +10,7 @@ This is a simple and flexible ML workflow engine. It helps to orchestrate events
 
 ## Author
 
-Katana ML, Andrej Baranovskij
+Katana ML, [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## Instructions
 
@@ -130,17 +130,15 @@ If running on local Kubernets, make sure port forwarding is enabled:
 kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 ```
 
-* PyPI
-
-```
-https://pypi.org/project/skipper-lib/
-```
+* **[PyPI](https://pypi.org/project/skipper-lib/)** - skipper-lib is on PyPI
 
 * **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud
 
 ## Usage
 
 You can use Skipper engine to run Web API, workflow and communicate with a group of ML microservices implemented under services package.
+
+Skipper can be deployed to any Cloud vendor with Kubernetes or Docker support. You can scale Skipper runtime on Cloud using Kubernetes commands.
 
 ## License
 
