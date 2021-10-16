@@ -91,6 +91,8 @@ from skipper_lib.events.event_producer import EventProducer
 │   ├── __main__.py
 │   ├── events
 │       ├── __init__.py
+│       ├── exchange_producer.py
+│       ├── exchange_receiver.py
 │       ├── event_producer.py
 │       └── event_receiver.py
 │   ├── logger
