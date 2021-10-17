@@ -4,6 +4,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, Input
 from skipper_lib.events.event_producer import EventProducer
+from skipper_lib.events.exchange_producer import ExchangeProducer
 import calendar
 import time
 import shutil
@@ -110,8 +111,6 @@ class TrainingService(object):
         # Test the model and print loss and rmse for both outputs
         loss, Y1_loss, Y2_loss, Y1_rmse, Y2_rmse = model.evaluate(x=norm_val_x, y=val_y)
 
-
-
         print()
         print(f'loss: {loss}')
         print(f'price_loss: {Y1_loss}')
@@ -155,6 +154,14 @@ class TrainingService(object):
         }
         content = json.dumps(data)
 
-        response = event_producer.call(os.getenv('QUEUE_NAME_STORAGE', 'skipper_storage'), content)
+        exchange_producer = ExchangeProducer(username=os.getenv('RABBITMQ_USER', 'skipper'),
+                                             password=os.getenv('RABBITMQ_PASSWORD', 'welcome1'),
+                                             host=os.getenv('RABBITMQ_HOST', '127.0.0.1'),
+                                             port=os.getenv('RABBITMQ_PORT', 5672),
+                                             service_name=os.getenv('SERVICE_NAME', 'training'),
+                                             logger=os.getenv('LOGGER_PRODUCER_URL',
+                                                              'http://127.0.0.1:5001/api/v1/skipper/logger/log_producer'))
 
-
+        exchange_producer.call(exchange=os.getenv('QUEUE_NAME_STORAGE', 'skipper_storage'),
+                               exchange_type='fanout',
+                               payload=content)
