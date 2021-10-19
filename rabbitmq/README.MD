@@ -88,7 +88,13 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 http://localhost:15672/ (skipper/welcome1)
 ```
 
-11. Delete all resources
+11. Scale RabbitMQ cluster
+
+```
+kubectl scale -n rabbits statefulsets rabbitmq --replicas=2
+```
+
+12. Delete all resources
 
 ```
 kubectl delete all --all -n rabbits
