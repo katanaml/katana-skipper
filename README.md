@@ -8,6 +8,8 @@ This is a simple and flexible ML workflow engine. It helps to orchestrate events
 
 ![Skipper](https://github.com/katanaml/katana-skipper/blob/master/skipper.png)
 
+Engine and Communication parts are generic and can be reused. Group of ML services is provided for a sample purposes. You should replace group of services with your own. Current group of ML services works with Boston Housing data. Data service is fetching Bostong Housing data and converts it to the format suitable for TensorFlow model training. Training service builds TensorFlow model. Serving services is scaled to 2 instances and it serves prediction requests.
+
 ## Author
 
 Katana ML, [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
