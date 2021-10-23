@@ -134,7 +134,9 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 
 * **[PyPI](https://pypi.org/project/skipper-lib/)** - skipper-lib is on PyPI
 
-* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud
+* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud Infrastructure
+
+* **[GCP](https://github.com/katanaml/katana-skipper/blob/master/README-GCP.md)** - deployment guide for Google Cloud Platform
 
 ## Usage
 
