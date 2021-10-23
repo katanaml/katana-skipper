@@ -8,6 +8,8 @@ This is a simple and flexible ML workflow engine. It helps to orchestrate events
 
 ![Skipper](https://github.com/katanaml/katana-skipper/blob/master/skipper.png)
 
+Engine and Communication parts are generic and can be reused. A group of ML services is provided for sample purposes. You should replace a group of services with your own. The current group of ML services works with Boston Housing data. Data service is fetching Boston Housing data and converts it to the format suitable for TensorFlow model training. Training service builds TensorFlow model. Serving service is scaled to 2 instances and it serves prediction requests.
+
 ## Author
 
 Katana ML, [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
@@ -132,7 +134,9 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 
 * **[PyPI](https://pypi.org/project/skipper-lib/)** - skipper-lib is on PyPI
 
-* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud
+* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud Infrastructure
+
+* **[GCP](https://github.com/katanaml/katana-skipper/blob/master/README-GCP.md)** - deployment guide for Google Cloud Platform
 
 ## Usage
 
