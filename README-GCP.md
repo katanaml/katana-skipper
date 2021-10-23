@@ -8,13 +8,13 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
-1. Push Skipper images to Docker registry, this registry should be accessible from OCI
+1. Push Skipper images to Docker registry, this registry should be accessible from GCP
 
-2. Open OCI Cloud Shell, follow OCI instructions in Kubernetes setup wizard
+2. Open GCP Cloud Shell, follow GCP instructions in Kubernetes setup wizard
 
-![OCI](https://github.com/katanaml/katana-skipper/blob/master/oci-shell.png)
+![OCI](https://github.com/katanaml/katana-skipper/blob/master/gcp-shell.png)
 
-3. Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#oracle-cloud-infrastructure) for OCI
+3. Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke) for GCP
 
 4. Clone Skipper repo
 
@@ -72,9 +72,7 @@ http://<Load Balancer IP>/api/v1/skipper/tasks/docs
 
 Check Load Balancer IP:
 
-![LoadBalancer](https://github.com/katanaml/katana-skipper/blob/master/oci-loadbalancer.png)
-
-13. More info about Kubernetes cluster management on [OCI](https://docs.oracle.com/en/learn/container_engine_kubernetes/#introduction)
+![LoadBalancer](https://github.com/katanaml/katana-skipper/blob/master/gcp-loadbalancer.png)
 
 ## License
 
