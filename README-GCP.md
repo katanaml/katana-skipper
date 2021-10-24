@@ -40,7 +40,7 @@ vim api/api-ingress.yaml
 kubectl apply -f services/trainingservice/trainingservice-pv.yaml
 ```
 
-8. Edit services/trainingservice/trainingservice-pvc.yaml, change it to support dynamic provisioning for Persisten Volume, remove storageClassName
+8. Edit services/trainingservice/trainingservice-pvc.yaml, change it to support dynamic provisioning for Persistent Volume, remove storageClassName
 
 ```
 vim services/trainingservice/trainingservice-pvc.yaml
@@ -65,7 +65,7 @@ spec:
 kubectl apply -f services/servingservice/servingservice-pv.yaml
 ```
 
-10. Edit services/servingservice/servingservice-pvc.yaml, change it to support dynamic provisioning for Persisten Volume, remove storageClassName
+10. Edit services/servingservice/servingservice-pvc.yaml, change it to support dynamic provisioning for Persistent Volume, remove storageClassName
 
 ```
 vim services/servingservice/servingservice-pvc.yaml
