@@ -84,13 +84,34 @@ spec:
       storage: 500Mi
 ```
 
-11. Setup Kubernetes services:
+11. Training service runs multiple Pods, we must assign all Pod instances to the same Kubernetes node, to make sure all instances can access Persistent Volume. Read more - [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
+
+```
+kubectl get nodes
+```
+
+```
+kubectl label nodes <node-name> skipper=serving
+```
+
+```
+kubectl get nodes --show-labels
+```
+
+12. Add nodeSelector to servingservice-pod.yaml
+
+```
+nodeSelector:
+    skipper: serving
+```
+
+12. Setup Kubernetes services:
 
 ```
 ./kubectl-setup.sh
 ```
 
-12. Skipper API endpoint URL
+13. Skipper API endpoint URL
 
 ```
 http://<Load Balancer IP>/api/v1/skipper/tasks/docs
