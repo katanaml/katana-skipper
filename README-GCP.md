@@ -34,28 +34,54 @@ vim rabbitmq/rabbit-statefulset.yaml
 vim api/api-ingress.yaml
 ```
 
-7. Edit services/trainingservice/trainingservice-pv.yaml, change storageClassName to 'standard-rwo'
+7. There is no need to create Persistent Volume on GCP, it will be provisioned automatically by Volume Claim. Remove this line from kubectl-setup.sh:
 
 ```
-vim services/trainingservice/trainingservice-pv.yaml
+kubectl apply -f services/trainingservice/trainingservice-pv.yaml
 ```
 
-8. Edit services/trainingservice/trainingservice-pvc.yaml, change storageClassName to 'standard-rwo'
+8. Edit services/trainingservice/trainingservice-pvc.yaml, change it to support dynamic provisioning for Persisten Volume, remove storageClassName
 
 ```
 vim services/trainingservice/trainingservice-pvc.yaml
 ```
 
-9. Edit services/servingservice/servingservice-pv.yaml, change storageClassName to 'standard-rwo'
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: training-service-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+```
+
+9. There is no need to create Persistent Volume on GCP, it will be provisioned automatically by Volume Claim. Remove this line from kubectl-setup.sh:
 
 ```
-vim services/servingservice/servingservice-pv.yaml
+kubectl apply -f services/servingservice/servingservice-pv.yaml
 ```
 
-10. Edit services/servingservice/servingservice-pvc.yaml, change storageClassName to 'standard-rwo'
+10. Edit services/servingservice/servingservice-pvc.yaml, change it to support dynamic provisioning for Persisten Volume, remove storageClassName
 
 ```
 vim services/servingservice/servingservice-pvc.yaml
+```
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: serving-service-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
 ```
 
 11. Setup Kubernetes services:
