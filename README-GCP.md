@@ -105,13 +105,13 @@ nodeSelector:
     skipper: serving
 ```
 
-12. Setup Kubernetes services:
+13. Setup Kubernetes services:
 
 ```
 ./kubectl-setup.sh
 ```
 
-13. Skipper API endpoint URL
+14. Skipper API endpoint URL
 
 ```
 http://<Load Balancer IP>/api/v1/skipper/tasks/docs
