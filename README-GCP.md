@@ -22,40 +22,40 @@ Katana ML, Andrej Baranovskij
 git clone https://github.com/katanaml/katana-skipper
 ```
 
-5. Edit rabbitmq/rabbit-statefulset.yaml file, change storageClassName to 'oci'
+5. Edit rabbitmq/rabbit-statefulset.yaml file, change storageClassName to 'standard-rwo'
 
 ```
-nano rabbitmq/rabbit-statefulset.yaml
+vim rabbitmq/rabbit-statefulset.yaml
 ```
 
-6. Edit api/api-ingress.yaml file, remove 'host' element to configure Ingress with OCI public IP
+6. Edit api/api-ingress.yaml file, remove 'host' element to configure Ingress with GCP public IP
 
 ```
-nano api/api-ingress.yaml
+vim api/api-ingress.yaml
 ```
 
-7. Edit services/trainingservice/trainingservice-pv.yaml, change storageClassName to 'oci'
+7. Edit services/trainingservice/trainingservice-pv.yaml, change storageClassName to 'standard-rwo'
 
 ```
-nano services/trainingservice/trainingservice-pv.yaml
+vim services/trainingservice/trainingservice-pv.yaml
 ```
 
-8. Edit services/trainingservice/trainingservice-pvc.yaml, change storageClassName to 'oci'
+8. Edit services/trainingservice/trainingservice-pvc.yaml, change storageClassName to 'standard-rwo'
 
 ```
-nano services/trainingservice/trainingservice-pvc.yaml
+vim services/trainingservice/trainingservice-pvc.yaml
 ```
 
-9. Edit services/servingservice/servingservice-pv.yaml, change storageClassName to 'oci'
+9. Edit services/servingservice/servingservice-pv.yaml, change storageClassName to 'standard-rwo'
 
 ```
-nano services/servingservice/servingservice-pv.yaml
+vim services/servingservice/servingservice-pv.yaml
 ```
 
-10. Edit services/servingservice/servingservice-pvc.yaml, change storageClassName to 'oci'
+10. Edit services/servingservice/servingservice-pvc.yaml, change storageClassName to 'standard-rwo'
 
 ```
-nano services/servingservice/servingservice-pvc.yaml
+vim services/servingservice/servingservice-pvc.yaml
 ```
 
 11. Setup Kubernetes services:
