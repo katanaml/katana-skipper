@@ -106,7 +106,7 @@ Remove Kubernetes services:
 * **[skipper-lib](https://github.com/katanaml/katana-skipper/tree/master/skipper-lib)** - reusable Python library to streamline event communication through RabbitMQ
 * **[logger](https://github.com/katanaml/katana-skipper/tree/master/logger)** - logger service
 
-### URLs
+### API URLs
 
 * Web API
 
@@ -131,6 +131,8 @@ If running on local Kubernets, make sure port forwarding is enabled:
 ```
 kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 ```
+
+## Skipper Library on PyPI
 
 * **[PyPI](https://pypi.org/project/skipper-lib/)** - skipper-lib is on PyPI
 
