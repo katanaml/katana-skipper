@@ -12,7 +12,7 @@ Katana ML, Andrej Baranovskij
 
 2. Open GKE Cloud Shell, follow GKE instructions in Kubernetes setup wizard
 
-![OCI](https://github.com/katanaml/katana-skipper/blob/master/gcp-shell.png)
+![OCI](https://github.com/katanaml/katana-skipper/blob/master/gke-shell.png)
 
 3. Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke) for GKE
 
@@ -119,7 +119,7 @@ http://<Load Balancer IP>/api/v1/skipper/tasks/docs
 
 Check Load Balancer IP:
 
-![LoadBalancer](https://github.com/katanaml/katana-skipper/blob/master/gcp-loadbalancer.png)
+![LoadBalancer](https://github.com/katanaml/katana-skipper/blob/master/gke-loadbalancer.png)
 
 ## License
 
