@@ -138,7 +138,7 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 
 ## Cloud Deployment Guides
 
-* **[OCI](https://github.com/katanaml/katana-skipper/blob/master/README-OCI.md)** - deployment guide for Oracle Cloud Infrastructure
+* **[OKE](https://github.com/katanaml/katana-skipper/blob/master/README-OKE.md)** - deployment guide for Oracle Container Engine for Kubernetes
 
 * **[GKE](https://github.com/katanaml/katana-skipper/blob/master/README-GKE.md)** - deployment guide for Google Kubernetes Engine
 
