@@ -12,7 +12,7 @@ Katana ML, Andrej Baranovskij
 
 2. Open OCI Cloud Shell, follow OCI instructions in Kubernetes setup wizard
 
-![OCI](https://github.com/katanaml/katana-skipper/blob/master/oci-shell.png)
+![OCI](https://github.com/katanaml/katana-skipper/blob/master/oke-shell.png)
 
 3. Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#oracle-cloud-infrastructure) for OCI
 
@@ -72,7 +72,7 @@ http://<Load Balancer IP>/api/v1/skipper/tasks/docs
 
 Check Load Balancer IP:
 
-![LoadBalancer](https://github.com/katanaml/katana-skipper/blob/master/oci-loadbalancer.png)
+![LoadBalancer](https://github.com/katanaml/katana-skipper/blob/master/oke-loadbalancer.png)
 
 13. More info about Kubernetes cluster management on [OCI](https://docs.oracle.com/en/learn/container_engine_kubernetes/#introduction)
 
