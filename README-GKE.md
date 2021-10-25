@@ -1,6 +1,6 @@
-# Katana ML Skipper GCP
+# Katana ML Skipper GKE
 
-Deployment Guide for Google Cloud Platform (GCP).
+Deployment Guide for Google Kubernetes Engine (GKE).
 
 ## Author
 
@@ -8,13 +8,13 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
-1. Push Skipper images to Docker registry, this registry should be accessible from GCP
+1. Push Skipper images to Docker registry, this registry should be accessible from GKE
 
-2. Open GCP Cloud Shell, follow GCP instructions in Kubernetes setup wizard
+2. Open GKE Cloud Shell, follow GKE instructions in Kubernetes setup wizard
 
 ![OCI](https://github.com/katanaml/katana-skipper/blob/master/gcp-shell.png)
 
-3. Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke) for GCP
+3. Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke) for GKE
 
 4. Clone Skipper repo
 
@@ -28,13 +28,13 @@ git clone https://github.com/katanaml/katana-skipper
 vim rabbitmq/rabbit-statefulset.yaml
 ```
 
-6. Edit api/api-ingress.yaml file, remove 'host' element to configure Ingress with GCP public IP
+6. Edit api/api-ingress.yaml file, remove 'host' element to configure Ingress with GKE public IP
 
 ```
 vim api/api-ingress.yaml
 ```
 
-7. There is no need to create Persistent Volume on GCP, it will be provisioned automatically by Volume Claim. Remove this line from kubectl-setup.sh:
+7. There is no need to create Persistent Volume on GKE, it will be provisioned automatically by Volume Claim. Remove this line from kubectl-setup.sh:
 
 ```
 kubectl apply -f services/trainingservice/trainingservice-pv.yaml
@@ -59,7 +59,7 @@ spec:
       storage: 500Mi
 ```
 
-9. There is no need to create Persistent Volume on GCP, it will be provisioned automatically by Volume Claim. Remove this line from kubectl-setup.sh:
+9. There is no need to create Persistent Volume on GKE, it will be provisioned automatically by Volume Claim. Remove this line from kubectl-setup.sh:
 
 ```
 kubectl apply -f services/servingservice/servingservice-pv.yaml
