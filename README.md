@@ -150,6 +150,8 @@ Skipper can be deployed to any Cloud vendor with Kubernetes or Docker support. Y
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/nXHDSehjxV0/0.jpg)](https://www.youtube.com/watch?v=nXHDSehjxV0 "MLOps: Extend Skipper ML Services")
 
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/Xx5mrRMRXKQ/0.jpg)](https://www.youtube.com/watch?v=Xx5mrRMRXKQ "BIY Workflow with FastAPI, Python and Skipper")
+
 ## License
 
 Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-pipeline/blob/master/LICENSE).
