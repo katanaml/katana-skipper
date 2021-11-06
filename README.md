@@ -32,7 +32,7 @@ Stop:
 docker-compose down
 ```
 
-This will start RabbitMQ container. To run engine and services, navigate to related folders and follow instructions.
+This will start Skipper services and RabbitMQ.
 
 Web API FastAPI endpoint:
 
