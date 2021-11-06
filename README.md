@@ -26,13 +26,13 @@ Start:
 docker-compose up --build -d
 ```
 
+This will start Skipper services and RabbitMQ.
+
 Stop:
 
 ```
 docker-compose down
 ```
-
-This will start Skipper services and RabbitMQ.
 
 Web API FastAPI endpoint:
 
