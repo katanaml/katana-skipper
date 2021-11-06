@@ -108,7 +108,7 @@ Remove Kubernetes services:
 
 ### API URLs
 
-* Web API
+* Web API:
 
 ```
 http://127.0.0.1:8080/api/v1/skipper/tasks/docs
