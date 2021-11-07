@@ -26,13 +26,13 @@ Start:
 docker-compose up --build -d
 ```
 
+This will start Skipper services and RabbitMQ.
+
 Stop:
 
 ```
 docker-compose down
 ```
-
-This will start RabbitMQ container. To run engine and services, navigate to related folders and follow instructions.
 
 Web API FastAPI endpoint:
 
@@ -108,7 +108,7 @@ Remove Kubernetes services:
 
 ### API URLs
 
-* Web API
+* Web API:
 
 ```
 http://127.0.0.1:8080/api/v1/skipper/tasks/docs
@@ -149,6 +149,8 @@ You can use Skipper engine to run Web API, workflow and communicate with a group
 Skipper can be deployed to any Cloud vendor with Kubernetes or Docker support. You can scale Skipper runtime on Cloud using Kubernetes commands.
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/nXHDSehjxV0/0.jpg)](https://www.youtube.com/watch?v=nXHDSehjxV0 "MLOps: Extend Skipper ML Services")
+
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/Xx5mrRMRXKQ/0.jpg)](https://www.youtube.com/watch?v=Xx5mrRMRXKQ "BIY Workflow with FastAPI, Python and Skipper")
 
 ## License
 
