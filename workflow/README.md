@@ -44,7 +44,7 @@ docker build --tag katanaml/skipper-workflow .
 docker run -it -d --name skipper-workflow -p 5000:5000  katanaml/skipper-workflow:latest
 ```
 
-3. Logger FastAPI endpoints
+3. Workflow FastAPI endpoints
 
 ```
 http://127.0.0.1:5000/docs
