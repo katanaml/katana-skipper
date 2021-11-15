@@ -3,6 +3,7 @@
 - Data processing service
 - ML model training service
 - ML model serving service
+- Mobilenet - TensorFlow.js model service
 
 ## Author
 
