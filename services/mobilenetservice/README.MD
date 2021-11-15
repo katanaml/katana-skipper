@@ -1,4 +1,4 @@
-# Katana ML Skipper Data Service
+# Katana ML Skipper Hello Service
 
 ## Author
 
@@ -6,7 +6,17 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
+This is a sample service implementation with JavaScript
+
 To run all services, check instructions in main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
+
+
+Setup:
+
+1. npm init -y
+
+2. npm install --save amqplib
+
 
 #### Run the service without Docker
 
@@ -40,7 +50,7 @@ docker run -it -d --name data-service katanaml/data-service:latest
 
 ```
 .
-├── app 
+├── app
 │   └── data_service.py
 ├── main.py
 ├── Dockerfile
