@@ -20,31 +20,11 @@ Setup:
 
 #### Run the service without Docker
 
-1. Install libraries
 
-```
-pip install -r requirements.txt
-```
-
-2. Start service
-
-```
-python main.py
-```
 
 #### Build and run individual container
 
-1. Build container
 
-```
-docker build --tag katanaml/data-service .
-```
-
-2. Run container
-
-```
-docker run -it -d --name data-service katanaml/data-service:latest
-```
 
 ## Structure
 
