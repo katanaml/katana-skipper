@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from .models import WorkflowTask, WorkflowTaskResult, WorkflowTaskData, WorkflowTaskCancelled, WorkflowTaskDataMobileNet
+from .models import WorkflowTask, WorkflowTaskResult, WorkflowTaskCancelled
+from .models import WorkflowTaskDataTraining, WorkflowTaskDataPredict, WorkflowTaskDataMobileNet
 from .tasks import process_workflow
 from celery.result import AsyncResult
 from fastapi.responses import JSONResponse
@@ -17,7 +18,7 @@ def touch():
 
 
 @router_tasks.post('/execute_async', response_model=WorkflowTask, status_code=202)
-def exec_workflow_task_async(workflow_task_data: WorkflowTaskData):
+def exec_workflow_task_async(workflow_task_data: WorkflowTaskDataTraining):
     payload = workflow_task_data.json()
 
     task_id = process_workflow.delay(payload)
@@ -42,7 +43,7 @@ async def exec_workflow_task_result(task_id):
 
 @router_tasks.post('/execute_sync', response_model=WorkflowTaskResult, status_code=202,
                    responses={202: {'model': WorkflowTaskCancelled, 'description': 'Accepted: Not Ready'}})
-def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
+def exec_workflow_task_sync(workflow_task_data: WorkflowTaskDataPredict):
     response = sync_request_helper(workflow_task_data)
 
     return {'task_id': '-',

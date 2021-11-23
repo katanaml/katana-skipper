@@ -10,8 +10,14 @@ class TaskType(str, Enum):
     MOBILENET = 'mobilenet'
 
 
-class WorkflowTaskData(BaseModel):
-    task_type: TaskType
+class WorkflowTaskDataTraining(BaseModel):
+    task_type: TaskType = TaskType.TRAINING
+    payload: str
+    description: Optional[str] = None
+
+
+class WorkflowTaskDataPredict(BaseModel):
+    task_type: TaskType = TaskType.SERVING
     payload: str
     data: Optional[create_model('Data',
                                 crim=(float, ...),
@@ -30,7 +36,7 @@ class WorkflowTaskData(BaseModel):
 
 
 class WorkflowTaskDataMobileNet(BaseModel):
-    task_type: TaskType
+    task_type: TaskType = TaskType.MOBILENET
     payload: str
     data: Optional[create_model('DataMobileNet',
                                 image='hello.jpg')] = None
