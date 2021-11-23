@@ -9,9 +9,9 @@ router = APIRouter(
 )
 
 
-@router.post('/execute_sync', response_model=WorkflowTaskResult, status_code=202,
+@router.post('/task_predict', response_model=WorkflowTaskResult, status_code=202,
              responses={202: {'model': WorkflowTaskCancelled, 'description': 'Accepted: Not Ready'}})
-def exec_workflow_task_mobilenet_sync(workflow_task_data: WorkflowTaskDataMobileNet):
+def task_predict(workflow_task_data: WorkflowTaskDataMobileNet):
     response = sync_request_helper(workflow_task_data)
 
     return {'task_id': '-',
