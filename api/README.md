@@ -162,8 +162,12 @@ kubectl delete all --all -n katana-skipper
 .
 ├── api 
 │   ├── models.py
-│   ├── router.py
 │   ├── tasks.py
+│   ├── dependencies.py
+├── ├──routers
+│       ├── boston.py
+│       ├── mobilenet.py
+│       └── skipper.py
 │   └── worker.py
 ├── endpoint.py
 ├── Dockerfile
