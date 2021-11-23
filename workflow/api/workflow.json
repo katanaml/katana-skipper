@@ -4,5 +4,8 @@
    },
    {
       "training_async":"skipper_training"
+   },
+   {
+      "mobilenet_sync":"skipper_mobilenet"
    }
 ]

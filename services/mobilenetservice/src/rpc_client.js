@@ -17,9 +17,8 @@ function startProducer() {
                     throw error2;
                 }
                 var correlationId = generateUuid();
-                var num = parseInt(3);
 
-                console.log(' [x] Requesting fib(%d)', num);
+                console.log(' [x] Calling server');
 
                 channel.consume(q.queue, function (msg) {
                     if (msg.properties.correlationId === correlationId) {
@@ -33,8 +32,8 @@ function startProducer() {
                     noAck: true
                 });
 
-                channel.sendToQueue('rpc_queue',
-                    Buffer.from(num.toString()), {
+                channel.sendToQueue('skipper_mobilenet',
+                    Buffer.from('INPUT'), {
                     correlationId: correlationId,
                     replyTo: q.queue
                 });

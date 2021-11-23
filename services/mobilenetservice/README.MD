@@ -1,4 +1,4 @@
-# Katana ML Skipper Hello Service
+# Katana ML Skipper Mobilenet Service
 
 ## Author
 
@@ -16,6 +16,8 @@ Setup:
 1. npm init -y
 
 2. npm install --save amqplib
+
+3. npm install --save http
 
 
 #### Run the service without Docker

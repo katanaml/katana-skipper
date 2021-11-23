@@ -205,4 +205,3 @@ logger/.idea/vcs.xml
 # Node.js
 
 services/mobilenetservice/node_modules/
-services/mobilenetservice/package-lock.json

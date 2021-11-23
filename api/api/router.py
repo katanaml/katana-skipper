@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from .models import WorkflowTask, WorkflowTaskResult, WorkflowTaskData, WorkflowTaskCancelled
+from .models import WorkflowTask, WorkflowTaskResult, WorkflowTaskData, WorkflowTaskCancelled, WorkflowTaskDataMobileNet
 from .tasks import process_workflow
 from celery.result import AsyncResult
 from fastapi.responses import JSONResponse
@@ -43,6 +43,24 @@ async def exec_workflow_task_result(task_id):
 @router_tasks.post('/execute_sync', response_model=WorkflowTaskResult, status_code=202,
                    responses={202: {'model': WorkflowTaskCancelled, 'description': 'Accepted: Not Ready'}})
 def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
+    response = sync_request_helper(workflow_task_data)
+
+    return {'task_id': '-',
+            'task_status': 'Success',
+            'outcome': str(response)}
+
+
+@router_tasks.post('/execute_sync_mobilenet', response_model=WorkflowTaskResult, status_code=202,
+                   responses={202: {'model': WorkflowTaskCancelled, 'description': 'Accepted: Not Ready'}})
+def exec_workflow_task_mobilenet_sync(workflow_task_data: WorkflowTaskDataMobileNet):
+    response = sync_request_helper(workflow_task_data)
+
+    return {'task_id': '-',
+            'task_status': 'Success',
+            'outcome': str(response)}
+
+
+def sync_request_helper(workflow_task_data):
     payload = workflow_task_data.json()
 
     queue_name = workflow_helper.call(workflow_task_data.task_type,
@@ -64,6 +82,4 @@ def exec_workflow_task_sync(workflow_task_data: WorkflowTaskData):
                                                     'http://127.0.0.1:5001/api/v1/skipper/logger/log_producer'))
     response = json.loads(event_producer.call(queue_name, payload))
 
-    return {'task_id': '-',
-            'task_status': 'Success',
-            'outcome': str(response)}
+    return response

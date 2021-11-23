@@ -7,6 +7,7 @@ from typing import Optional
 class TaskType(str, Enum):
     TRAINING = 'training'
     SERVING = 'serving'
+    MOBILENET = 'mobilenet'
 
 
 class WorkflowTaskData(BaseModel):
@@ -25,6 +26,14 @@ class WorkflowTaskData(BaseModel):
                                 tax=(int, ...),
                                 b=(float, ...),
                                 lstat=4.98)] = None
+    description: Optional[str] = None
+
+
+class WorkflowTaskDataMobileNet(BaseModel):
+    task_type: TaskType
+    payload: str
+    data: Optional[create_model('DataMobileNet',
+                                image='hello.jpg')] = None
     description: Optional[str] = None
 
 

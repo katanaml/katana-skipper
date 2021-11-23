@@ -18,11 +18,9 @@ function startReceiver() {
             channel.prefetch(1);
             console.log(' [x] Awaiting RPC requests');
             channel.consume(queue, function reply(msg) {
-                var n = parseInt(msg.content.toString());
+                // var n = parseInt(msg.content.toString());
 
-                console.log(" [.] fib(%d)", n);
-
-                var r = fibonacci(n);
+                var r = on_request(1);
 
                 channel.sendToQueue(msg.properties.replyTo,
                     Buffer.from(r.toString()), {
@@ -35,11 +33,9 @@ function startReceiver() {
     });
 }
 
-function fibonacci(n) {
-    if (n === 0 || n === 1)
-        return n;
-    else
-        return fibonacci(n - 1) + fibonacci(n - 2);
+function on_request(param) {
+    console.log(param);
+    return 'OK';
 }
 
 function main() {
