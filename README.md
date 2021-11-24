@@ -106,6 +106,7 @@ Remove Kubernetes services:
 * **[services](https://github.com/katanaml/katana-skipper/tree/master/services)** - a set of sample microservices, you should replace this with your own services. Update references in docker-compose.yml
 * **[rabbitmq](https://github.com/katanaml/katana-skipper/tree/master/rabbitmq)** - service for RabbitMQ broker
 * **[skipper-lib](https://github.com/katanaml/katana-skipper/tree/master/skipper-lib)** - reusable Python library to streamline event communication through RabbitMQ
+* **[skipper-lib-js](https://github.com/katanaml/katana-skipper/tree/master/skipper-lib-js)** - reusable Node.js library to streamline event communication through RabbitMQ
 * **[logger](https://github.com/katanaml/katana-skipper/tree/master/logger)** - logger service
 
 ### API URLs
@@ -137,6 +138,10 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 ## Skipper Library on PyPI
 
 * **[PyPI](https://pypi.org/project/skipper-lib/)** - skipper-lib is on PyPI
+
+## Skipper Library on NPM
+
+* **[NPM](https://www.npmjs.com/package/@katanaml/skipper-lib-js)** - skipper-lib-js is on NPM
 
 ## Cloud Deployment Guides
 
