@@ -205,3 +205,4 @@ logger/.idea/vcs.xml
 # Node.js
 
 services/mobilenetservice/node_modules/
+skipper-lib-js/node_modules/

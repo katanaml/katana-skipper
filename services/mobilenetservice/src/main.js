@@ -1,4 +1,4 @@
-const EventReceiver = require('./lib/event_receiver.js')
+const EventReceiver = require('@katanaml/skipper-lib-js/skipper/events/event_receiver')
 const MobilenetService = require('./app/mobilenet_service.js')
 
 var RABBITMQ_USER = process.env.RABBITMQ_USER;

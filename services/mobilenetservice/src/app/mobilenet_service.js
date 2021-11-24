@@ -1,4 +1,4 @@
-const EventProducer = require('./../lib/event_producer.js')
+const EventProducer = require('@katanaml/skipper-lib-js/skipper/events/event_producer')
 
 var RABBITMQ_USER = process.env.RABBITMQ_USER;
 if (!process.env.RABBITMQ_USER) {
