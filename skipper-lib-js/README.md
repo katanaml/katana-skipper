@@ -10,6 +10,8 @@ Supported functionality:
 
 - API to communicate with RabbitMQ for event receiver/producer
 
+Read more - [Katana ML](https://github.com/katanaml/katana-skipper)
+
 ## Author
 
 Katana ML, Andrej Baranovskij
@@ -46,6 +48,20 @@ var data = {
 }
 data = JSON.stringify(data);
 event_producer.call(this.processResponse, data, LOGGER_RECEIVER_URL, QUEUE_NAME_DATA, SERVICE_NAME);
+```
+
+## Setup
+
+1. Set new version
+
+```
+npm version minor
+```
+
+2. Publish
+
+```
+npm publish
 ```
 
 ## Structure

@@ -1,11 +1,13 @@
 {
     "name": "@katanaml/skipper-lib-js",
-    "version": "1.0.0",
-    "description": "Removes all spaces from a string",
+    "version": "1.3.0",
+    "description": "Helper library for Katana ML Skipper workflow product",
     "license": "Apache-2.0",
     "repository": "katanaml/katana-skipper",
     "keywords": [
-        "ml",
+        "machine learning",
+        "docker",
+        "node",
         "workflow",
         "kubernetes",
         "tensorflow",
