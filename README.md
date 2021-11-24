@@ -139,6 +139,10 @@ kubectl -n rabbits port-forward rabbitmq-0 15672:15672
 
 * **[PyPI](https://pypi.org/project/skipper-lib/)** - skipper-lib is on PyPI
 
+## Skipper Library on NPM
+
+* **[NPM](https://www.npmjs.com/package/@katanaml/skipper-lib-js)** - skipper-lib-js is on NPM
+
 ## Cloud Deployment Guides
 
 * **[OKE](https://github.com/katanaml/katana-skipper/blob/master/README-OKE.md)** - deployment guide for Oracle Container Engine for Kubernetes
