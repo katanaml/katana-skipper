@@ -17,7 +17,7 @@ Katana ML, Andrej Baranovskij
 ## Install
 
 ```
-$ npm install @bamblehorse/tiny
+$ npm install @katanaml/skipper-lib-js
 ```
 
 ## Usage
@@ -39,13 +39,13 @@ var event_producer = new EventProducer(
             RABBITMQ_HOST,
             RABBITMQ_PORT);
 
-        var data = {
-            'task_type': 'training',
-            'payload': '0.2',
-            'description': 'string'
-        }
-        data = JSON.stringify(data);
-        event_producer.call(this.processResponse, data, LOGGER_RECEIVER_URL, QUEUE_NAME_DATA, SERVICE_NAME);
+var data = {
+    'task_type': 'training',
+    'payload': '0.2',
+    'description': 'string'
+}
+data = JSON.stringify(data);
+event_producer.call(this.processResponse, data, LOGGER_RECEIVER_URL, QUEUE_NAME_DATA, SERVICE_NAME);
 ```
 
 ## Structure
@@ -53,23 +53,11 @@ var event_producer = new EventProducer(
 ```
 .
 ├── LICENSE
-├── poetry.lock
-├── pyproject.toml
-├── skipper_lib
-│   ├── __init__.py
-│   ├── __main__.py
+├── package.json
+├── skipper
 │   ├── events
-│       ├── __init__.py
-│       ├── exchange_producer.py
-│       ├── exchange_receiver.py
 │       ├── event_producer.py
 │       └── event_receiver.py
-│   ├── logger
-│       ├── __init__.py
-│       └── logger_helper.py
-│   ├── workflow
-│       ├── __init__.py
-│       └── workflow_helper.py
 └── README.md
 ```
 
