@@ -1,5 +1,5 @@
 {
-  "name": "helloservice",
+  "name": "mobilenetservice",
   "version": "1.0.0",
   "description": "Katana ML",
   "main": "index.js",
