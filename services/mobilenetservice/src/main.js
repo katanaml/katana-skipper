@@ -31,7 +31,7 @@ if (!process.env.LOGGER_RECEIVER_URL) {
 }
 
 function main() {
-    event_receiver = new EventReceiver(RABBITMQ_USER, 
+    var event_receiver = new EventReceiver(RABBITMQ_USER, 
                                        RABBITMQ_PASSWORD, 
                                        RABBITMQ_HOST, 
                                        RABBITMQ_PORT, 
