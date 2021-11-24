@@ -1,4 +1,14 @@
 {
     "name": "@katanaml/skipper-lib-js",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "Removes all spaces from a string",
+    "license": "Apache-2.0",
+    "repository": "katanaml/katana-skipper",
+    "keywords": [
+        "ml",
+        "workflow",
+        "kubernetes",
+        "tensorflow",
+        "rabbitmq"
+    ]
 }
