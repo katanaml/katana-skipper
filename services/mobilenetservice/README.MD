@@ -19,7 +19,13 @@ To run all services, check instructions in main [README](https://github.com/kata
 npm install --save @katanaml/skipper-lib-js
 ```
 
-2. Start service
+2. Install TensorFlow.js Node (follow [instructions](https://www.npmjs.com/package/@tensorflow/tfjs-node))
+
+```
+npm install @tensorflow/tfjs-node
+```
+
+3. Start service
 
 ```
 node src/main.js
