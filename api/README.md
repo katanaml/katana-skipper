@@ -6,7 +6,7 @@ To make the API generic, there is a Worklow service, called through Requests. Ba
 
 ## Author
 
-Katana ML, Andrej Baranovskij
+[Katana ML](https://katanaml.io), [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## Instructions
 
