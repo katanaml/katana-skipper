@@ -12,7 +12,7 @@ Supported functionality:
 
 ## Author
 
-Katana ML, Andrej Baranovskij
+[Katana ML](https://katanaml.io), [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## Instructions
 
@@ -106,4 +106,4 @@ from skipper_lib.events.event_producer import EventProducer
 
 ## License
 
-Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-pipeline/blob/master/LICENSE).
+Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-skipper/blob/master/LICENSE).
