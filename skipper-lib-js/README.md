@@ -50,7 +50,7 @@ data = JSON.stringify(data);
 event_producer.call(this.processResponse, data, LOGGER_RECEIVER_URL, QUEUE_NAME_DATA, SERVICE_NAME);
 ```
 
-## Setup
+## Publishing on NPM
 
 1. Set new version
 
