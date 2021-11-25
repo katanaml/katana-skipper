@@ -6,7 +6,7 @@ Katana ML, Andrej Baranovskij
 
 ## Instructions
 
-This is a sample service implementation with JavaScript
+This is a sample service implementation with JavaScript and Node.js
 
 To run all services, check instructions in main [README](https://github.com/katanaml/katana-skipper/blob/master/README.md)
 
