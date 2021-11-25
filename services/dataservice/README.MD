@@ -2,7 +2,7 @@
 
 ## Author
 
-Katana ML, Andrej Baranovskij
+[Katana ML](https://katanaml.io), [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## Instructions
 
@@ -50,4 +50,4 @@ docker run -it -d --name data-service katanaml/data-service:latest
 
 ## License
 
-Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-pipeline/blob/master/LICENSE).
+Licensed under the Apache License, Version 2.0. Copyright 2020-2021 Katana ML, Andrej Baranovskij. [Copy of the license](https://github.com/katanaml/katana-skipper/blob/master/LICENSE).
