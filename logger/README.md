@@ -4,7 +4,7 @@ Logger service, logging runs in the background, without blocking API endpoint.
 
 ## Author
 
-Katana ML, Andrej Baranovskij
+[Katana ML](https://katanaml.io), [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## Instructions
 
