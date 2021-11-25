@@ -19,7 +19,7 @@ Read more - [Katana ML](https://github.com/katanaml/katana-skipper)
 ## Install
 
 ```
-$ npm install @katanaml/skipper-lib-js
+$ npm install --save @katanaml/skipper-lib-js
 ```
 
 ## Usage
