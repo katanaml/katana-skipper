@@ -14,7 +14,7 @@ One of the services, *mobilenetservice*, shows how to use JavaScript based micro
 
 ## Author
 
-Katana ML, [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
+[Katana ML](https://katanaml.io), [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## Instructions
 
