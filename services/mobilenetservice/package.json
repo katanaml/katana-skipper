@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@katanaml/skipper-lib-js": "^1.4.0",
-    "@tensorflow/tfjs-node": "^3.11.0"
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow/tfjs-node": "^3.11.0",
+    "canvas": "^2.8.0"
   }
 }

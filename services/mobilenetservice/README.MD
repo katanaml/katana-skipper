@@ -25,7 +25,19 @@ npm install --save @katanaml/skipper-lib-js
 npm install @tensorflow/tfjs-node
 ```
 
-3. Start service
+3. Install TensorFlow.js MobileNet [model](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet)
+
+```
+npm install @tensorflow-models/mobilenet
+```
+
+4. Install Canvas NPM module
+
+```
+npm install canvas
+```
+
+5. Start service
 
 ```
 node src/main.js
