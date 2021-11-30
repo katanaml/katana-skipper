@@ -123,11 +123,11 @@ spec:
                 configMapKeyRef:
                   name: training-config
                   key: SERVICE_NAME
-            - name: QUEUE_NAME_SEND
+            - name: QUEUE_NAME_DATA
               valueFrom:
                 configMapKeyRef:
                   name: training-config
-                  key: QUEUE_NAME_SEND
+                  key: QUEUE_NAME_DATA
             - name: MODELS_FOLDER
               valueFrom:
                 configMapKeyRef:
