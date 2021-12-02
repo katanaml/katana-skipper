@@ -1,10 +1,9 @@
-require('@tensorflow/tfjs-node');
+const tfnode = require('@tensorflow/tfjs-node');
+const mobilenet = require('@tensorflow-models/mobilenet');
 
 const fs = require('fs');
 const path = require('path');
-const Canvas = require('canvas');
 const EventProducer = require('@katanaml/skipper-lib-js/skipper/events/event_producer')
-const mobilenet = require('@tensorflow-models/mobilenet');
 
 
 var RABBITMQ_USER = process.env.RABBITMQ_USER;
@@ -74,19 +73,15 @@ class MobilenetService {
 
     async runMobileNet(fileName) {
         // Load the image
-        const imgPath = path.join(__dirname, fileName);
-        var data = fs.readFileSync(imgPath);
-        
-        const img = await Canvas.loadImage(data);
-        const canvas = new Canvas.Canvas(img.width, img.height);
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
+        const imagePath = path.join(__dirname, fileName);
+        const image = fs.readFileSync(imagePath);
+        const decodedImage = tfnode.node.decodeImage(image, 3);
 
         // Load the model.
         const model = await mobilenet.load();
 
         // Classify the image.
-        const predictions = await model.classify(canvas);
+        const predictions = await model.classify(decodedImage);
 
         console.log();
         console.log('MobileNet predictions: ');

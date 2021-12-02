@@ -39,7 +39,7 @@ class WorkflowTaskDataMobileNet(BaseModel):
     task_type: TaskType = TaskType.MOBILENET
     payload: str
     data: Optional[create_model('DataMobileNet',
-                                image='coffee.jpeg')] = None
+                                image='orange.jpeg')] = None
     description: Optional[str] = None
 
 
