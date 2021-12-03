@@ -58,7 +58,7 @@ ocker build --tag katanaml/mobilenet-service .
 docker run -it -d --name mobilenet-service katanaml/mobilenet-service:latest
 ```
 
-4. Monitor logs
+3. Monitor logs
 
 ```
 docker logs --follow mobilenet-service
