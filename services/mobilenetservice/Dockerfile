@@ -1,16 +1,11 @@
-FROM node:14.18.1-alpine
+FROM node:14.18.1
 
 WORKDIR /usr/src/mobilenetservice
 
 COPY package*.json ./
 
-RUN apk add --no-cache --virtual .gyp \
-        python3 \
-        make \
-        g++ \
-    && npm install \
-    && apk del .gyp
+RUN npm install
 
 COPY ./src ./src
 
-ENTRYPOINT ["node", "/src/main.js"]
+ENTRYPOINT ["node", "src/main.js"]
