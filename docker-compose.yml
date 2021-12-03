@@ -188,6 +188,26 @@ services:
     depends_on:
       - rabbitmq
     restart: on-failure
+
+  mobilenet-service:
+    image: katanaml/mobilenet-service
+    build:
+      context: ./services/mobilenetservice
+      dockerfile: Dockerfile
+    container_name: mobilenet-service
+    environment:
+      - LOGGER_RECEIVER_URL=http://logger:5001/api/v1/skipper/logger/log_receiver
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=skipper
+      - RABBITMQ_PASSWORD=welcome1
+      - QUEUE_NAME=skipper_mobilenet
+      - SERVICE_NAME=mobilenet
+    networks:
+      - network1
+    depends_on:
+      - rabbitmq
+    restart: on-failure
   # Sample set of services, you should replace with your own services
 
   nginx:
