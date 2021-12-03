@@ -46,6 +46,23 @@ node src/main.js
 
 #### Build and run individual container
 
+1. Build container
+
+```
+ocker build --tag katanaml/mobilenet-service .
+```
+
+2. Run container
+
+```
+docker run -it -d --name mobilenet-service katanaml/mobilenet-service:latest
+```
+
+4. Monitor logs
+
+```
+docker logs --follow mobilenet-service
+```
 
 #### Build and run Kubernetes Pod
 
