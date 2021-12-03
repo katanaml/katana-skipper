@@ -49,7 +49,7 @@ node src/main.js
 1. Build container
 
 ```
-ocker build --tag katanaml/mobilenet-service .
+docker build --tag katanaml/mobilenet-service .
 ```
 
 2. Run container
