@@ -73,6 +73,7 @@ docker logs --follow mobilenet-service
 .
 ├── src
 │   └── app
+│       ├── orange.jpeg
 │       └── mobilenet_service.js
 ├──── main.js
 ├── Dockerfile
