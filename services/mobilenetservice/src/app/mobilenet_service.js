@@ -77,13 +77,12 @@ class MobilenetService {
         const image = fs.readFileSync(imagePath);
         const decodedImage = tfnode.node.decodeImage(image, 3);
 
-        // Load the model.
+        // Load the model
         const model = await mobilenet.load();
 
-        // Classify the image.
+        // Classify the image
         const predictions = await model.classify(decodedImage);
 
-        console.log();
         console.log('MobileNet predictions: ');
         console.log(predictions);
     }
