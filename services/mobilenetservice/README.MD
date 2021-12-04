@@ -31,16 +31,16 @@ npm install @tensorflow/tfjs-node
 npm install @tensorflow-models/mobilenet
 ```
 
-4. Install Canvas NPM module
-
-```
-npm install canvas
-```
-
 5. Start service
 
 ```
 node src/main.js
+```
+
+or with live reload
+
+```
+nodemon src/main.js
 ```
 
 
