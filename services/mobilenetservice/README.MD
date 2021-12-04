@@ -66,6 +66,53 @@ docker logs --follow mobilenet-service
 
 #### Build and run Kubernetes Pod
 
+1. Create namespace
+
+```
+kubectl create ns katana-skipper
+```
+
+2. Create Pod
+
+```
+kubectl apply -n katana-skipper -f mobilenetservice-pod.yaml
+```
+
+3. Check Pod status
+
+```
+kubectl get -n katana-skipper pods
+```
+
+4. Open Pod logs
+
+```
+kubectl logs -n katana-skipper -f -l app=mobilenet-service
+```
+
+5. Execute commands inside container
+
+```
+kubectl exec -it -n katana-skipper <POD_NAME> -c mobilenet-service -- bash
+```
+
+6. Scale Pod
+
+```
+kubectl scale -n katana-skipper deployment mobilenet-service --replicas=2
+```
+
+7. Delete Deployment and Volumes
+
+```
+kubectl delete -n katana-skipper -f mobilenetservice-pod.yaml
+```
+
+8. Delete all resources
+
+```
+kubectl delete all --all -n katana-skipper
+```
 
 ## Structure
 
@@ -77,6 +124,7 @@ docker logs --follow mobilenet-service
 │       └── mobilenet_service.js
 ├──── main.js
 ├── Dockerfile
+├── mobilenetservice-pod.yaml
 ├── README.md
 ├── package-lock.json
 └── package.json
