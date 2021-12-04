@@ -13,25 +13,13 @@ To run all services, check instructions in main [README](https://github.com/kata
 
 #### Run the service without Docker
 
-1. Install node module for Skipper library:
+1. Install dependencies:
 
 ```
-npm install --save @katanaml/skipper-lib-js
+npm install
 ```
 
-2. Install TensorFlow.js Node (follow [instructions](https://www.npmjs.com/package/@tensorflow/tfjs-node))
-
-```
-npm install @tensorflow/tfjs-node
-```
-
-3. Install TensorFlow.js MobileNet [model](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet)
-
-```
-npm install @tensorflow-models/mobilenet
-```
-
-4. Start service
+2. Start service
 
 ```
 node src/main.js
