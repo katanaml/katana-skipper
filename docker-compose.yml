@@ -196,6 +196,7 @@ services:
       dockerfile: Dockerfile
     container_name: mobilenet-service
     environment:
+      - LOGGER_PRODUCER_URL=http://logger:5001/api/v1/skipper/logger/log_producer
       - LOGGER_RECEIVER_URL=http://logger:5001/api/v1/skipper/logger/log_receiver
       - RABBITMQ_HOST=rabbitmq
       - RABBITMQ_PORT=5672

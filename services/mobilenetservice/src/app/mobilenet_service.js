@@ -31,9 +31,9 @@ var SERVICE_NAME = process.env.SERVICE_NAME;
 if (!process.env.SERVICE_NAME) {
     SERVICE_NAME = 'mobilenet';
 }
-var LOGGER_RECEIVER_URL = process.env.LOGGER_RECEIVER_URL;
-if (!process.env.LOGGER_RECEIVER_URL) {
-    LOGGER_RECEIVER_URL = 'http://127.0.0.1:5001/api/v1/skipper/logger/log_receiver';
+var LOGGER_PRODUCER_URL = process.env.LOGGER_PRODUCER_URL;
+if (!process.env.LOGGER_PRODUCER_URL) {
+    LOGGER_PRODUCER_URL = 'http://127.0.0.1:5001/api/v1/skipper/logger/log_producer';
 }
 
 class MobilenetService {
@@ -61,7 +61,7 @@ class MobilenetService {
             'description': 'string'
         }
         data = JSON.stringify(data);
-        event_producer.call(this.processResponse, data, LOGGER_RECEIVER_URL, QUEUE_NAME_DATA, SERVICE_NAME);
+        event_producer.call(this.processResponse, data, LOGGER_PRODUCER_URL, QUEUE_NAME_DATA, SERVICE_NAME);
         //
 
         const response = {
