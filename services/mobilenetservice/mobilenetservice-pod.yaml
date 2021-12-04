@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mobilenet-config
+  labels:
+    app: mobilenet-service
+data:
+  LOGGER_PRODUCER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_producer
+  LOGGER_RECEIVER_URL: http://skipper-logger:5001/api/v1/skipper/logger/log_receiver
+  RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
+  RABBITMQ_PORT: '5672'
+  QUEUE_NAME: skipper_mobilenet
+  SERVICE_NAME: mobilenet
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mobilenet-secret
+type: Opaque
+data:
+  RABBITMQ_USER: c2tpcHBlcg==
+  RABBITMQ_PASSWORD: d2VsY29tZTE=
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mobilenet-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mobilenet-service
+  template:
+    metadata:
+      labels:
+        app: mobilenet-service
+    spec:
+      containers:
+        - image: katanaml/mobilenet-service:latest
+          name: mobilenet-service
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: LOGGER_PRODUCER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mobilenet-config
+                  key: LOGGER_PRODUCER_URL
+            - name: LOGGER_RECEIVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mobilenet-config
+                  key: LOGGER_RECEIVER_URL
+            - name: RABBITMQ_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mobilenet-config
+                  key: RABBITMQ_HOST
+            - name: RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mobilenet-config
+                  key: RABBITMQ_PORT
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mobilenet-secret
+                  key: RABBITMQ_USER
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mobilenet-secret
+                  key: RABBITMQ_PASSWORD
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mobilenet-config
+                  key: QUEUE_NAME
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mobilenet-config
+                  key: SERVICE_NAME

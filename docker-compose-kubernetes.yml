@@ -59,4 +59,10 @@ services:
       context: ./services/servingservice/storage
       dockerfile: Dockerfile
     container_name: storage-service
+
+  mobilenet-service:
+    image: katanaml/mobilenet-service
+    build:
+      context: ./services/mobilenetservice
+      dockerfile: Dockerfile
   # Sample set of services, you should replace with your own services

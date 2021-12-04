@@ -107,3 +107,13 @@ kubectl rollout status -n katana-skipper deploy/serving-service
 kubectl get -n katana-skipper pods
 
 kubectl get -n katana-skipper deployments
+
+# MobileNet service
+
+kubectl apply -n katana-skipper -f services/mobilenetservice/mobilenetservice-pod.yaml
+
+kubectl rollout status -n katana-skipper deploy/mobilenet-service
+
+kubectl get -n katana-skipper pods
+
+kubectl get -n katana-skipper deployments
