@@ -31,7 +31,7 @@ npm install @tensorflow/tfjs-node
 npm install @tensorflow-models/mobilenet
 ```
 
-5. Start service
+4. Start service
 
 ```
 node src/main.js
