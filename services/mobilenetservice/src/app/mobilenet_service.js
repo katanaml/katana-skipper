@@ -61,7 +61,7 @@ class MobilenetService {
             'description': 'string'
         }
         data = JSON.stringify(data);
-        event_producer.call(this.processResponse, data, LOGGER_PRODUCER_URL, QUEUE_NAME_DATA, SERVICE_NAME);
+        event_producer.call(this.processResponse, data, LOGGER_PRODUCER_URL, QUEUE_NAME_DATA, SERVICE_NAME, event_producer.loggerHelper);
         //
 
         const response = {

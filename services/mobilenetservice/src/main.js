@@ -31,13 +31,13 @@ if (!process.env.LOGGER_RECEIVER_URL) {
 }
 
 function main() {
-    var event_receiver = new EventReceiver(RABBITMQ_USER, 
-                                       RABBITMQ_PASSWORD, 
-                                       RABBITMQ_HOST, 
-                                       RABBITMQ_PORT, 
-                                       QUEUE_NAME,
-                                       SERVICE_NAME);
-    event_receiver.startListener(event_receiver.onRequest, new MobilenetService(), LOGGER_RECEIVER_URL);
+    var event_receiver = new EventReceiver(RABBITMQ_USER,
+        RABBITMQ_PASSWORD,
+        RABBITMQ_HOST,
+        RABBITMQ_PORT,
+        QUEUE_NAME,
+        SERVICE_NAME);
+    event_receiver.startListener(event_receiver.onRequest, new MobilenetService(), LOGGER_RECEIVER_URL, event_receiver.loggerHelper);
 }
 
 main()
