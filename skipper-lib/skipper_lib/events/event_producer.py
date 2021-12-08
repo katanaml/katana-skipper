@@ -32,7 +32,7 @@ class EventProducer(object):
         self.corr_id = str(uuid.uuid4())
 
         try:
-            queue_state = self.channel.queue_declare('skipper_mobilenet', passive=True, durable=True)
+            queue_state = self.channel.queue_declare(queue_name, passive=True, durable=True)
             if queue_state.method.consumer_count == 0:
                 self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'start',
                                    'No subscriber available')
