@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Json
+from pydantic import BaseModel
+from typing import Optional
 
 
 class LogTask(BaseModel):
@@ -10,6 +11,7 @@ class LogProducer(BaseModel):
     queue_name: str
     service_name: str
     task_type: str
+    description: Optional[str] = None
 
 
 class LogReceiver(BaseModel):
@@ -17,6 +19,7 @@ class LogReceiver(BaseModel):
     queue_name: str
     service_name: str
     task_type: str
+    description: Optional[str] = None
 
 
 class LogWorkflow(BaseModel):

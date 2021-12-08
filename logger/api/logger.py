@@ -11,6 +11,7 @@ def print_producer(logger_data: LogProducer):
     print('Queue name:', logger_data.queue_name)
     print('Service name:', logger_data.service_name)
     print('Task type:', logger_data.task_type)
+    print('Description:', logger_data.description)
     print('Timestamp:', time.time())
     print()
 
@@ -22,6 +23,7 @@ def print_receiver(logger_data: LogReceiver):
     print('Queue name:', logger_data.queue_name)
     print('Service name:', logger_data.service_name)
     print('Task type:', logger_data.task_type)
+    print('Description:', logger_data.description)
     print('Timestamp:', time.time())
     print()
 
