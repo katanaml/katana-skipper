@@ -1,5 +1,6 @@
 import pika
 import requests
+import json
 
 
 class EventReceiver(object):
@@ -26,34 +27,46 @@ class EventReceiver(object):
     def on_request(self, ch, method, props, body):
         service_instance = self.service_worker()
 
+        self.logger_helper(props.correlation_id, self.queue_name, self.service_name, self.logger, 'start', '-')
+
+        try:
+            response, task_type = service_instance.call(body)
+
+            ch.basic_publish(exchange='',
+                             routing_key=props.reply_to,
+                             properties=pika.BasicProperties(correlation_id=props.correlation_id),
+                             body=response)
+            ch.basic_ack(delivery_tag=method.delivery_tag)
+
+            self.logger_helper(props.correlation_id, self.queue_name, self.service_name, self.logger, 'end', '-')
+
+            print('Processed request:', task_type)
+        except Exception as e:
+            response = {"error": 'Receiver exception',
+                        "queue": self.queue_name,
+                        "service_name": self.service_name,
+                        "correlation_id": props.correlation_id
+                        }
+            result = json.dumps(response)
+
+            self.logger_helper(props.correlation_id, self.queue_name, self.service_name, self.logger, 'end', 'Receiver exception')
+            print('Receiver exception')
+
+            ch.basic_publish(exchange='',
+                             routing_key=props.reply_to,
+                             properties=pika.BasicProperties(correlation_id=props.correlation_id),
+                             body=result)
+            ch.basic_ack(delivery_tag=method.delivery_tag)
+
+    def logger_helper(self, corr_id, queue_name, service_name, logger, task_type, description):
         if self.logger is not None:
-            params = {"correlation_id": props.correlation_id,
-                      "queue_name": self.queue_name,
-                      "service_name": self.service_name,
-                      "task_type": 'start'
+            params = {"correlation_id": corr_id,
+                      "queue_name": queue_name,
+                      "service_name": service_name,
+                      "task_type": task_type,
+                      "description": description
                       }
             try:
-                requests.post(self.logger, json=params)
+                requests.post(logger, json=params)
             except requests.exceptions.RequestException as e:
                 print('Logger service is not available')
-
-        response, task_type = service_instance.call(body)
-
-        ch.basic_publish(exchange='',
-                         routing_key=props.reply_to,
-                         properties=pika.BasicProperties(correlation_id=props.correlation_id),
-                         body=response)
-        ch.basic_ack(delivery_tag=method.delivery_tag)
-
-        if self.logger is not None:
-            params = {"correlation_id": props.correlation_id,
-                      "queue_name": self.queue_name,
-                      "service_name": self.service_name,
-                      "task_type": 'end'
-                      }
-            try:
-                requests.post(self.logger, json=params)
-            except requests.exceptions.RequestException as e:
-                print('Logger service is not available')
-
-        print('Processed request:', task_type)

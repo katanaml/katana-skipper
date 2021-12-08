@@ -1,6 +1,7 @@
 import pika
 import uuid
 import requests
+from pika.exceptions import ChannelClosedByBroker
 
 
 class EventProducer(object):
@@ -30,16 +31,18 @@ class EventProducer(object):
         self.response = None
         self.corr_id = str(uuid.uuid4())
 
-        if self.logger is not None:
-            params = {"correlation_id": self.corr_id,
-                      "queue_name": queue_name,
-                      "service_name": self.service_name,
-                      "task_type": 'start'
-                      }
-            try:
-                requests.post(self.logger, json=params)
-            except requests.exceptions.RequestException as e:
-                print('Logger service is not available')
+        try:
+            queue_state = self.channel.queue_declare('skipper_mobilenet', passive=True, durable=True)
+            if queue_state.method.consumer_count == 0:
+                self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'start',
+                                   'No subscriber available')
+                return 'No subscriber available'
+        except Exception as e:
+            self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'start',
+                               'No subscriber available')
+            return 'No subscriber available'
+
+        self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'start', '-')
 
         self.channel.basic_publish(
             exchange='',
@@ -54,15 +57,19 @@ class EventProducer(object):
         while self.response is None:
             self.connection.process_data_events()
 
-        if self.logger is not None:
-            params = {"correlation_id": self.corr_id,
-                      "queue_name": queue_name,
-                      "service_name": self.service_name,
-                      "task_type": 'end'
-                      }
-            try:
-                requests.post(self.logger, json=params)
-            except requests.exceptions.RequestException as e:
-                print('Logger service is not available')
+        self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'end', '-')
 
         return self.response
+
+    def logger_helper(self, corr_id, queue_name, service_name, logger, task_type, description):
+        if self.logger is not None:
+            params = {"correlation_id": corr_id,
+                      "queue_name": queue_name,
+                      "service_name": service_name,
+                      "task_type": task_type,
+                      "description": description
+                      }
+            try:
+                requests.post(logger, json=params)
+            except requests.exceptions.RequestException as e:
+                print('Logger service is not available')
