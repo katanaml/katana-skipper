@@ -1,7 +1,7 @@
 import pika
 import uuid
 import requests
-from pika.exceptions import ChannelClosedByBroker
+import json
 
 
 class EventProducer(object):
@@ -36,11 +36,23 @@ class EventProducer(object):
             if queue_state.method.consumer_count == 0:
                 self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'start',
                                    'No subscriber available')
-                return 'No subscriber available'
+
+                response = {
+                    'error': 'No subscriber available'
+                }
+                result = json.dumps(response)
+
+                return result
         except Exception as e:
             self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'start',
                                'No subscriber available')
-            return 'No subscriber available'
+
+            response = {
+                'error': 'No subscriber available'
+            }
+            result = json.dumps(response)
+
+            return result
 
         self.logger_helper(self.corr_id, queue_name, self.service_name, self.logger, 'start', '-')
 
