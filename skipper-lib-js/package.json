@@ -1,6 +1,6 @@
 {
     "name": "@katanaml/skipper-lib-js",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "Helper library for Katana ML Skipper workflow product",
     "license": "Apache-2.0",
     "repository": "katanaml/katana-skipper",

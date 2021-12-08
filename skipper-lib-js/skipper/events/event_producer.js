@@ -6,7 +6,7 @@ class EventProducer {
         this.connect_url = 'amqp://' + username + ':' + password + '@' + host + ':' + port;
     }
 
-    call(processResponse, input, logger, queue, serviceName) {
+    call(processResponse, input, logger, queue, serviceName, loggerHelper) {
         amqp.connect(this.connect_url, function (error0, connection) {
             if (error0) {
                 throw error0;
@@ -25,65 +25,13 @@ class EventProducer {
                         Math.random().toString() +
                         Math.random().toString();
 
-                    if (logger !== null) {
-                        const postOptions = {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                        };
-
-                        var requestBody = {
-                            "correlation_id": correlationId,
-                            "queue_name": queue,
-                            "service_name": serviceName,
-                            "task_type": 'start'
-                        };
-
-                        const req = http.request(
-                            logger,
-                            postOptions
-                        );
-
-                        req.on("error", (err) => {
-                            console.error("Logger service is not available");
-                        });
-
-                        req.write(JSON.stringify(requestBody));
-                        req.end();
-                    }
+                    loggerHelper(logger, queue, serviceName, correlationId, 'start', '-');
 
                     channel.consume(q.queue, function (msg) {
                         if (msg.properties.correlationId === correlationId) {
                             processResponse(msg.content.toString());
                             setTimeout(function () {
-                                if (logger !== null) {
-                                    const postOptions = {
-                                        method: "POST",
-                                        headers: {
-                                            "Content-Type": "application/json",
-                                        },
-                                    };
-
-                                    var requestBody = {
-                                        "correlation_id": correlationId,
-                                        "queue_name": queue,
-                                        "service_name": serviceName,
-                                        "task_type": 'end'
-                                    };
-
-                                    const req = http.request(
-                                        logger,
-                                        postOptions
-                                    );
-
-                                    req.on("error", (err) => {
-                                        console.error("Logger service is not available");
-                                    });
-
-                                    req.write(JSON.stringify(requestBody));
-                                    req.end();
-                                }
+                                loggerHelper(logger, queue, serviceName, correlationId, 'end', '-');
 
                                 connection.close();
                             }, 500);
@@ -100,6 +48,38 @@ class EventProducer {
                 });
             });
         });
+    }
+
+    loggerHelper(logger, queue, serviceName, correlationId, taskType, description) {
+        if (logger !== null) {
+            const postOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+
+            var requestBody = {
+                "correlation_id": correlationId,
+                "queue_name": queue,
+                "service_name": serviceName,
+                "task_type": taskType,
+                "description": description
+
+            };
+
+            const req = http.request(
+                logger,
+                postOptions
+            );
+
+            req.on("error", (err) => {
+                console.error("Logger service is not available");
+            });
+
+            req.write(JSON.stringify(requestBody));
+            req.end();
+        }
     }
 }
 
