@@ -10,6 +10,8 @@ data:
   RABBITMQ_BROKER: pyamqp://skipper:welcome1@rabbitmq-0.rabbitmq.rabbits.svc.cluster.local//
   RABBITMQ_HOST: rabbitmq-0.rabbitmq.rabbits.svc.cluster.local
   RABBITMQ_PORT: '5672'
+  BOSTON_ENABLED: 'y'
+  MOBILENET_ENABLED: 'y'
 
 ---
 
@@ -78,6 +80,16 @@ spec:
                 configMapKeyRef:
                   name: api-config
                   key: RABBITMQ_PORT
+            - name: BOSTON_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: BOSTON_ENABLED
+            - name: MOBILENET_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: MOBILENET_ENABLED
             - name: RABBITMQ_USER
               valueFrom:
                 secretKeyRef:

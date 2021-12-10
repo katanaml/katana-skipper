@@ -65,6 +65,8 @@ services:
       - RABBITMQ_PORT=5672
       - RABBITMQ_USER=skipper
       - RABBITMQ_PASSWORD=welcome1
+      - BOSTON_ENABLED=y
+      - MOBILENET_ENABLED=y
     networks:
       - network1
     depends_on:
