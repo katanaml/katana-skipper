@@ -7,7 +7,7 @@
 
 ## Author
 
-Katana ML, Andrej Baranovskij
+[Katana ML](https://katanaml.io), [Andrej Baranovskij](https://github.com/abaranovskis-redsamurai)
 
 ## License
 
