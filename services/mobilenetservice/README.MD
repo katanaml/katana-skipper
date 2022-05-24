@@ -78,6 +78,12 @@ kubectl get -n katana-skipper pods
 kubectl logs -n katana-skipper -f -l app=mobilenet-service
 ```
 
+or
+
+```
+kubectl logs -n katana-skipper -f <POD_NAME> -c mobilenet-service
+```
+
 5. Execute commands inside container
 
 ```
