@@ -84,7 +84,7 @@ spec:
       storage: 500Mi
 ```
 
-11. Training service runs multiple Pods, we must assign all Pod instances to the same Kubernetes node, to make sure all instances can access Persistent Volume. Read more - [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
+11. Serving service runs multiple Pods, we must assign all Pod instances to the same Kubernetes node, to make sure all instances can access Persistent Volume. Read more - [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
 
 ```
 kubectl get nodes
